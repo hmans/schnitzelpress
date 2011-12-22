@@ -1,0 +1,6 @@
+%h1 Recent Posts
+
+%ul
+  - @posts.each do |post|
+    %li
+      %a{ href: "/posts/#{post.slug}/" }= post.title

@@ -15,7 +15,7 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = Schreihals::VERSION
 
-  gem.add_dependency 'renee'
+  gem.add_dependency 'sinatra'
   gem.add_dependency 'shotgun'
   gem.add_dependency 'haml'
   gem.add_dependency 'document_mapper'
