@@ -13,7 +13,7 @@ module Schreihals
     set :author_name, "Author"
 
     get '/' do
-      @posts = Post.all
+      @posts = Post.order_by(:date => :desc).all
       haml :index
     end
 
