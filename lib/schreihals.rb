@@ -9,6 +9,9 @@ module Schreihals
   end
 
   class App < Sinatra::Application
+    set :blog_title, "My Schreihals Blog"
+    set :author_name, "Author"
+
     get '/' do
       @posts = Post.all
       haml :index
