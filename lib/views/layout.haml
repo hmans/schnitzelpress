@@ -1,0 +1,14 @@
+!!!
+%html
+  %head
+    %title= [@title, "Your Schreihals Powered Blog"].compact.join(" | ")
+    / %link{ href: '/pants.css', media: "screen", rel: "stylesheet", type: "text/css" }
+    / %link{ href: '/atom.xml', title: "Subscribe via Atom Feed", rel: 'alternate', type: 'application/atom+xml' }
+    / %script{ src: asset_path('application.js') }
+  %body
+    %header
+      %strong Hendrik Mans
+      is using Schreihals.
+
+    .container
+      = yield
