@@ -14,4 +14,8 @@ Gem::Specification.new do |gem|
   gem.name          = "schreihals"
   gem.require_paths = ["lib"]
   gem.version       = Schreihals::VERSION
+
+  gem.add_dependency 'renee'
+  gem.add_dependency 'shotgun'
+  gem.add_dependency 'haml'
 end
