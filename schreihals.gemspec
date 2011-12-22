@@ -19,4 +19,5 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'shotgun'
   gem.add_dependency 'haml'
   gem.add_dependency 'document_mapper'
+  gem.add_dependency 'redcarpet'
 end
