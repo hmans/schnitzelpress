@@ -1,8 +1,8 @@
 require 'schreihals'
 
-Schreihals::App.set(
-  blog_title: "hmans.net",
-  author_name: "Hendrik Mans"
-)
+class MyBlog < Schreihals::App
+  set :blog_title, "hmans.net"
+  set :author_name, "Hendrik Mans"
+end
 
-run Schreihals::App
+run MyBlog
