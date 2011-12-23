@@ -1,5 +1,11 @@
+@import url(http://fonts.googleapis.com/css?family=Inder|Droid+Serif);
 @import 'schnitzelstyle';
+
+$font-default: 15px "Droid Serif";
+$font-headlines: 100% "Inder";
+
 @include schnitzel-complete;
+
 
 .post {
   margin: 5em 0;
