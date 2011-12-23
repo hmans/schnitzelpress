@@ -22,6 +22,8 @@ module Schreihals
     set :blog_title, "My Schreihals Blog"
     set :author_name, "Author"
 
+    use Rack::Static, :urls => ["/media"], :root => "public"
+
     helpers do
       def partial(thing, options = {})
         type = thing.class.to_s.demodulize.underscore
