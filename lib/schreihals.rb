@@ -2,6 +2,7 @@ require 'schreihals/version'
 require 'sinatra'
 require 'haml'
 require 'sass'
+require 'redcarpet'
 require 'schnitzelstyle'
 require 'document_mapper'
 
