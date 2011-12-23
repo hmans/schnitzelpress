@@ -1,5 +1,8 @@
 require 'schreihals/version'
 require 'sinatra'
+require 'haml'
+require 'sass'
+require 'schnitzelstyle'
 require 'document_mapper'
 
 require 'active_support/core_ext/string/inflections'

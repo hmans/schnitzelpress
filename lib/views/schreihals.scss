@@ -1,1 +1,11 @@
-body { color: red; background-color: green; }
+@import 'schnitzelstyle';
+@include schnitzel-complete;
+
+.post {
+  margin: 5em 0;
+  .title {
+    margin-bottom: 1em;
+    .info { display: inline; margin-left: 1em; color: #999 }
+  }
+  .body { @include schnitzel-text }
+}
