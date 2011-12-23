@@ -22,5 +22,10 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'document_mapper'
   gem.add_dependency 'redcarpet'
 
+  # no schnitzelstyle release so far, so please add this to your
+  # blog project's Gemfile instead.
+  #
+  # gem.add_dependency 'schnitzelstyle'
+
   gem.add_development_dependency 'rspec', '>= 2.0.0'
 end
