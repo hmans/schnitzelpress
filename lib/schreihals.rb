@@ -24,5 +24,9 @@ module Schreihals
         "not found :("
       end
     end
+
+    get '/schreihals.css' do
+      scss :schreihals
+    end
   end
 end

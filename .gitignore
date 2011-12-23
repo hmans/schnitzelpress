@@ -5,6 +5,7 @@
 .yardoc
 .rbfu-version
 .powenv
+.sass-cache
 Gemfile.lock
 InstalledFiles
 _yardoc
