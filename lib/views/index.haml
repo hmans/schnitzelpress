@@ -1,7 +1,3 @@
-%h1 Recent Posts
-
-%ul
+.posts
   - @posts.each do |post|
-    %li
-      %a{href: "/posts/#{post.slug}/"}= post.title
-      &ndash; #{post.date}
+    = partial post

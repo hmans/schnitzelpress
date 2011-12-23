@@ -1,8 +1,3 @@
-%h1= @post.title
-
-= @post.to_html
-
-Posted #{@post.date}
-
+= partial @post
 %p
-  %a{href: '/'} Back to Index
+  = link_to 'Back to Index', '/'

@@ -16,6 +16,7 @@ Gem::Specification.new do |gem|
   gem.version       = Schreihals::VERSION
 
   gem.add_dependency 'sinatra'
+  gem.add_dependency 'activesupport'
   gem.add_dependency 'shotgun'
   gem.add_dependency 'haml'
   gem.add_dependency 'sass'

@@ -1,0 +1,8 @@
+.post
+  .title
+    %h2
+      %a{href: post.to_url}= post.title
+    .info
+      #{post.date}
+  .body
+    = post.to_html
