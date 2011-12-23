@@ -3,5 +3,5 @@
 %ul
   - @posts.each do |post|
     %li
-      %a{ href: "/posts/#{post.slug}/" }= post.title
+      %a{href: "/posts/#{post.slug}/"}= post.title
       &ndash; #{post.date}
