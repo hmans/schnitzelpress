@@ -1,6 +1,6 @@
 %h1= @post.title
 
-= markdown @post.content
+= @post.to_html
 
 Posted #{@post.date}
 
