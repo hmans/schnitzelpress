@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 require "rubygems"
+require "schreihals"
 require "schreihals/cli"
 
 Schreihals::Cli.start
