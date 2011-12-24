@@ -32,6 +32,8 @@ Just a list of keywords I need to write about:
 * `google_analytics_id`
 * `link`
 * `read_more`
+* `schreihals create NAME`
+* `schreihals post TITLE`
 
 ## Version History
 

@@ -18,7 +18,7 @@ class Schreihals::Cli < Thor
     @name = name
     self.destination_root = name
     directory 'new_blog', '.'
-    template 'first-post.md.tt', "posts/#{Date.today.strftime("%Y-%m-%d")}-first-post.md"
+    post('My First Post')
 
     in_root do
       run "bundle"   if options[:bundle]
@@ -33,7 +33,7 @@ class Schreihals::Cli < Thor
     @title = title
     @date = Date.today.strftime("%Y-%m-%d")
     @slug = title.downcase.gsub(/ +/,'-')
-    @text = "Welcome to my latest blog post. :)"
+    @text = "Type your post body here."
 
     template 'new-post.md.tt', "posts/#{@date}-#{@slug}.md"
   end
