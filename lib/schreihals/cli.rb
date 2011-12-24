@@ -1,4 +1,5 @@
 require "thor"
+require 'active_support/core_ext/string/inflections'
 
 class Schreihals::Cli < Thor
   include Thor::Actions
@@ -23,5 +24,17 @@ class Schreihals::Cli < Thor
       run "bundle"   if options[:bundle]
       run "git init" if options[:git]
     end
+  end
+
+
+  desc "post TITLE", "Creates a new blog post."
+
+  def post(title)
+    @title = title
+    @date = Date.today.strftime("%Y-%m-%d")
+    @slug = title.downcase.gsub(/ +/,'-')
+    @text = "Welcome to my latest blog post. :)"
+
+    template 'new-post.md.tt', "posts/#{@date}-#{@slug}.md"
   end
 end
