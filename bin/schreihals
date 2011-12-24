@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+require 'getoptlong'
+require 'schreihals/cli'
+
+Schreihals::Cli.main(Schreihals::Cli.parse_command_line)
