@@ -1,5 +1,9 @@
 source 'https://rubygems.org'
 
-gem 'schreihals', :path => '..'
-# temporary
-gem 'schnitzelstyle', :path => '../../schnitzelstyle'
+# In a real-world schreihals blog, remove the :path option, obviously.
+#
+gem 'schreihals', :path => '../'
+
+# For the time being, we need this fork of document_mapper.
+#
+gem 'document_mapper', :git => 'git://github.com/hmans/document_mapper.git', :branch => "after_load_hook"
