@@ -20,7 +20,9 @@ module Schreihals
       #
       self.attributes = {
         disqus: true,
-        status: 'published'
+        status: 'published',
+        summary: nil,
+        link: nil
       }.merge(attributes)
 
       # Set slug
@@ -65,6 +67,7 @@ module Schreihals
   class App < Sinatra::Application
     set :blog_title, "My Schreihals Blog"
     set :blog_url, ""
+    set :blog_description, ""
     set :author_name, "Author"
     set :disqus_name, nil
     set :google_analytics_id, nil
