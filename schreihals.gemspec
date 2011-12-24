@@ -4,9 +4,9 @@ require File.expand_path('../lib/schreihals/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.authors       = ["Hendrik Mans"]
   gem.email         = ["hendrik@mans.de"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
-  gem.homepage      = ""
+  gem.description   = %q{A simple blog engine for hackers.}
+  gem.summary       = %q{A simple blog engine for hackers.}
+  gem.homepage      = "http://hmans.net"
 
   gem.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   gem.files         = `git ls-files`.split("\n")
