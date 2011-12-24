@@ -59,9 +59,6 @@ module Schreihals
     def page?
       !post?
     end
-
-    # load all posts.
-    self.directory = 'posts'
   end
 
   class App < Sinatra::Application
@@ -109,6 +106,10 @@ module Schreihals
       def production?
         settings.environment.to_sym == :production
       end
+    end
+
+    configure do
+      Post.directory = 'posts'
     end
 
     before do
