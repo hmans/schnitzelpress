@@ -1,66 +1,27 @@
-module Schreihals
-  class Cli
-    def self.usage(exitcode=1)
-      puts <<EOF
-USAGE: #{File.basename($0)} [GLOBAL OPTIONS] <command> [COMMAND OPTIONS]
+require "thor"
 
-GLOBAL OPTIONS
-    --help, -h            Display this message.
-    --version, -v         Display version number.
+class Schreihals::Cli < Thor
+  include Thor::Actions
 
-COMMANDS
-    create <path>         Create a new Schreihals blog.
+  source_root(File.expand_path('../../templates', __FILE__))
 
-OPTIONS FOR create
-    --git                 Create a new git repository for the project.
+  desc "create NAME", "Creates a new Schreihals blog."
 
-EOF
-      exit exitcode
-    end
+  method_option :git, :aliases => "-g", :default => false,
+    :desc => "Initialize a git repository in your blog's directory."
 
-    def self.version
-      puts "Schreihals #{Schreihals::VERSION}"
-      exit 0
-    end
+  method_option :bundle, :aliases => "-b", :default => false,
+    :desc => "Run 'bundle install' after generating your new blog."
 
-    def self.parse_command_line
-      opts = GetoptLong.new(
-        ['--git', GetoptLong::NO_ARGUMENT],
-        ['--help', '-h', GetoptLong::NO_ARGUMENT],
-        ['--version', '-v', GetoptLong::NO_ARGUMENT],
-      )
-      options = {}
-      opts.each do |opt, arg|
-        case opt
-        when '--help'
-          usage(exitcode=0)
-        when '--version'
-          version
-        else
-          options[opt.sub(/^--/, '')] = arg
-        end
-      end
-      options
-    rescue GetoptLong::InvalidOption => e
-      $stderr.puts
-      usage
-    end
+  def create(name)
+    @name = name
+    self.destination_root = name
+    directory 'new_blog', '.'
+    template 'first-post.md.tt', "posts/#{Date.today.strftime("%Y-%m-%d")}-first-post.md"
 
-    def self.main(options)
-      command = ARGV.shift
-      command.nil? && usage
-
-      case command
-      when 'create'
-        # TODO: create new application here
-      when 'post'
-        # TODO: create new post here
-      else
-        raise "Unknown command: #{command}"
-      end
-    rescue RuntimeError => e
-      $stderr.puts "ERROR: #{e}"
-      exit 1
+    in_root do
+      run "bundle"   if options[:bundle]
+      run "git init" if options[:git]
     end
   end
 end

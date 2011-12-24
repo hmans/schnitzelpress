@@ -1,0 +1,14 @@
+require 'rubygems'
+require 'bundler/setup'
+require 'schreihals'
+
+class MyBlog < Schreihals::App
+  set :blog_title, "<%= @name %>"
+  set :blog_url, "http://<%= @name %>.info"
+  set :blog_description, ""
+  set :author_name, "Your Name"
+  # set :disqus_name, ""
+  # set :google_analytics_id, ""
+end
+
+run MyBlog
