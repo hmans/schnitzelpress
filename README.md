@@ -32,3 +32,14 @@ Just a list of keywords I need to write about:
 * `google_analytics_id`
 * `link`
 * `read_more`
+
+## Version History
+
+### 0.0.2
+
+* Fix various stupid bugs from the initial release, including the broken example app. Duh!
+* When a post or page could not be found, we now display a proper 404 page (with correct status code.)
+
+### 0.0.1
+
+* Initial release.
