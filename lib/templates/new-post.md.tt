@@ -1,0 +1,13 @@
+---
+title: <%= @title %>
+summary:
+link:
+
+# More options:
+#
+# status: draft
+# read_more:
+# disqus: false
+---
+
+<%= @text %>
