@@ -21,7 +21,10 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'haml'
   gem.add_dependency 'sass'
   gem.add_dependency 'document_mapper'
+  gem.add_dependency 'coderay'
   gem.add_dependency 'redcarpet'
+  gem.add_dependency 'rack-cache'
+  gem.add_dependency 'rack-codehighlighter'
 
   # no schnitzelstyle release so far, so please add this to your
   # blog project's Gemfile instead.

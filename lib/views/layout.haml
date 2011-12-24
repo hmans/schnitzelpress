@@ -1,14 +1,21 @@
 !!!
 %html
   %head
-    %title= [@title, settings.blog_title].compact.join(" | ")
+    %title= [@page_title, settings.blog_title].compact.join(" | ")
     %link{href: '/schreihals.css', media: "screen", rel: "stylesheet", type: "text/css"}
-    / %link{ href: '/atom.xml', title: "Subscribe via Atom Feed", rel: 'alternate', type: 'application/atom+xml' }
+    %link{ href: '/atom.xml', title: "Subscribe via Atom Feed", rel: 'alternate', type: 'application/atom+xml' }
     / %script{ src: asset_path('application.js') }
   %body
     %header
-      %strong= settings.author_name
-      is using Schreihals.
+      .container
+        %h1
+          = link_to settings.blog_title, '/'
 
-    .container
-      = yield
+    = yield
+
+    %footer
+      .container
+        ~ markdown settings.blog_description
+
+    - if production? && settings.google_analytics_id.present?
+      = partial 'google_analytics'

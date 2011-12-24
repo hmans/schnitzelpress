@@ -1,3 +1,10 @@
-= partial @post
-%p
-  = link_to 'Back to Index', '/'
+- set_page_title @post.title.presence
+
+%section.post
+  .container
+    = partial @post, complete: true
+
+- if show_disqus? && @post.disqus?
+  %section.disqus
+    .container
+      = partial 'disqus', :disqus_identifier => @post.disqus_identifier

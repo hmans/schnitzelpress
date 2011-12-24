@@ -1,3 +1,4 @@
-.posts
-  - @posts.each do |post|
-    = partial post
+%section.posts
+  .container
+    - @posts.each do |post|
+      = partial post

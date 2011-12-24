@@ -1,17 +1,49 @@
-@import url(http://fonts.googleapis.com/css?family=Inder|Droid+Serif);
+@import url(http://fonts.googleapis.com/css?family=Inder|PT+Serif);
 @import 'schnitzelstyle';
+@import 'schnitzelstyle/coderay';
 
-$font-default: 15px "Droid Serif";
-$font-headlines: 100% "Inder";
+$font-default: 16px "PT Serif";
+$font-headlines: 15px "Inder";
+$font-footer: 11px "Inder";
 
 @include schnitzel-complete;
 
+section.disqus {
+  background-color: #eee !important;
+}
 
-.post {
+article.post {
   margin: 5em 0;
-  .title {
+  header {
     margin-bottom: 1em;
     .info { display: inline; margin-left: 1em; color: #999 }
   }
-  .body { @include schnitzel-text }
+
+  &.draft header h2 { background-color: #ccc; }
+
+  div.summary p {
+    font: 18px "Inder";
+    line-height: 150%;
+    color: #000;
+  }
+
+  p.permalink {
+    a {
+      color: lighten($color-text, 30%);
+      border: none;
+    }
+  }
+}
+
+#dsq-content {
+  a {
+    border: 0;
+  }
+  #dsq-reply {
+    margin-bottom: 2em;
+  }
+  h3 {
+    margin-top: 1em;
+    @include clearfix;
+  }
 }

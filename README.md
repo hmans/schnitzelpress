@@ -16,3 +16,19 @@ overall design goals?
 ## Usage
 
 TODO: soon
+
+## Stuff
+
+Just a list of keywords I need to write about:
+
+* Configuration
+* Automatic `date` and `slug` recognition
+* `status` attribute and drafts
+* `disqus` and `disqus_identifier` attributes
+* Using different post formats (markdown, textile, haml etc.)
+* pages (= posts without dates)
+* deployment (Heroku!)
+* code highlighting
+* `google_analytics_id`
+* `link`
+* `read_more`

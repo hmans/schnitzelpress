@@ -1,0 +1,21 @@
+!!! XML
+%feed{xmlns: 'http://www.w3.org/2005/Atom'}
+  %title= settings.blog_title
+  %link{href: url_for(',', absolute: true)}
+  %link{href: url_for('/atom.xml', absolute: true), rel: 'self'}
+  %id= "http://hmans.net/"
+  - if @posts.any?
+    %updated= @posts.first.date
+  %author
+    %name= settings.author_name
+  - @posts.each do |post|
+    %entry
+      %title= post.title
+      %link{rel: 'alternate', href: url_for(post, absolute: true)}
+      %id urn:uuid:#{post.disqus_identifier}
+      %published= post.date
+      %updated= post.date
+      %author
+        %name= settings.author_name
+      %content{type: 'html'}
+        ~ post.to_html
