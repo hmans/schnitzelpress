@@ -8,6 +8,14 @@ $font-footer: 11px "Inder";
 
 @include schnitzel-complete;
 
+section.blog_description {
+    font: 18px "Inder";
+    line-height: 150%;
+    color: $color-header;
+    padding: 0;
+    margin-bottom: 2em;
+}
+
 section.disqus {
   background-color: #eee !important;
 }

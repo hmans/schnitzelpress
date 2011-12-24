@@ -14,7 +14,7 @@
 
     %footer
       .container
-        ~ markdown settings.blog_description
+        ~ markdown settings.footer
 
     - if production? && settings.google_analytics_id.present?
       = partial 'google_analytics'
