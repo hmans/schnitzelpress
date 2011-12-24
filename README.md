@@ -37,6 +37,10 @@ Just a list of keywords I need to write about:
 
 ## Version History
 
+### development
+
+* Add `schreihals` executable. Use it to generate new Schreihals blogs (`schreihals create <name>`) and blog posts (`schreihals post <title>`).
+
 ### 0.0.2
 
 * Fix various stupid bugs from the initial release, including the broken example app. Duh!
