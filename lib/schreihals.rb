@@ -144,8 +144,12 @@ module Schreihals
       if @post = Post.where(:slug => slug).first
         haml :post
       else
-        "not found :("
+        halt 404
       end
+    end
+
+    not_found do
+      haml :"404"
     end
   end
 end
