@@ -49,7 +49,11 @@ module Schreihals
       end
     end
 
-    def refresh_documents
+    def refresh_documents_now?
+      !Post.documents.any?
+    end
+
+    def refresh_documents!
       case settings.documents_store
       when :filesystem
         Post.send(:include, DocumentMapper::FilesystemStore)
@@ -66,7 +70,7 @@ module Schreihals
     end
 
     before do
-      refresh_documents
+      refresh_documents! if refresh_documents_now?
       cache_control :public, :must_revalidate, :max_age => 60
     end
 
