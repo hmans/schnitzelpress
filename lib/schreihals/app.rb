@@ -7,6 +7,9 @@ module Schreihals
     set :disqus_name, nil
     set :google_analytics_id, nil
     set :read_more, "Read Complete Article"
+    set :documents_store, :filesystem
+    set :documents_source, './posts'
+
 
     use Rack::ShowExceptions
     use Rack::Cache
@@ -46,11 +49,24 @@ module Schreihals
       end
     end
 
+    def refresh_documents
+      case settings.documents_store
+      when :filesystem
+        Post.send(:include, DocumentMapper::FilesystemStore)
+        Post.load_documents_from_filesystem(settings.documents_source)
+      when :dropbox
+        Post.send(:include, DocumentMapper::DropboxStore)
+        Post.load_documents_from_dropbox(settings.documents_source)
+      else
+        raise "Unknown documents store '#{settings.documents_store}'."
+      end
+    end
+
     configure do
-      Post.directory = 'posts'
     end
 
     before do
+      refresh_documents
       cache_control :public, :must_revalidate, :max_age => 60
     end
 
