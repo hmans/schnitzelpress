@@ -11,8 +11,10 @@ module Schreihals
     set :documents_source, './posts'
     set :documents_cache, nil
 
+
     use Rack::ShowExceptions
     use Rack::Cache
+    use Rack::Static, :urls => ["/media"], :root => "public"
     use Rack::Codehighlighter, :coderay, :markdown => true, :element => "pre>code", :pattern => /\A:::(\w+)\s*\n/
 
     helpers do
