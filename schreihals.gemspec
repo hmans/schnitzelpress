@@ -26,6 +26,7 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'rack-cache'
   gem.add_dependency 'rack-codehighlighter'
   gem.add_dependency 'schnitzelstyle', '>= 0.0.1'
+  gem.add_dependency 'nokogiri'
   gem.add_dependency 'thor'
 
   gem.add_development_dependency 'rspec', '>= 2.0.0'

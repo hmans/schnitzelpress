@@ -88,8 +88,16 @@ module Schreihals
 
     get '/atom.xml' do
       @posts = Post.where(:status => 'published').order_by(:date => :desc).limit(10).all
+      xml = haml :atom, :layout => false
+
+      doc = Nokogiri::XML(xml)
+
+      doc.css("content img").each do |node|
+        node['src'] = absolutionize(node['src'])
+      end
+
       content_type 'application/xml+atom'
-      haml :atom, :layout => false
+      doc.to_xml
     end
 
     get '/:year/:month/:day/:slug/?' do |year, month, day, slug|
@@ -106,6 +114,22 @@ module Schreihals
       else
         halt 404
       end
+    end
+
+    def absolutionize(url)
+      if should_absolutionize?(url)
+        "#{base_url}#{url}"
+      else
+        url
+      end
+    end
+
+    def should_absolutionize?(url)
+      url && url[0] == '/'
+    end
+
+    def base_url
+      "#{env['rack.url_scheme']}://#{env['HTTP_HOST']}"
     end
 
     not_found do
