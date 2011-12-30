@@ -5,3 +5,6 @@ $LOAD_PATH.unshift lib_path unless $LOAD_PATH.include?(lib_path)
 require 'rubygems'
 require 'bundler/setup'
 require 'schreihals'
+
+require 'rack/test'
+set :environment, :test
