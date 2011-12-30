@@ -12,6 +12,7 @@ module Schreihals
     set :documents_cache, nil
 
 
+    use Schreihals::Static
     use Rack::ShowExceptions
     use Rack::Cache
     use Rack::Codehighlighter, :coderay, :markdown => true, :element => "pre>code", :pattern => /\A:::(\w+)\s*\n/

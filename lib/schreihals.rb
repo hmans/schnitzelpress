@@ -11,6 +11,7 @@ require 'coderay'
 require 'rack/codehighlighter'
 require 'active_support/core_ext/string/inflections'
 
+require 'schreihals/static'
 require 'schreihals/post'
 require 'schreihals/app'
 
