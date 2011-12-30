@@ -1,22 +1,13 @@
 def run(cmd)
   puts cmd
   system cmd
+  puts "\n"
 end
 
-def spec(file)
-  if File.exists?(file)
-    run("rspec --fail-fast #{file}")
-  else
-    puts("Spec: #{file} does not exist.")
-  end
-end
+watch("test/.*_test\.rb")        { |m| run("bundle exec ruby %s" % m[0]) }
+watch("lib/schreihals/(.*)\.rb") { |m| run("bundle exec ruby test/%s_test.rb" % m[1]) }
 
-watch("spec/.*/*_spec\.rb") do |match|
-  puts(match[0])
-  spec(match[0])
-end
-
-watch("lib/schreihals/(.*)\.rb") do |match|
-  puts(match[1])
-  spec("spec/#{match[1]}_spec.rb")
-end
+# Ctrl-\
+Signal.trap('QUIT')   { run("rake test") }
+# Ctrl-C
+Signal.trap('INT')    { abort("\nQuitting.") }
