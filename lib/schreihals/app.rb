@@ -10,6 +10,7 @@ module Schreihals
     set :documents_store, :filesystem
     set :documents_source, './posts'
     set :documents_cache, nil
+    set :footer, ""
 
 
     use Schreihals::Static
