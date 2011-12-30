@@ -1,7 +1,12 @@
 #!/usr/bin/env rake
 require "bundler/gem_tasks"
 
-# integrate rspec
-require 'rspec/core/rake_task'
-RSpec::Core::RakeTask.new('spec')
-task :default => :spec
+# integrate riot
+require 'rake/testtask'
+Rake::TestTask.new(:test) do |test|
+  test.libs << 'lib' << 'test'
+  test.pattern = 'test/*_test.rb'
+  test.verbose = true
+end
+
+task :default => :test
