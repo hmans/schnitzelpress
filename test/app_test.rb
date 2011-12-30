@@ -5,10 +5,10 @@ class MyTestApp < Schreihals::App
 end
 
 context Schreihals::App do
-  setup { @app = Rack::MockRequest.new(MyTestApp.new) }
+  setup { Rack::MockRequest.new(MyTestApp.new) }
 
   context "GET /" do
-    setup { @app.get '/' }
+    setup { topic.get '/' }
     asserts(:status).equals 200
     asserts(:body).present?
     asserts(:content_type).equals 'text/html;charset=utf-8'
