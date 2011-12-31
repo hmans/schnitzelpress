@@ -2,6 +2,8 @@ require_relative 'test_helper'
 
 class MyTestApp < Schreihals::App
   set :documents_source, './test/posts'
+  set :blog_title, "A Little Test Blog"
+  set :footer, "This is just a test blog. Have fun."
 end
 
 context Schreihals::App do
@@ -14,6 +16,9 @@ context Schreihals::App do
     asserts(:body).present
     asserts(:content_type).equals 'text/html;charset=utf-8'
     asserts(:body).includes_elements("section.posts article.post", 2)
+
+    asserts(:body).includes_html('title' => MyTestApp.settings.blog_title)
+    asserts(:body).includes_html('footer>.container' => MyTestApp.settings.footer)
   end
 
   context "when loading a specific post's page" do
