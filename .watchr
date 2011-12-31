@@ -1,5 +1,5 @@
 def run(cmd)
-  puts cmd
+  puts "=== %s" % cmd
   system cmd
   puts "\n"
 end
