@@ -12,7 +12,6 @@ module Schreihals
     set :documents_cache, nil
     set :footer, ""
 
-
     use Schreihals::Static
     use Rack::ShowExceptions
     use Rack::Cache

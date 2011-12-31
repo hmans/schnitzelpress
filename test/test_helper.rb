@@ -32,11 +32,11 @@ module Riot
       expected = expected.to_a.flatten
 
       if (doc/expected.first).empty?
-        fail("expected #{actual} to contain a <#{expected.first}>")
+        fail("expected #{actual} to contain a [#{expected.first}]")
       elsif !(doc/expected.first).inner_html.match(expected.last)
-        fail("expected <#{expected.first}> to contain #{expected.last}")
+        fail("expected [#{expected.first}] to contain #{expected.last}")
       else
-        pass "contains <#{expected.first}> with \"#{expected.last}\""
+        pass "contains [#{expected.first}] with \"#{expected.last}\""
       end
     end
   end
@@ -46,7 +46,7 @@ module Riot
 
     def evaluate(actual, selector, count)
       doc = Nokogiri::HTML(actual)
-      (doc/selector).size == count ? pass("contains #{count} instance#{"s" unless count == 1} of <#{selector}>") :
+      (doc/selector).size == count ? pass("contains #{count} instance#{"s" unless count == 1} of [#{selector}]") :
         fail("expected #{actual} to contain #{count} #{selector}(s)")
     end
   end
