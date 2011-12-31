@@ -25,4 +25,23 @@ context Schreihals::App do
     asserts(:body).includes_elements("section.post article.post", 1)
     asserts(:body).includes_html('section.post article.post header h2 a' => "First Post\.")
   end
+
+  context "when loading a static page" do
+    setup { topic.get '/static-page/' }
+
+    asserts(:status).equals 200
+    asserts(:body).present
+    asserts(:content_type).equals 'text/html;charset=utf-8'
+    asserts(:body).includes_elements("section.post article.post", 1)
+    asserts(:body).includes_html('section.post article.post header h2 a' => "A Static Page\.")
+  end
+
+  context "when loading the ATOM feed" do
+    setup { topic.get '/atom.xml' }
+
+    asserts(:status).equals 200
+    asserts(:body).present
+    asserts(:content_type).equals 'application/xml+atom'
+    asserts(:body).includes_elements("entry", 2)
+  end
 end
