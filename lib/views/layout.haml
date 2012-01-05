@@ -18,3 +18,5 @@
 
     - if production? && settings.google_analytics_id.present?
       = partial 'google_analytics'
+    - if production? && settings.gauges_id.present?
+      = partial 'gauges'

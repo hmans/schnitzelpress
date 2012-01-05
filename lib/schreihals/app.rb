@@ -6,6 +6,7 @@ module Schreihals
     set :author_name, "Author"
     set :disqus_name, nil
     set :google_analytics_id, nil
+    set :gauges_id, nil
     set :read_more, "Read Complete Article"
     set :documents_store, :filesystem
     set :documents_source, './posts'

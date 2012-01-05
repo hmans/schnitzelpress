@@ -29,7 +29,7 @@ Just a list of keywords I need to write about:
 * pages (= posts without dates)
 * deployment (Heroku!)
 * code highlighting
-* `google_analytics_id`
+* `google_analytics_id` and `gauges_id`
 * `footer`
 * `link`
 * `read_more`
