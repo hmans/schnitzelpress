@@ -1,34 +1,34 @@
 @import url(http://fonts.googleapis.com/css?family=Inder|PT+Serif);
 @import 'schnitzelstyle';
 @import 'schnitzelstyle/coderay';
+@import 'schnitzelstyle/export';
 
 $font-default: 16px "PT Serif";
 $font-headlines: 15px "Inder";
 $font-footer: 11px "Inder";
 
 @include schnitzel-complete;
+@include schnitzel-export;
 
-section.blog_description {
-    font: 18px "Inder";
-    line-height: 150%;
-    color: $color-header;
-    padding: 0;
-    margin-bottom: 2em;
+.blog_description {
+  margin: 1em 0;
+  font: 18px "Inder";
+  line-height: 150%;
+  color: $color-header;
+  padding: 0;
+  margin-bottom: 2em;
 }
 
-section.disqus {
-  background-color: #eee !important;
-}
+// section.disqus {
+//   background-color: #eee !important;
+// }
 
-.container.social_media_buttons {
-  margin-top: 1em;
-  text-align: right;
+.social_media_buttons {
+  margin: 1em 0;
 }
 
 article.post {
-  margin: 5em 0;
   header {
-    margin-bottom: 1em;
     .info { display: inline; margin-left: 1em; color: #999 }
   }
 
@@ -48,6 +48,7 @@ article.post {
   }
 }
 
+/* disqus */
 #dsq-content {
   a {
     border: 0;
@@ -56,7 +57,7 @@ article.post {
     margin-bottom: 2em;
   }
   h3 {
-    margin-top: 1em;
+    margin-top: 1em !important;
     @include clearfix;
   }
 }

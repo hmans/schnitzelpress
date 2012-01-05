@@ -1,8 +1,3 @@
-%section.blog_description
-  .container
-    ~ markdown settings.blog_description
-
 %section.posts
-  .container
-    - @posts.each do |post|
-      = partial post
+  - @posts.each do |post|
+    = partial post

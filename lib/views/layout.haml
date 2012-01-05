@@ -5,18 +5,20 @@
     %link{href: '/schreihals.css', media: "screen", rel: "stylesheet", type: "text/css"}
     %link{ href: '/atom.xml', title: "Subscribe via Atom Feed", rel: 'alternate', type: 'application/atom+xml' }
   %body
-    %header
-      .container
+    .container
+      %header
         %h1
           = link_to settings.blog_title, '/'
+        - if @show_description
+          .blog_description
+            ~ markdown settings.blog_description
 
-    = yield
+      = yield
 
-    %footer
-      .container
+      %footer
         ~ markdown settings.footer
 
-    - if production? && settings.google_analytics_id.present?
-      = partial 'google_analytics'
-    - if production? && settings.gauges_id.present?
-      = partial 'gauges'
+      - if production? && settings.google_analytics_id.present?
+        = partial 'google_analytics'
+      - if production? && settings.gauges_id.present?
+        = partial 'gauges'

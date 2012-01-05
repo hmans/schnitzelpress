@@ -81,6 +81,7 @@ module Schreihals
       @posts = Post.order_by(:date => :desc)
       @posts = @posts.where(:status => 'published') if production?
       @posts = @posts.limit(10).all
+      @show_description = true
       haml :index
     end
 
