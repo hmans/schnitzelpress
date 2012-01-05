@@ -9,7 +9,8 @@ module Schreihals
         disqus: true,
         status: 'published',
         summary: nil,
-        link: nil
+        link: nil,
+        read_more: nil
       }.merge(attributes)
 
       # Set slug
