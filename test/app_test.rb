@@ -18,7 +18,7 @@ context Schreihals::App do
     asserts(:body).includes_elements("section.posts article.post", 2)
 
     asserts(:body).includes_html('title' => MyTestApp.settings.blog_title)
-    asserts(:body).includes_html('footer>.container' => MyTestApp.settings.footer)
+    asserts(:body).includes_html('.container>footer' => MyTestApp.settings.footer)
   end
 
   context "when loading a specific post's page" do
@@ -27,8 +27,8 @@ context Schreihals::App do
     asserts(:status).equals 200
     asserts(:body).present
     asserts(:content_type).equals 'text/html;charset=utf-8'
-    asserts(:body).includes_elements("section.post article.post", 1)
-    asserts(:body).includes_html('section.post article.post header h2 a' => "First Post\.")
+    asserts(:body).includes_elements("article.post", 1)
+    asserts(:body).includes_html('article.post header h2 a' => "First Post\.")
   end
 
   context "when loading a static page" do
@@ -37,8 +37,8 @@ context Schreihals::App do
     asserts(:status).equals 200
     asserts(:body).present
     asserts(:content_type).equals 'text/html;charset=utf-8'
-    asserts(:body).includes_elements("section.post article.post", 1)
-    asserts(:body).includes_html('section.post article.post header h2 a' => "A Static Page\.")
+    asserts(:body).includes_elements("article.post", 1)
+    asserts(:body).includes_html('article.post header h2 a' => "A Static Page\.")
   end
 
   context "when loading the ATOM feed" do
