@@ -45,7 +45,7 @@ module Schreihals
       end
 
       def split_original_document(s)
-        s =~ /(.*)---\n(.*)\n---\n(.*)/m ? [$2, $3] : [nil, s]
+        s =~ /.*(---\s*\n.*)\n---\s*\n(.*)/m ? [$1, $2] : [nil, s]
       end
     end
   end
