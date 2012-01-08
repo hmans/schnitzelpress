@@ -1,18 +1,7 @@
 module Schreihals
-  class App < Sinatra::Application
-    set :blog_title, "My Schreihals Blog"
-    set :blog_url, ""
-    set :blog_description, ""
-    set :author_name, "Author"
-    set :disqus_name, nil
-    set :google_analytics_id, nil
-    set :gauges_id, nil
-    set :read_more, "Read Complete Article"
-    set :documents_store, :filesystem
-    set :documents_source, './posts'
-    set :documents_cache, nil
-    set :twitter_id, nil
-    set :footer, ""
+  class App < Sinatra::Base
+    set :views, File.expand_path('../../views/', __FILE__)
+    set :public_folder, File.expand_path('../../public/', __FILE__)
 
     use Schreihals::Static
     use Rack::ShowExceptions
@@ -20,6 +9,22 @@ module Schreihals
     use Rack::Codehighlighter, :coderay, :markdown => true, :element => "pre>code", :pattern => /\A:::(\w+)\s*\n/
 
     helpers Schreihals::Helpers
+
+    configure do
+      set :blog_title, "My Schreihals Blog"
+      set :blog_url, ""
+      set :blog_description, ""
+      set :author_name, "Author"
+      set :disqus_name, nil
+      set :google_analytics_id, nil
+      set :gauges_id, nil
+      set :read_more, "Read Complete Article"
+      set :documents_store, :filesystem
+      set :documents_source, './posts'
+      set :documents_cache, nil
+      set :twitter_id, nil
+      set :footer, ""
+    end
 
     def refresh_documents_now?
       !Post.documents.any?
@@ -36,9 +41,6 @@ module Schreihals
       else
         raise "Unknown documents store '#{settings.documents_store}'."
       end
-    end
-
-    configure do
     end
 
     before do
