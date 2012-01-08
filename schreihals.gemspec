@@ -28,6 +28,7 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'schnitzelstyle', '>= 0.0.1'
   gem.add_dependency 'nokogiri'
   gem.add_dependency 'thor'
+  gem.add_dependency 'psych'
   gem.add_dependency 'i18n'
   gem.add_dependency 'tilt', '~> 1.3.0'
 

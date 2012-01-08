@@ -31,7 +31,7 @@ module Schreihals
     class << self
       def from_string(s, attrs = {})
         frontmatter, body = split_original_document(s)
-        new(YAML.load(frontmatter).
+        new(Psych.load(frontmatter).
           merge('body' => body.strip).
           merge(attrs))
       end
