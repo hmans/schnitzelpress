@@ -37,7 +37,6 @@ module Schreihals
       end
 
       def from_file(name)
-        puts name
         from_string(open(name).read, 'file_name' => File.basename(name))
       end
 
