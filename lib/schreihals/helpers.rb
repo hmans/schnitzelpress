@@ -1,5 +1,9 @@
 module Schreihals
   module Helpers
+    def find_template(views, name, engine, &block)
+      Array(views).each { |v| super(v, name, engine, &block) }
+    end
+
     def partial(thing, locals = {})
       name = case thing
         when String then thing

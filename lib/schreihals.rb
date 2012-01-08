@@ -20,5 +20,8 @@ require 'schreihals/post'
 require 'schreihals/actions'
 require 'schreihals/app'
 
+Sass::Engine::DEFAULT_OPTIONS[:load_paths].unshift(File.expand_path("../views", __FILE__))
+Sass::Engine::DEFAULT_OPTIONS[:load_paths].unshift(File.expand_path("./views"))
+
 module Schreihals
 end

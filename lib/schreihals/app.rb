@@ -1,6 +1,6 @@
 module Schreihals
   class App < Sinatra::Base
-    set :views, File.expand_path('../../views/', __FILE__)
+    set :views, ['./views/', File.expand_path('../../views/', __FILE__)]
     set :public_folder, File.expand_path('../../public/', __FILE__)
 
     use Schreihals::Static

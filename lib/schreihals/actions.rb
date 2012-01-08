@@ -15,8 +15,8 @@ module Schreihals
         haml :index
       end
 
-      get '/schreihals.css' do
-        scss :schreihals
+      get '/blog.css' do
+        scss :blog
       end
 
       get '/atom.xml' do

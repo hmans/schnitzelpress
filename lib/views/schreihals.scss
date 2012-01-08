@@ -1,32 +1,17 @@
-@import url(http://fonts.googleapis.com/css?family=Inder|PT+Serif);
+// load stuff!
 @import 'schnitzelstyle';
 @import 'schnitzelstyle/coderay';
 @import 'schnitzelstyle/export';
 
-$font-default: 16px "PT Serif";
-$font-headlines: 15px "Inder";
-$font-footer: 11px "Inder";
-
 @include schnitzel-complete;
 @include schnitzel-export;
 
-.blog_description {
-  margin: 1em 0;
-  font: 18px "Inder";
-  line-height: 150%;
-  color: $color-header;
-  padding: 0;
-  margin-bottom: 2em;
-}
-
-// section.disqus {
-//   background-color: #eee !important;
-// }
-
+/* misc crap */
 .social_media_buttons {
   margin: 1em 0;
 }
 
+/* posts */
 article.post {
   header {
     .info { display: inline; margin-left: 1em; color: #999 }
@@ -35,7 +20,8 @@ article.post {
   &.draft header h2 { background-color: #ccc; }
 
   div.summary p {
-    font: 18px "Inder";
+    font: $font-header;
+    font-size: 115%;
     line-height: 150%;
     color: #000;
   }
