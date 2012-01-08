@@ -33,4 +33,5 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency 'riot'
   gem.add_development_dependency 'rack-test'
   gem.add_development_dependency 'watchr'
+  gem.add_development_dependency 'awesome_print'
 end

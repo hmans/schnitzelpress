@@ -2,6 +2,7 @@ require 'rubygems'
 require 'bundler/setup'
 require 'riot'
 require 'nokogiri'
+require 'awesome_print'
 
 $:.unshift File.dirname(__FILE__)
 $:.unshift File.join(File.dirname(__FILE__), '..', 'lib')
