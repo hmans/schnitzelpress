@@ -8,6 +8,7 @@ require 'schnitzelstyle'
 require 'rack-cache'
 require 'coderay'
 require 'rack/codehighlighter'
+require 'yaml'
 
 require 'active_support/core_ext/string/inflections'
 require 'active_support/core_ext/class'
