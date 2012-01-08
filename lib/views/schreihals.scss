@@ -14,7 +14,11 @@
 /* posts */
 article.post {
   header {
-    .info { display: inline; margin-left: 1em; color: #999 }
+    .info {
+      display: inline;
+      margin-left: 1em;
+      color: #999;
+    }
   }
 
   &.draft header h2 { background-color: #ccc; }
@@ -24,6 +28,14 @@ article.post {
     font-size: 115%;
     line-height: 150%;
     color: #000;
+
+    @media only screen and (max-width: 640px) {
+      line-height: 130%;
+
+      section.posts & {
+        font-size: 100%;
+      }
+    }
   }
 
   p.permalink {
