@@ -43,6 +43,7 @@ Just a list of keywords I need to write about:
 ### development
 
 * Add `schreihals` executable. Use it to generate new Schreihals blogs (`schreihals create <name>`) and blog posts (`schreihals post <title>`).
+* Removed dependency from `data_mapper` and added our own implementation.
 * The contents of the `blog_description` configuration variable are now displayed at the top of the home page. The small footer at the bottom of all pages is now being populated through the `footer` variable.
 
 ### 0.0.2
