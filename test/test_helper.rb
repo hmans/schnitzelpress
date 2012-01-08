@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'bundler/setup'
 require 'riot'
+require 'riot/rr'
 require 'nokogiri'
 require 'awesome_print'
 
