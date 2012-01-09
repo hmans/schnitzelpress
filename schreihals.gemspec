@@ -25,7 +25,7 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'redcarpet'
   gem.add_dependency 'rack-cache'
   gem.add_dependency 'rack-codehighlighter'
-  gem.add_dependency 'schnitzelstyle', '>= 0.0.1'
+  gem.add_dependency 'schnitzelstyle', '~> 0.0.2'
   gem.add_dependency 'nokogiri'
   gem.add_dependency 'thor'
   gem.add_dependency 'psych'
