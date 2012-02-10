@@ -25,7 +25,7 @@ module Schreihals
     end
 
     def render_page(slug)
-      if @post = Post.with_slug(slug)
+      if @post = Post.where(slugs: slug).first
         haml :post
       else
         halt 404
