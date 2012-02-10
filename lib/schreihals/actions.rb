@@ -4,7 +4,6 @@ module Schreihals
 
     included do
       before do
-        refresh_documents! if refresh_documents_now?
         cache_control :public, :must_revalidate, :max_age => 60
       end
 

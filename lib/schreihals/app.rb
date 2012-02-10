@@ -20,26 +20,8 @@ module Schreihals
       set :google_analytics_id, nil
       set :gauges_id, nil
       set :read_more, "Read Complete Article"
-      set :documents_store, :filesystem
-      set :documents_source, './posts'
-      set :documents_cache, nil
       set :twitter_id, nil
       set :footer, ""
-    end
-
-    def refresh_documents_now?
-      !Post.documents.any?
-    end
-
-    def refresh_documents!
-      case settings.documents_store
-      when :filesystem
-        Post.load_from_directory(settings.documents_source)
-      # when :dropbox
-      #   Post.load_from_dropbox(settings.documents_source)
-      else
-        raise "Unknown documents store '#{settings.documents_store}'."
-      end
     end
 
     def render_page(slug)
