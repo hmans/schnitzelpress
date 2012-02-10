@@ -21,6 +21,10 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'activesupport', '~> 3.1.0'
   gem.add_dependency 'rack-cache'
 
+  # database related
+  gem.add_dependency 'mongoid', '~> 2.4'
+  gem.add_dependency 'bson_ext', '~> 1.5'
+
   # frontend/views/assets related
   gem.add_dependency 'haml'
   gem.add_dependency 'sass'

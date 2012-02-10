@@ -8,6 +8,7 @@ require 'schnitzelstyle'
 require 'rack-cache'
 require 'coderay'
 require 'rack/codehighlighter'
+require 'mongoid'
 
 require 'active_support/core_ext/string/inflections'
 require 'active_support/core_ext/class'
@@ -21,6 +22,11 @@ require 'schreihals/app'
 
 Sass::Engine::DEFAULT_OPTIONS[:load_paths].unshift(File.expand_path("../views", __FILE__))
 Sass::Engine::DEFAULT_OPTIONS[:load_paths].unshift(File.expand_path("./views"))
+
+# configure mongoid
+Mongoid.configure do |config|
+  config.master = Mongo::Connection.new.db("schreihals")
+end
 
 module Schreihals
 end
