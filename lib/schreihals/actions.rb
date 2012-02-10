@@ -8,8 +8,7 @@ module Schreihals
       end
 
       get '/' do
-        @posts = Post.latest(published_only: production?)
-
+        @posts = Post.where(status: :published).desc(:published_at)
         @show_description = true
         haml :index
       end
