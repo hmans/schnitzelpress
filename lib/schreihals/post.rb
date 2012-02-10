@@ -34,6 +34,11 @@ module Schreihals
       slugs.try(:last)
     end
 
+    def slug=(v)
+      slugs.delete(v)
+      slugs << v
+    end
+
     def to_html
       Tilt.new("md") { body }.render
     end
