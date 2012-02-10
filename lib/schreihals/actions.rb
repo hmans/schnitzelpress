@@ -8,7 +8,7 @@ module Schreihals
       end
 
       get '/' do
-        @posts = Post.where(status: :published).desc(:published_at)
+        @posts = Post.latest
         @show_description = true
         haml :index
       end
@@ -18,7 +18,7 @@ module Schreihals
       end
 
       get '/atom.xml' do
-        @posts = Post.where(status: :published).desc(:published_at)
+        @posts = Post.latest
 
         xml = haml :atom, :layout => false
 

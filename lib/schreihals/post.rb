@@ -24,6 +24,8 @@ module Schreihals
     validates_presence_of :title, :body, :status
     validates_inclusion_of :status, in: [:draft, :published]
 
+    scope :latest, where(:status => :published, :published_at.exists => true).desc(:published_at)
+
     def disqus_identifier
       slug
     end
