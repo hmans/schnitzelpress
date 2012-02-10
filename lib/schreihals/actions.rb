@@ -18,7 +18,7 @@ module Schreihals
       end
 
       get '/atom.xml' do
-        @posts = Post.latest(published_only: production?)
+        @posts = Post.where(status: :published).desc(:published_at)
 
         xml = haml :atom, :layout => false
 

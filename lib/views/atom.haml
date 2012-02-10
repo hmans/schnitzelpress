@@ -5,7 +5,7 @@
   %link{href: url_for('/atom.xml', absolute: true), rel: 'self'}
   %id= "http://hmans.net/"
   - if @posts.any?
-    %updated= @posts.first.date
+    %updated= @posts.first.published_at
   %author
     %name= settings.author_name
   - @posts.each do |post|
@@ -13,8 +13,8 @@
       %title= post.title
       %link{rel: 'alternate', href: url_for(post, absolute: true)}
       %id urn:uuid:#{post.disqus_identifier}
-      %published= post.date
-      %updated= post.date
+      %published= post.published_at
+      %updated= post.published_at
       %author
         %name= settings.author_name
       %content{type: 'html'}
