@@ -26,7 +26,7 @@ Sass::Engine::DEFAULT_OPTIONS[:load_paths].unshift(File.expand_path("./views"))
 # configure mongoid
 Mongoid.configure do |config|
   Mongoid::Config.from_hash(
-    "uri" => ENV['MONGOLAB_URI'] || ENV['MONGOHQ_URL'] || ENV['MONGODB_URL'] || 'mongodb://localhost/schreihals'
+    "uri" => ENV['MONGOLAB_URI'] || ENV['MONGOHQ_URL'] || ENV['MONGO_URL'] || 'mongodb://localhost/schreihals'
   )
 end
 
