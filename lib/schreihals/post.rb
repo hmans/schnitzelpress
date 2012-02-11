@@ -30,7 +30,7 @@ module Schreihals
     scope :posts,     where(:published_at.exists => true)
 
     def self.latest
-      published.entries.desc(:published_at)
+      published.posts.desc(:published_at)
     end
 
     def disqus_identifier
