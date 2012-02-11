@@ -1,9 +1,12 @@
 %form.post{ action: @post.new_record? ? '/admin/new' : "/admin/edit/#{@post.id}", method: 'post' }
   = form_field @post, :title
+  = form_field @post, :link
   = form_field @post, :body, type: :textarea
-  = form_field @post, :slug, label: 'URL Slug', extra: "Previous slugs: #{@post.previous_slugs.join ', '}"
+  = form_field @post, :slug, label: 'URL Slug', extra: @post.previous_slugs.any? ? "Previous slugs: #{@post.previous_slugs.join ', '}" : nil
   = form_field @post, :published_at
   = form_field @post, :status
+  = form_field @post, :summary
+  = form_field @post, :read_more, label: "'Read More' Link Text"
 
   .buttons
-    %input{ type: 'submit' }
+    %input{ type: 'submit', value: @post.new_record? ? 'Create Post' : 'Update Post' }
