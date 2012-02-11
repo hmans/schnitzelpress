@@ -8,7 +8,9 @@ module Schreihals
     use Rack::Cache
     use Rack::Codehighlighter, :coderay, :markdown => true, :element => "pre>code", :pattern => /\A:::(\w+)\s*\n/
 
+    register Sinatra::Namespace
     helpers Schreihals::Helpers
+    include Schreihals::AdminActions
     include Schreihals::Actions
 
     configure do

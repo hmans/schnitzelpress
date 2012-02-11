@@ -30,7 +30,9 @@
 
   %footer
     - if show_permalink
-      %p.permalink= link_to '∞', post
+      %p.permalink
+        = link_to '∞', post
+        = link_to 'edit', "/admin/edit/#{post.id}"
     - if show_twitter
       .social_media_buttons
         - if show_twitter

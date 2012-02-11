@@ -34,5 +34,22 @@ module Schreihals
     def production?
       settings.environment.to_sym == :production
     end
+
+    def form_field(object, attribute, options = {})
+      options = {
+        label: attribute.to_s.humanize,
+        value: object.send(attribute),
+        errors: object.errors[attribute.to_sym],
+        class_name: object.class.to_s.demodulize.underscore
+      }.merge(options)
+
+      options[:name] ||= "#{options[:class_name]}[#{attribute}]"
+      options[:id] ||= object.new_record? ?
+        "new_#{options[:class_name]}_#{attribute}" :
+        "#{options[:class_name]}_#{object.id}_#{attribute}"
+      options[:type] ||= :text
+
+      partial 'form_field', object: object, attribute: attribute, options: options
+    end
   end
 end

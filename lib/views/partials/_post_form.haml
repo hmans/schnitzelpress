@@ -1,0 +1,9 @@
+%form.post{ action: @post.new_record? ? '/admin/new' : "/admin/edit/#{@post.id}", method: 'post' }
+  = form_field @post, :title
+  = form_field @post, :body, type: :textarea
+  = form_field @post, :slug, label: 'URL Slug', extra: "Previous slugs: #{@post.previous_slugs.join ', '}"
+  = form_field @post, :published_at
+  = form_field @post, :status
+
+  .buttons
+    %input{ type: 'submit' }

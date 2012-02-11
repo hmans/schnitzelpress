@@ -21,7 +21,7 @@ module Schreihals
     # flags
     field :disqus, type: Boolean, default: false
 
-    validates_presence_of :title, :body, :status
+    validates_presence_of :title, :body, :status, :slug
     validates_inclusion_of :status, in: [:draft, :published]
 
     scope :latest, where(:status => :published, :published_at.exists => true).desc(:published_at)
@@ -34,9 +34,15 @@ module Schreihals
       slugs.try(:last)
     end
 
+    def previous_slugs
+      slugs[0..-2]
+    end
+
     def slug=(v)
-      slugs.delete(v)
-      slugs << v
+      unless v.blank?
+        slugs.delete(v)
+        slugs << v
+      end
     end
 
     def to_html

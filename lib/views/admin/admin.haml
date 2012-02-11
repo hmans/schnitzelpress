@@ -1,0 +1,11 @@
+%section
+  %h2 Administration
+  %ul
+    %li= link_to "Create new Post", '/admin/new'
+
+  %h2 Available Posts
+  %ul
+    - @posts.each do |post|
+      %li
+        = link_to "edit", "/admin/edit/#{post.id}"
+        = post.title
