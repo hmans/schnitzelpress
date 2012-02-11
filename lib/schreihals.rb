@@ -1,7 +1,6 @@
 require 'schreihals/version'
 
 require 'sinatra'
-require 'sinatra/namespace'
 require 'haml'
 require 'sass'
 require 'redcarpet'
@@ -14,6 +13,9 @@ require 'mongoid'
 require 'active_support/inflector'
 require 'active_support/core_ext/class'
 require 'active_support/concern'
+
+require 'omniauth'
+require 'omniauth-browserid'
 
 require 'schreihals/static'
 require 'schreihals/helpers'

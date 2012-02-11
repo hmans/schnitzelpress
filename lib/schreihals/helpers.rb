@@ -35,6 +35,14 @@ module Schreihals
       settings.environment.to_sym == :production
     end
 
+    def user_logged_in?
+      session[:user].present?
+    end
+
+    def admin_logged_in?
+      user_logged_in? && session[:user] == settings.administrator
+    end
+
     def form_field(object, attribute, options = {})
       options = {
         label: attribute.to_s.humanize,

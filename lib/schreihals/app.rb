@@ -8,7 +8,10 @@ module Schreihals
     use Rack::Cache
     use Rack::Codehighlighter, :coderay, :markdown => true, :element => "pre>code", :pattern => /\A:::(\w+)\s*\n/
 
-    register Sinatra::Namespace
+    use Rack::Session::Cookie
+    #use OmniAuth::Strategies::Developer
+    use OmniAuth::Strategies::BrowserID
+
     helpers Schreihals::Helpers
     include Schreihals::AdminActions
     include Schreihals::Actions
@@ -24,6 +27,11 @@ module Schreihals
       set :read_more, "Read Complete Article"
       set :twitter_id, nil
       set :footer, ""
+      set :administrator, nil
+    end
+
+    def admin_only!
+      redirect '/login' unless admin_logged_in?
     end
 
     def cache_for(time)

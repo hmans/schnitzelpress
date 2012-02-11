@@ -1,7 +1,10 @@
 %section
   %h2 Administration
+  %p
+    You're logged in as #{session[:user]}.
   %ul
     %li= link_to "Create new Post", '/admin/new'
+    %li= link_to "Logout", '/logout'
 
   %h2 Available Posts
   %ul
