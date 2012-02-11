@@ -2,7 +2,7 @@
   %label{ for: options[:id] } #{options[:label]}:
   - case options[:type].to_sym
     - when :textarea
-      %textarea{ id: options[:id], name: options[:name], rows: 20 }= options[:value]
+      %textarea{ id: options[:id], name: options[:name], rows: 20 }= html_escape(options[:value])
     - else
       %input{ id: options[:id], name: options[:name], value: options[:value] }
 
