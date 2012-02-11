@@ -13,7 +13,7 @@ module Schreihals
       post '/auth/:provider/callback' do
         auth = request.env['omniauth.auth']
         session[:user] = "#{auth['provider']}:#{auth['uid']}"
-        redirect '/'
+        redirect admin_logged_in? ? '/admin/' : '/'
       end
 
       get '/login' do
