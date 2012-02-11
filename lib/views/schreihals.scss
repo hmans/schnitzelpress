@@ -1,10 +1,5 @@
 // load stuff!
-@import 'schnitzelstyle';
-@import 'schnitzelstyle/coderay';
-@import 'schnitzelstyle/export';
-
-@include schnitzel-complete;
-@include schnitzel-export;
+@import 'schnitzelstyle/complete';
 
 /* misc crap */
 .social_media_buttons {
