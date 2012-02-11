@@ -1,0 +1,7 @@
+- if posts.any?
+  %h2= title
+  %ul
+    - posts.each do |post|
+      %li
+        = link_to "edit", "/admin/edit/#{post.id}"
+        = post.title

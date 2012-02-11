@@ -8,7 +8,9 @@ module Schreihals
       end
 
       get '/admin/?' do
-        @posts = Post.desc(:published_at)
+        @posts  = Post.published.posts.desc(:published_at)
+        @pages  = Post.published.pages
+        @drafts = Post.drafts
         haml :'admin/admin'
       end
 
