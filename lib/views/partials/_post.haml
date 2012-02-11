@@ -22,7 +22,7 @@
       ~ markdown post.summary
       - if show_read_more
         %p
-          = link_to (post.read_more || settings.read_more), post
+          = link_to (post.read_more.presence || settings.read_more), post
           →
 
   - if show_body
