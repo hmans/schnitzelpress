@@ -3,21 +3,21 @@ module Schreihals
     extend ActiveSupport::Concern
 
     included do
-      before do
-        cache_control :public, :must_revalidate, :max_age => 60
-      end
-
       get '/' do
+        cache_for 5.minutes
         @posts = Post.latest
         @show_description = true
         haml :index
       end
 
       get '/blog.css' do
+        cache_for 1.hour
         scss :blog
       end
 
       get '/atom.xml' do
+        cache_for 5.minutes
+
         @posts = Post.latest
 
         xml = haml :atom, :layout => false
@@ -32,10 +32,12 @@ module Schreihals
       end
 
       get '/:year/:month/:day/:slug/?' do |year, month, day, slug|
+        cache_for 1.hour
         render_page(slug)
       end
 
       get '/:slug/?' do |slug|
+        cache_for 1.hour
         render_page(slug)
       end
     end
