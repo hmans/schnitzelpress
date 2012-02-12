@@ -54,18 +54,6 @@ module Schreihals
       end
     end
 
-    def absolutionize(url)
-      if should_absolutionize?(url)
-        "#{base_url}#{url}"
-      else
-        url
-      end
-    end
-
-    def should_absolutionize?(url)
-      url && url[0] == '/'
-    end
-
     not_found do
       haml :"404"
     end

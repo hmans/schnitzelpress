@@ -18,18 +18,9 @@ module Schreihals
 
         get '/atom.xml' do
           cache_for 10.minutes
-
           @posts = Post.latest
-
-          xml = haml :atom, :layout => false
-
-          doc = Nokogiri::XML(xml)
-          doc.css("content img").each do |node|
-            node['src'] = absolutionize(node['src'])
-          end
-
           content_type 'application/atom+xml; charset=utf-8'
-          doc.to_xml
+          haml :atom, :format => :xhtml, :layout => false
         end
 
         get '/:year/:month/:day/:slug/?' do |year, month, day, slug|
