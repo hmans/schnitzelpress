@@ -5,6 +5,7 @@
 - show_read_more ||= !complete && post.summary.present?
 - show_permalink ||= post.post? && !show_read_more
 - show_twitter   ||= complete && post.post? && settings.twitter_id.present?
+- show_admin     ||= admin_logged_in?
 
 %article.post{class: post.status}
   %header
@@ -32,11 +33,14 @@
     - if show_permalink
       %p.permalink
         = link_to '∞', post
-        - if admin_logged_in?
-          = link_to 'edit', "/admin/edit/#{post.id}"
+
     - if show_twitter
       .social_media_buttons
         - if show_twitter
           %a{ href: "https://twitter.com/share", class: "twitter-share-button", data: { via: settings.twitter_id } }
           :javascript
             !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+
+    - if show_admin
+      %ul.admin
+        %li= link_to 'edit', "/admin/edit/#{post.id}"

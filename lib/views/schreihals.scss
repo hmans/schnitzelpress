@@ -41,6 +41,28 @@ article.post {
   }
 }
 
+/* admin links */
+ul.admin {
+  font: $font-footer;
+  font-size: 85%;
+  color: $color-footer;
+
+  display: inline;
+  list-style: none;
+  li {
+    display: inline;
+  }
+
+  a {
+    color: $color-footer;
+    text-decoration: none;
+    border: none;
+    background-color: $color-footer;
+    color: $color-page-background;
+    padding: 1px 4px;
+  }
+}
+
 /* disqus */
 #dsq-content {
   a {
