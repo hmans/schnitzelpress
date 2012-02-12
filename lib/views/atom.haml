@@ -17,6 +17,6 @@
       %updated= post.published_at
       %author
         %name= settings.author_name
-      %content{type: 'xhtml'}
-        %div{xmlns: "http://www.w3.org/1999/xhtml"}
-          ~ post.to_html
+      %content{type: 'html'}
+        :cdata
+          #{post.to_html}
