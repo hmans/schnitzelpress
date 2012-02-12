@@ -1,7 +1,8 @@
 - if posts.any?
   %h2= title
-  %ul
+  %ul.admin-post-list
     - posts.each do |post|
-      %li
-        = link_to "edit", "/admin/edit/#{post.id}"
-        = post.title
+      %ul.admin
+        %li= link_to "edit", "/admin/edit/#{post.id}"
+        %li= link_to "view", url_for(post)
+        %li= post.title
