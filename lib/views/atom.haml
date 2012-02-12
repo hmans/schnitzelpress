@@ -3,7 +3,7 @@
   %title= settings.blog_title
   %link{href: url_for(',', absolute: true)}
   %link{href: url_for('/atom.xml', absolute: true), rel: 'self'}
-  %id= "http://hmans.net/"
+  %id= settings.blog_url
   - if @posts.any?
     %updated= @posts.first.published_at
   %author
@@ -12,7 +12,7 @@
     %entry
       %title= post.title
       %link{rel: 'alternate', href: url_for(post, absolute: true)}
-      %id urn:uuid:#{post.disqus_identifier}
+      %id= url_for(post, absolute: true)
       %published= post.published_at
       %updated= post.published_at
       %author

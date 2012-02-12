@@ -28,7 +28,7 @@ module Schreihals
             node['src'] = absolutionize(node['src'])
           end
 
-          content_type 'application/xml+atom'
+          content_type 'application/atom+xml; charset=utf-8'
           doc.to_xml
         end
 
