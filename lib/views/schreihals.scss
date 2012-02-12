@@ -44,6 +44,7 @@ article.post {
 /* admin post lists */
 ul.admin-post-list {
   max-height: 300px;
+  padding-bottom: 5px;
   overflow: auto;
 }
 
@@ -57,10 +58,6 @@ ul.admin {
   li {
     display: inline;
     margin-right: 0.5em;
-  }
-
-  a {
-    @include button;
   }
 }
 

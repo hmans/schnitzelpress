@@ -3,8 +3,9 @@
   %p
     You're logged in as #{session[:user]}.
   %ul.admin
-    %li= link_to "Create new Post", '/admin/new'
-    %li= link_to "Logout", '/logout'
+    %li
+      %a.green.button{href: '/admin/new'} Create new Post
+      %a.red.button{href: '/logout'} Logout
 
   = partial "admin_post_list", posts: @drafts, title: "Drafts"
   = partial "admin_post_list", posts: @posts,  title: "Published Posts"
