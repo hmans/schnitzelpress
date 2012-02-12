@@ -66,10 +66,6 @@ module Schreihals
       url && url[0] == '/'
     end
 
-    def base_url
-      "#{env['rack.url_scheme']}://#{env['HTTP_HOST']}"
-    end
-
     not_found do
       haml :"404"
     end

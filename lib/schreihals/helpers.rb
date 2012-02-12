@@ -4,6 +4,10 @@ module Schreihals
       Array(views).each { |v| super(v, name, engine, &block) }
     end
 
+    def base_url
+      "#{env['rack.url_scheme']}://#{env['HTTP_HOST']}/"
+    end
+
     def partial(thing, locals = {})
       name = case thing
         when String then thing
