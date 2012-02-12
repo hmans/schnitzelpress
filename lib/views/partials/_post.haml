@@ -10,7 +10,7 @@
 %article.post{class: post.status}
   %header
     - if show_title
-      %h2
+      %h1
         %a{href: post.link.present? ? post.link : post.to_url}
           = post.title
           = "→" if post.link.present?
