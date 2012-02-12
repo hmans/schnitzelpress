@@ -6,6 +6,19 @@
   margin: 1em 0;
 }
 
+@mixin smallish {
+  font: $font-footer;
+  font-size: 80%;
+  color: lighten($color-text, 30%);
+  a {
+    color: lighten($color-text, 30%);
+    border: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+}
+
 /* posts */
 article.post {
   &.draft header h2 { background-color: #ccc; }
@@ -34,28 +47,12 @@ article.post {
     }
 
     .link {
-      font: $font-footer;
-      font-size: 80%;
-      color: lighten($color-text, 30%);
-      a {
-        color: lighten($color-text, 30%);
-        border: none;
-      }
-      a:hover {
-        text-decoration: underline;
-      }
+      @include smallish;
     }
   }
 
   p.permalink {
-    color: lighten($color-text, 30%);
-    a {
-      color: lighten($color-text, 30%);
-      border: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
+    @include smallish;
   }
 }
 
@@ -68,9 +65,7 @@ ul.admin-post-list {
 
 /* admin links */
 ul.admin {
-  font: $font-footer;
-  font-size: 85%;
-  color: $color-footer;
+  @include smallish;
   list-style: none;
 
   li {
