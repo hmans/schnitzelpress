@@ -29,7 +29,6 @@ module Schreihals
 
     configure do
       set :blog_title, "My Schreihals Blog"
-      set :blog_url, ""
       set :blog_description, ""
       set :author_name, "Author"
       set :disqus_name, nil
