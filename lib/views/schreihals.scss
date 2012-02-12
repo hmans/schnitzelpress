@@ -23,17 +23,21 @@
 article.post {
   &.draft header h2 { background-color: #ccc; }
 
-  div.summary p {
-    font: $font-header;
-    font-size: 115%;
-    line-height: 150%;
-    color: #000;
+  div.summary {
+    margin-bottom: 2em;
 
-    @media only screen and (max-width: 640px) {
-      line-height: 130%;
+    p {
+      font: $font-header;
+      font-size: 115%;
+      line-height: 150%;
+      color: #000;
 
-      section.posts & {
-        font-size: 100%;
+      @media only screen and (max-width: 640px) {
+        line-height: 130%;
+
+        section.posts & {
+          font-size: 100%;
+        }
       }
     }
   }
