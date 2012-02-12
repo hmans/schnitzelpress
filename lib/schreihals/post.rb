@@ -30,6 +30,7 @@ module Schreihals
     scope :posts,     where(:published_at.exists => true)
 
     before_validation :set_default_slug
+    before_validation :set_published_at
 
     def self.latest
       published.posts.desc(:published_at)
@@ -57,6 +58,12 @@ module Schreihals
     def set_default_slug
       if slug.blank?
         self.slug = title.parameterize
+      end
+    end
+
+    def set_published_at
+      if published_at.nil? && status_changed? && status == :published
+        self.published_at = Time.now
       end
     end
 
