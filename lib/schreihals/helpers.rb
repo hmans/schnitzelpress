@@ -21,12 +21,6 @@ module Schreihals
       @page_title = title
     end
 
-    def link_to(title, thing, link_options = {})
-      link_options.merge(href: url_for(thing))
-      # TODO: use some kind of content_tag helper. HALP!
-      haml "%a{href: '#{link_options[:href]}'} #{title}"
-    end
-
     def url_for(thing, options = {})
       url = thing.respond_to?(:to_url) ? thing.to_url : thing.to_s
       url = "#{base_url.sub(/\/$/, '')}#{url}" if options[:absolute]

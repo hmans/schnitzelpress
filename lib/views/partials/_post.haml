@@ -23,7 +23,7 @@
       ~ markdown post.summary
       - if show_read_more
         %p
-          = link_to (post.read_more.presence || settings.read_more), post
+          %a{href: url_for(post)}= post.read_more.presence || settings.read_more
           →
 
   - if show_body
@@ -32,7 +32,7 @@
   %footer
     - if show_permalink
       %p.permalink
-        = link_to '∞', post
+        %a{href: url_for(post)} ∞
 
     - if show_twitter
       .social_media_buttons
@@ -43,4 +43,5 @@
 
     - if show_admin
       %ul.admin
-        %li= link_to 'edit', "/admin/edit/#{post.id}"
+        %li
+          %a.button{href: "/admin/edit/#{post.id}"} edit
