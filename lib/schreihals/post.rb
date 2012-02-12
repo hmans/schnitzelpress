@@ -29,6 +29,8 @@ module Schreihals
     scope :pages,     where(:published_at.exists => false)
     scope :posts,     where(:published_at.exists => true)
 
+    before_validation :set_default_slug
+
     def self.latest
       published.posts.desc(:published_at)
     end
@@ -49,6 +51,12 @@ module Schreihals
       unless v.blank?
         slugs.delete(v)
         slugs << v
+      end
+    end
+
+    def set_default_slug
+      if slug.blank?
+        self.slug = title.parameterize
       end
     end
 
