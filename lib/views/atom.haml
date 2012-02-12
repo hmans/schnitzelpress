@@ -3,7 +3,7 @@
   %title= settings.blog_title
   %link{href: url_for(',', absolute: true)}
   %link{href: url_for('/atom.xml', absolute: true), rel: 'self'}
-  %id= settings.blog_url
+  %id= base_url
   - if @posts.any?
     %updated= @posts.first.published_at
   %author

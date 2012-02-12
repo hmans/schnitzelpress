@@ -27,7 +27,7 @@ module Schreihals
 
     def url_for(thing, options = {})
       url = thing.respond_to?(:to_url) ? thing.to_url : thing.to_s
-      url = "#{settings.blog_url.sub(/\/$/, '')}#{url}" if options[:absolute]
+      url = "#{base_url.sub(/\/$/, '')}#{url}" if options[:absolute]
       url
     end
 
