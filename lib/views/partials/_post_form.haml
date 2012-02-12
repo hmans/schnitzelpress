@@ -3,7 +3,7 @@
   = form_field @post, :link
   = form_field @post, :body, type: :textarea
   = form_field @post, :slug, label: 'URL Slug', extra: @post.previous_slugs.any? ? "Previous slugs: #{@post.previous_slugs.join ', '}" : nil
-  = form_field @post, :published_at, type: :datetime
+  = form_field @post, :published_at
   = form_field @post, :status, type: :dropdown, options: [[:draft, "Draft"], [:published, "Published"]]
   = form_field @post, :summary
   = form_field @post, :read_more, label: "'Read More' Link Text"
