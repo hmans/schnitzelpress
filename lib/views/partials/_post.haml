@@ -5,7 +5,6 @@
 - show_read_more ||= !complete && post.summary.present?
 - show_permalink ||= post.post? && !show_read_more
 - show_twitter   ||= complete && post.post? && settings.twitter_id.present?
-- show_admin     ||= admin_logged_in?
 
 %article.post{class: post.status}
   %header
@@ -14,9 +13,6 @@
         %a{href: post.link.present? ? post.link : post.to_url}
           = post.title
           = "→" if post.link.present?
-      .info
-        - if post.published_at.present?
-          #{post.published_at.to_date}
 
   - if show_summary
     .summary
@@ -32,7 +28,10 @@
   %footer
     - if show_permalink
       %p.permalink
-        %a{href: url_for(post)} ∞
+        %a{href: url_for(post)}= post.published_at.to_date
+        - if admin_logged_in?
+          &middot;
+          %a{href: "/admin/edit/#{post.id}"} edit
 
     - if show_twitter
       .social_media_buttons
@@ -40,8 +39,3 @@
           %a{ href: "https://twitter.com/share", class: "twitter-share-button", data: { via: settings.twitter_id } }
           :javascript
             !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
-
-    - if show_admin
-      %ul.admin
-        %li
-          %a.button{href: "/admin/edit/#{post.id}"} edit

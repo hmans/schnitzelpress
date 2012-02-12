@@ -8,14 +8,6 @@
 
 /* posts */
 article.post {
-  header {
-    .info {
-      display: inline;
-      margin-left: 1em;
-      color: #999;
-    }
-  }
-
   &.draft header h2 { background-color: #ccc; }
 
   div.summary p {
@@ -34,9 +26,13 @@ article.post {
   }
 
   p.permalink {
+    color: lighten($color-text, 30%);
     a {
       color: lighten($color-text, 30%);
       border: none;
+    }
+    a:hover {
+      text-decoration: underline;
     }
   }
 }
