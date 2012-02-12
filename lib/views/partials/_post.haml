@@ -3,7 +3,7 @@
 - show_summary   ||= post.summary.present?
 - show_body      ||= complete || !show_summary
 - show_read_more ||= !complete && post.summary.present?
-- show_permalink ||= post.post? && !show_read_more
+- show_permalink ||= admin_logged_in? || (post.post? && !show_read_more)
 - show_twitter   ||= complete && post.post? && settings.twitter_id.present?
 
 %article.post{class: post.status}
@@ -17,6 +17,7 @@
         - if post.link.present?
           .link
             %a{href: post.link}= post.link
+
 
   - if show_summary
     .summary
@@ -32,7 +33,7 @@
   %footer
     - if show_permalink
       %p.permalink
-        %a{href: url_for(post)}= post.published_at.to_date
+        %a{href: url_for(post)}= post.published_at.try(:to_date) || "∞"
         - if admin_logged_in?
           &middot;
           %a{href: "/admin/edit/#{post.id}"} edit

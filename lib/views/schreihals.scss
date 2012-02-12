@@ -51,8 +51,12 @@ article.post {
     }
   }
 
-  p.permalink {
-    @include smallish;
+  footer {
+    margin-top: 0.5em;
+
+    p.permalink {
+      @include smallish;
+    }
   }
 }
 
