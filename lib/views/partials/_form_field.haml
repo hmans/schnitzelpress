@@ -14,6 +14,9 @@
         - options[:options].each do |val, text|
           %option{value: val, selected: options[:value] == val}= text
 
+    - when :datetime
+      %input{ id: options[:id], name: options[:name], value: options[:value].to_formatted_s(:db) }
+
     - else # normal inputs
       %input{ id: options[:id], name: options[:name], value: options[:value] }
 
