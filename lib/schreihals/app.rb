@@ -16,6 +16,11 @@ module Schreihals
     include Schreihals::AdminActions
     include Schreihals::Actions
 
+    def initialize(*args)
+      super
+      Mongoid::Config.from_hash("uri" => settings.mongo_uri)
+    end
+
     configure do
       set :blog_title, "My Schreihals Blog"
       set :blog_url, ""
@@ -28,6 +33,7 @@ module Schreihals
       set :twitter_id, nil
       set :footer, ""
       set :administrator, nil
+      set :mongo_uri, ENV['MONGOLAB_URI'] || ENV['MONGOHQ_URL'] || ENV['MONGO_URL'] || 'mongodb://localhost/schreihals'
     end
 
     def admin_only!

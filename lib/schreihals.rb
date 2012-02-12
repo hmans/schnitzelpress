@@ -27,10 +27,5 @@ require 'schreihals/app'
 Sass::Engine::DEFAULT_OPTIONS[:load_paths].unshift(File.expand_path("../views", __FILE__))
 Sass::Engine::DEFAULT_OPTIONS[:load_paths].unshift(File.expand_path("./views"))
 
-# configure mongoid
-Mongoid::Config.from_hash(
-  "uri" => ENV['MONGOLAB_URI'] || ENV['MONGOHQ_URL'] || ENV['MONGO_URL'] || 'mongodb://localhost/schreihals'
-)
-
 module Schreihals
 end
