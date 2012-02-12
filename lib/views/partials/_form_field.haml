@@ -3,11 +3,18 @@
   - case options[:type].to_sym
     - when :textarea
       %textarea{ id: options[:id], name: options[:name], rows: 20 }= html_escape(options[:value])
+
     - when :radio
       - options[:options].each do |o|
         .option
           %input{ type: 'radio', id: options[:id], name: options[:name], value: o, checked: options[:value] == o }= o
-    - else
+
+    - when :dropdown
+      %select{ id: options[:id], name: options[:name]}
+        - options[:options].each do |val, text|
+          %option{value: val, selected: options[:value] == val}= text
+
+    - else # normal inputs
       %input{ id: options[:id], name: options[:name], value: options[:value] }
 
   - if options[:errors]
