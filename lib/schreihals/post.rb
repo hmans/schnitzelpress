@@ -53,7 +53,10 @@ module Schreihals
     end
 
     def to_html
-      Tilt.new("md") { body }.render
+      @@markdown ||= Redcarpet::Markdown.new(Redcarpet::Render::HTML,
+        :autolink => true, :space_after_headers => true)
+
+      @@markdown.render(body)
     end
 
     def post?
