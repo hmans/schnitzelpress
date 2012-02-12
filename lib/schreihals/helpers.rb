@@ -43,6 +43,10 @@ module Schreihals
       user_logged_in? && session[:user] == settings.administrator
     end
 
+    def admin_only!
+      redirect '/login' unless admin_logged_in?
+    end
+
     def form_field(object, attribute, options = {})
       options = {
         label: attribute.to_s.humanize,

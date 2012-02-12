@@ -1,3 +1,10 @@
+require 'schreihals/static'
+require 'schreihals/helpers'
+require 'schreihals/post'
+require 'schreihals/actions/blog'
+require 'schreihals/actions/auth'
+require 'schreihals/actions/admin'
+
 module Schreihals
   class App < Sinatra::Base
     set :views, ['./views/', File.expand_path('../../views/', __FILE__)]
@@ -9,12 +16,11 @@ module Schreihals
     use Rack::Codehighlighter, :coderay, :markdown => true, :element => "pre>code", :pattern => /\A:::(\w+)\s*\n/
 
     use Rack::Session::Cookie
-    #use OmniAuth::Strategies::Developer
-    use OmniAuth::Strategies::BrowserID
 
     helpers Schreihals::Helpers
-    include Schreihals::AdminActions
-    include Schreihals::Actions
+    include Schreihals::Actions::Auth
+    include Schreihals::Actions::Admin
+    include Schreihals::Actions::Blog
 
     def initialize(*args)
       super
@@ -34,10 +40,6 @@ module Schreihals
       set :footer, ""
       set :administrator, nil
       set :mongo_uri, ENV['MONGOLAB_URI'] || ENV['MONGOHQ_URL'] || ENV['MONGO_URL'] || 'mongodb://localhost/schreihals'
-    end
-
-    def admin_only!
-      redirect '/login' unless admin_logged_in?
     end
 
     def cache_for(time)
