@@ -69,7 +69,7 @@ module Schreihals
 
     def to_html
       @@markdown ||= Redcarpet::Markdown.new(Redcarpet::Render::HTML,
-        :autolink => true, :space_after_headers => true)
+        autolink: true, space_after_headers: true, fenced_code_blocks: true)
 
       @@markdown.render(body)
     end
