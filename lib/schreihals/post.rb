@@ -5,7 +5,7 @@ module Schreihals
   class MarkdownRenderer < Redcarpet::Render::HTML
     def block_code(code, language)
       if language && !language.empty?
-        Pygments.highlight(code, :lexer => language)
+        Pygments.highlight(code, :lexer => language, :exe => 'python2.6')
       else
         "<pre><code>#{code}</code></pre>"
       end
