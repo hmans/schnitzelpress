@@ -1,11 +1,11 @@
 require 'tilt'
-require 'pygments'
+require 'coderay'
 
 module Schreihals
   class MarkdownRenderer < Redcarpet::Render::HTML
     def block_code(code, language)
       if language && !language.empty?
-        Pygments.highlight(code, :lexer => language)
+        CodeRay.highlight(code, language.to_sym)
       else
         "<pre><code>#{code}</code></pre>"
       end
