@@ -1,11 +1,13 @@
 require 'tilt'
 require 'pygments'
 
+RubyPython.configure :python_exe => 'python2.6'
+
 module Schreihals
   class MarkdownRenderer < Redcarpet::Render::HTML
     def block_code(code, language)
       if language && !language.empty?
-        Pygments.highlight(code, :lexer => language, :exe => 'python2.6')
+        Pygments.highlight(code, :lexer => language)
       else
         "<pre><code>#{code}</code></pre>"
       end
