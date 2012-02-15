@@ -13,8 +13,6 @@ module Schreihals
     use Schreihals::Static
     use Rack::ShowExceptions
     use Rack::Cache
-    use Rack::Codehighlighter, :coderay, :markdown => true, :element => "pre>code", :pattern => /\A:::(\w+)\s*\n/
-
     use Rack::Session::Cookie
 
     helpers Schreihals::Helpers
