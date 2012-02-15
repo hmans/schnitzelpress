@@ -6,6 +6,8 @@ require 'sass'
 require 'redcarpet'
 require 'schnitzelstyle'
 require 'rack-cache'
+require 'coderay'
+require 'rack/codehighlighter'
 require 'mongoid'
 
 require 'active_support/inflector'

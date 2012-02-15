@@ -1,17 +1,6 @@
 require 'tilt'
-require 'pygments'
 
 module Schreihals
-  class MarkdownRenderer < Redcarpet::Render::HTML
-    def block_code(code, language)
-      if language && !language.empty?
-        Pygments.highlight(code, :lexer => language)
-      else
-        "<pre><code>#{code}</code></pre>"
-      end
-    end
-  end
-
   class Post
     include Mongoid::Document
 
@@ -79,7 +68,7 @@ module Schreihals
     end
 
     def to_html
-      @@markdown ||= Redcarpet::Markdown.new(MarkdownRenderer,
+      @@markdown ||= Redcarpet::Markdown.new(Redcarpet::Render::HTML,
         autolink: true, space_after_headers: true, fenced_code_blocks: true)
 
       @@markdown.render(body)
