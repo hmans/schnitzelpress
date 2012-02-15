@@ -14,6 +14,9 @@ require 'active_support/concern'
 
 require 'schreihals/app'
 
+require 'rubypython'
+RubyPython.configure :python_exe => 'python2.6'
+
 Sass::Engine::DEFAULT_OPTIONS[:load_paths].unshift(File.expand_path("../views", __FILE__))
 Sass::Engine::DEFAULT_OPTIONS[:load_paths].unshift(File.expand_path("./views"))
 
