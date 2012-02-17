@@ -14,10 +14,17 @@ describe Schreihals::App do
   end
 
   describe 'the home page' do
-    before { get '/' }
+    before do
+      2.times { Factory(:draft_post) }
+      5.times { Factory(:published_post) }
+      get '/'
+    end
+
     subject { last_response }
 
     it { should be_ok }
     its(:body) { should have_tag 'title', text: "A Test Blog" }
+    its(:body) { should have_tag 'section.posts > article.post.published', count: 5 }
+    its(:body) { should_not have_tag 'section.posts > article.post.draft' }
   end
 end

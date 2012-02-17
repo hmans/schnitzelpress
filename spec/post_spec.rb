@@ -31,6 +31,14 @@ describe Schreihals::Post do
     end
   end
 
+  describe '.latest' do
+    it 'should return the latest published posts' do
+      2.times { Factory :draft_post }
+      5.times { Factory :published_post }
+      Schreihals::Post.latest.size.should == 5
+    end
+  end
+
   context 'date methods' do
     before { subject.published_at = "2012-01-02 12:23:13" }
     its(:year)  { should == 2012 }
