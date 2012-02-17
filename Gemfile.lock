@@ -111,7 +111,7 @@ DEPENDENCIES
   heroku
   rack-test
   riot
-  schnitzelstyle!
+  schnitzelstyle (~> 0.0.2)!
   schreihals!
   shotgun
   watchr
