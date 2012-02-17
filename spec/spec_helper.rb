@@ -7,7 +7,7 @@ require 'bundler/setup'
 
 require 'schreihals'
 
-Schreihals.mongo_uri = 'mongodb://localhost/schreihals_test'
+Schreihals.mongo_uri = 'mongodb://localhost/_schreihals_test'
 
 require 'awesome_print'
 require 'rack/test'
