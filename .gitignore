@@ -6,7 +6,6 @@
 .rbfu-version
 .powenv
 .sass-cache
-Gemfile.lock
 InstalledFiles
 _yardoc
 coverage
@@ -19,3 +18,4 @@ test/tmp
 test/version_tmp
 tmp
 *.sublime*
+Gemfile.lock

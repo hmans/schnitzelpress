@@ -1,0 +1,12 @@
+%section
+  %h2 Administration
+  %p
+    You're logged in as #{session[:user]}.
+  %ul.admin
+    %li
+      %a.green.button{href: '/admin/new'} Create new Post
+      %a.red.button{href: '/logout'} Logout
+
+  = partial "admin_post_list", posts: @drafts, title: "Drafts"
+  = partial "admin_post_list", posts: @posts,  title: "Published Posts"
+  = partial "admin_post_list", posts: @pages,  title: "Pages"

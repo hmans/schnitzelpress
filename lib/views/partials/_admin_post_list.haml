@@ -1,0 +1,11 @@
+- if posts.any?
+  %h2= title
+  %ul.admin-post-list
+    - posts.each do |post|
+      %ul.admin
+        %li
+          %a.button{href: "/admin/edit/#{post.id}"} edit
+        %li
+          %a.button{href: url_for(post)} view
+        %li
+          = post.title

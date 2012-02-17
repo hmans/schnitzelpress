@@ -1,74 +1,124 @@
 require 'tilt'
+require 'coderay'
 
 module Schreihals
-  class Post < Document
-    def initialize(*args)
-      super
-      self.attributes = {
-        'disqus'    => true,
-        'status'    => 'published',
-        'summary'   => nil,
-        'link'      => nil,
-        'read_more' => nil,
-        'date'      => nil,
-        'title'     => nil,
-        'slug'      => nil,
-        'disqus_identifier' => file_name
-      }.merge(attributes)
-
-      # extract date and slug from file name, if possible
-      if file_name_without_extension =~ /^(\d{4}-\d{1,2}-\d{1,2})-?(.+)$/
-        attributes['date'] ||= Date.parse($1)
-        attributes['slug'] ||= $2
+  class MarkdownRenderer < Redcarpet::Render::HTML
+    def block_code(code, language)
+      if language && !language.empty?
+        CodeRay.highlight(code, language.to_sym)
       else
-        attributes['slug'] ||= file_name_without_extension
+        "<pre><code>#{code}</code></pre>"
+      end
+    end
+  end
+
+  class Post
+    include Mongoid::Document
+
+    # basic data
+    field :title, type: String
+    field :body,  type: String
+    field :slugs, type: Array, default: []
+
+    # optional fields
+    field :summary,   type: String
+    field :link,      type: String
+    field :read_more, type: String
+
+    # times & status
+    field :published_at, type: DateTime
+    field :status,       type: Symbol, default: :draft
+
+    # flags
+    field :disqus, type: Boolean, default: false
+
+    validates_presence_of :title, :body, :status, :slug
+    validates_inclusion_of :status, in: [:draft, :published]
+
+    scope :published, where(:status => :published)
+    scope :drafts,    where(:status => :draft)
+    scope :pages,     where(:published_at.exists => false)
+    scope :posts,     where(:published_at.exists => true)
+
+    before_validation :set_default_slug
+    before_validation :set_published_at
+
+    def self.latest
+      published.posts.desc(:published_at)
+    end
+
+    def disqus_identifier
+      slug
+    end
+
+    def slug
+      slugs.try(:last)
+    end
+
+    def previous_slugs
+      slugs[0..-2]
+    end
+
+    def slug=(v)
+      unless v.blank?
+        slugs.delete(v)
+        slugs << v
       end
     end
 
-    def year
-      date.year
+    def set_default_slug
+      if slug.blank?
+        self.slug = title.parameterize
+      end
     end
 
-    def month
-      date.month
+    def set_published_at
+      if published_at.nil? && status_changed? && status == :published
+        self.published_at = Time.now
+      end
     end
 
-    def day
-      date.day
-    end
+    def to_html
+      @@markdown ||= Redcarpet::Markdown.new(MarkdownRenderer,
+        autolink: true, space_after_headers: true, fenced_code_blocks: true)
 
-    def to_url
-      date.present? ? "/#{year}/#{month}/#{day}/#{slug}/" : "/#{slug}/"
-    end
-
-    def disqus?
-      disqus && published?
-    end
-
-    def published?
-      status == 'published'
+      @@markdown.render(body)
     end
 
     def post?
-      date.present?
+      published_at.present?
     end
 
     def page?
       !post?
     end
 
-    class << self
-      def latest(options = {})
-        options = {published_only: false}.merge(options)
+    def published?
+      status == :published
+    end
 
-        posts = documents.select(&:date)
-        posts = posts.select(&:published?) if options[:published_only]
-        posts.sort_by(&:date).reverse.first(10)
-      end
+    def draft?
+      status == :draft
+    end
 
-      def with_slug(slug)
-        documents.detect { |p| p.slug == slug }
-      end
+    def year
+      published_at.year
+    end
+
+    def month
+      published_at.month
+    end
+
+    def day
+      published_at.day
+    end
+
+    def to_url
+      published_at.present? ? "/#{year}/#{month}/#{day}/#{slug}/" : "/#{slug}/"
+    end
+
+    def disqus?
+      disqus && published?
     end
   end
 end

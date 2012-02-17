@@ -15,24 +15,36 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = Schreihals::VERSION
 
+  # base dependencies
   gem.add_dependency 'rack', '~> 1.4.0'
   gem.add_dependency 'sinatra', '~> 1.3.2'
-  gem.add_dependency 'activesupport', '~> 3.1.0'
-  gem.add_dependency 'shotgun'
+  gem.add_dependency 'activesupport', '~> 3.2.0'
+  gem.add_dependency 'rack-cache'
+
+  # database related
+  gem.add_dependency 'mongoid', '~> 2.4'
+  gem.add_dependency 'bson_ext', '~> 1.5'
+
+  # authentication
+  gem.add_dependency 'omniauth'
+  gem.add_dependency 'omniauth-browserid'
+
+  # frontend/views/assets related
   gem.add_dependency 'haml'
   gem.add_dependency 'sass'
-  gem.add_dependency 'coderay'
   gem.add_dependency 'redcarpet'
-  gem.add_dependency 'rack-cache'
-  gem.add_dependency 'rack-codehighlighter'
+  gem.add_dependency 'coderay'
   gem.add_dependency 'schnitzelstyle', '~> 0.0.2'
-  gem.add_dependency 'nokogiri'
-  gem.add_dependency 'thor'
-  gem.add_dependency 'psych'
   gem.add_dependency 'i18n'
   gem.add_dependency 'tilt', '~> 1.3.0'
 
-  gem.add_development_dependency 'rake'
+  # CLI related
+  gem.add_dependency 'thor'
+  gem.add_dependency 'rake'
+  gem.add_dependency 'wirble'
+
+  # development dependencies
+  gem.add_development_dependency 'shotgun'
   gem.add_development_dependency 'riot'
   gem.add_development_dependency 'rack-test'
   gem.add_development_dependency 'watchr'

@@ -1,0 +1,27 @@
+.input{ class: options[:type] }
+  %label{ for: options[:id] } #{options[:label]}:
+  - case options[:type].to_sym
+    - when :textarea
+      %textarea{ id: options[:id], name: options[:name], rows: 20 }= html_escape(options[:value])
+
+    - when :radio
+      - options[:options].each do |o|
+        .option
+          %input{ type: 'radio', id: options[:id], name: options[:name], value: o, checked: options[:value] == o }= o
+
+    - when :dropdown
+      %select{ id: options[:id], name: options[:name]}
+        - options[:options].each do |val, text|
+          %option{value: val, selected: options[:value] == val}= text
+
+    - when :datetime
+      %input{ id: options[:id], name: options[:name], value: options[:value].to_formatted_s(:db) }
+
+    - else # normal inputs
+      %input{ id: options[:id], name: options[:name], value: options[:value] }
+
+  - if options[:errors]
+    %span.error= options[:errors].join(", ")
+
+  - if options[:extra]
+    %span.extra= options[:extra]

@@ -3,26 +3,28 @@
 - show_summary   ||= post.summary.present?
 - show_body      ||= complete || !show_summary
 - show_read_more ||= !complete && post.summary.present?
-- show_permalink ||= post.post? && !show_read_more
+- show_permalink ||= admin_logged_in? || (post.post? && !show_read_more)
 - show_twitter   ||= complete && post.post? && settings.twitter_id.present?
 
 %article.post{class: post.status}
   %header
     - if show_title
-      %h2
-        %a{href: post.link.present? ? post.link : post.to_url}
-          = post.title
-          = "→" if post.link.present?
-      .info
-        - if post.date.present?
-          #{post.date}
+      .title
+        %h1
+          %a{href: post.link.present? ? post.link : post.to_url}
+            = post.title
+            = "→" if post.link.present?
+        - if post.link.present?
+          .link
+            %a{href: post.link}= post.link
+
 
   - if show_summary
     .summary
       ~ markdown post.summary
       - if show_read_more
         %p
-          = link_to (post.read_more || settings.read_more), post
+          %a{href: url_for(post)}= post.read_more.presence || settings.read_more
           →
 
   - if show_body
@@ -30,7 +32,12 @@
 
   %footer
     - if show_permalink
-      %p.permalink= link_to '∞', post
+      %p.permalink
+        %a{href: url_for(post)}= post.published_at.try(:to_date) || "∞"
+        - if admin_logged_in?
+          &middot;
+          %a{href: "/admin/edit/#{post.id}"} edit
+
     - if show_twitter
       .social_media_buttons
         - if show_twitter

@@ -8,8 +8,8 @@
   %body
     .container
       %header
-        %h1
-          = link_to settings.blog_title, '/'
+        .site-title
+          %a{href: '/'}= settings.blog_title
         - if @show_description
           ~ markdown settings.blog_description
 

@@ -1,5 +1,0 @@
-source 'https://rubygems.org'
-
-# In a real-world schreihals blog, remove the :path option, obviously.
-#
-gem 'schreihals', :path => '../'
