@@ -11,6 +11,7 @@ Schreihals.mongo_uri = 'mongodb://localhost/schreihals_test'
 
 require 'awesome_print'
 require 'rack/test'
+require 'rspec-html-matchers'
 require 'database_cleaner'
 require 'factory_girl'
 require File.expand_path("../factories.rb", __FILE__)

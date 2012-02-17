@@ -5,7 +5,17 @@ describe Schreihals::Post do
     Factory.build(:post)
   end
 
-  describe 'saving' do
+  context 'slugs' do
+    before do
+      subject.slugs = ['some-slug', 'another-slug']
+      subject.slug = 'a-new-slug'
+    end
+
+    its(:slugs) { should == ['some-slug', 'another-slug', 'a-new-slug'] }
+    its(:slug) { should == 'a-new-slug'}
+  end
+
+  context 'saving' do
     context "when no slug is set" do
       before { subject.slug = nil }
       it "should set its slug to a sluggified version of its title" do

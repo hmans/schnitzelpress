@@ -45,6 +45,7 @@ Gem::Specification.new do |gem|
 
   # development dependencies
   gem.add_development_dependency 'rspec', '>= 2.8.0'
+  gem.add_development_dependency 'rspec-html-matchers'
   gem.add_development_dependency 'database_cleaner'
   gem.add_development_dependency 'factory_girl'
   gem.add_development_dependency 'timecop'
