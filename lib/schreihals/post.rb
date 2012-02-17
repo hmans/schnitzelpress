@@ -3,6 +3,8 @@ require 'coderay'
 
 module Schreihals
   class MarkdownRenderer < Redcarpet::Render::HTML
+    include Redcarpet::Render::SmartyPants
+
     def block_code(code, language)
       if language && !language.empty?
         CodeRay.highlight(code, language.to_sym)
