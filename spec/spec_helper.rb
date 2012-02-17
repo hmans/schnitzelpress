@@ -14,6 +14,8 @@ require 'rack/test'
 require 'database_cleaner'
 require 'factory_girl'
 require File.expand_path("../factories.rb", __FILE__)
+require 'timecop'
+Timecop.freeze
 
 set :environment, :test
 

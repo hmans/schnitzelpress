@@ -47,6 +47,7 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency 'rspec', '>= 2.8.0'
   gem.add_development_dependency 'database_cleaner'
   gem.add_development_dependency 'factory_girl'
+  gem.add_development_dependency 'timecop'
   gem.add_development_dependency 'shotgun'
   gem.add_development_dependency 'rack-test'
   gem.add_development_dependency 'watchr'
