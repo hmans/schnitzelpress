@@ -6,11 +6,7 @@ module Schreihals
     include Redcarpet::Render::SmartyPants
 
     def block_code(code, language)
-      if language && !language.empty?
-        CodeRay.highlight(code, language.to_sym)
-      else
-        "<pre><code>#{code}</code></pre>"
-      end
+      CodeRay.highlight(code, language)
     end
   end
 
