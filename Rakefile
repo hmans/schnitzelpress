@@ -9,21 +9,4 @@ Rake::TestTask.new(:test) do |test|
   test.verbose = true
 end
 
-# console
-require 'wirble'
-
-task :environment do
-  require './lib/schreihals'
-end
-
-desc 'Run the Pants console'
-task :console => :environment do
-  require 'irb'
-  ARGV.clear
-  Wirble.init
-  Wirble.colorize
-  IRB.start
-end
-
-
 task :default => :test
