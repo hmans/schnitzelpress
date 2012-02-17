@@ -13,7 +13,7 @@ end
 namespace :db do
   desc 'Import Heroku database to local database'
   task :pull do
-    system 'MONGO_URL="mongodb://localhost/schreihals" heroku mongo:pull'
+    system "MONGO_URL=\"#{Schreihals.mongo_uri}\" heroku mongo:pull"
   end
 
   task :push do

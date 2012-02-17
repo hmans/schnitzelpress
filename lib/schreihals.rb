@@ -17,5 +17,13 @@ require 'schreihals/app'
 Sass::Engine::DEFAULT_OPTIONS[:load_paths].unshift(File.expand_path("../views", __FILE__))
 Sass::Engine::DEFAULT_OPTIONS[:load_paths].unshift(File.expand_path("./views"))
 
+Mongoid.logger.level = 3
+
 module Schreihals
+  mattr_reader :mongo_uri
+
+  def self.mongo_uri=(uri)
+    Mongoid::Config.from_hash("uri" => uri)
+    @@mongo_uri = uri
+  end
 end
