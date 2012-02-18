@@ -1,3 +1,6 @@
 %section.posts
   - @posts.each do |post|
     = partial post
+
+  %footer
+    %a.button{ href: "/?page=#{params[:page].to_i + 1}"} View Older Posts

@@ -6,7 +6,7 @@ module Schreihals
       included do
         get '/' do
           # cache_for 5.minutes
-          @posts = Post.latest
+          @posts = Post.latest.skip(params[:page].to_i * 10).limit(10)
           @show_description = true
           haml :index
         end
