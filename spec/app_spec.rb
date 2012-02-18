@@ -43,13 +43,13 @@ describe SchnitzelPress::App do
   describe 'viewing a single post' do
     context 'when the post has multiple slugs' do
       before do
-        @post = Factory(:published_post, slugs: ['ancient-slug', 'old-slug', 'current-slug'])
+        @post = Factory(:published_post, published_at: "2011-12-10 12:00", slugs: ['ancient-slug', 'old-slug', 'current-slug'])
       end
 
       it 'should enforce the canonical URL' do
-        get "/#{@post.year}/#{@post.month}/#{@post.day}/ancient-slug/"
+        get "/2011/12/10/ancient-slug/"
         last_response.should be_redirect
-        last_response["Location"].should == "http://example.org/#{@post.year}/#{@post.month}/#{@post.day}/current-slug/"
+        last_response["Location"].should == "http://example.org/2011/12/10/current-slug/"
       end
     end
   end
