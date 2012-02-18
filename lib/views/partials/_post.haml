@@ -1,22 +1,23 @@
 - complete       ||= false
-- show_title     ||= post.title.present?
+- show_title     ||= post.article_post? && post.title.present?
+- show_link      ||= post.link_post?
 - show_summary   ||= post.summary.present?
 - show_body      ||= complete || !show_summary
 - show_read_more ||= !complete && post.summary.present?
 - show_permalink ||= admin_logged_in? || (post.post? && !show_read_more)
 - show_twitter   ||= complete && post.post? && settings.twitter_id.present?
 
-%article.post{class: post.status}
+%article.post{class: [post.status, post.link_post? ? 'link' : 'article']}
   %header
     - if show_title
       .title
         %h1
-          %a{href: post.link.present? ? post.link : post.to_url}
-            = post.title
-            = "→" if post.link.present?
-        - if post.link.present?
-          .link
-            %a{href: post.link}= post.link
+          %a{href: post.to_url}= post.title
+    - if show_link
+      .link
+        %a{href: post.link}= post.title
+        ➝
+
 
 
   - if show_summary

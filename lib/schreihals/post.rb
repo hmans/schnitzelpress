@@ -37,6 +37,8 @@ module Schreihals
     scope :drafts,    where(:status => :draft)
     scope :pages,     where(:published_at.exists => false)
     scope :posts,     where(:published_at.exists => true)
+    scope :article_posts, -> { posts.where(:link => nil) }
+    scope :link_posts, -> { posts.where(:link.ne => nil) }
 
     before_validation :nil_if_blank
     before_validation :set_default_slug
@@ -105,6 +107,14 @@ module Schreihals
 
     def draft?
       status == :draft
+    end
+
+    def link_post?
+      link.present?
+    end
+
+    def article_post?
+      link.nil?
     end
 
     def year

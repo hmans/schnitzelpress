@@ -21,7 +21,31 @@
 
 /* posts */
 article.post {
-  &.draft header h2 { background-color: #ccc; }
+  &.draft header .title { background-color: #ccc; }
+  &.link header .link {
+    font: $font-header;
+    font-weight: bold;
+    a {
+      background-color: darken($color-page-background, 5%);
+      padding: 3px 8px;
+    }
+  }
+
+  &.article {
+    div.title {
+      @include floaty-title($color-text, lighten($color-text, 50%));
+
+      h1 {
+        padding: 0;
+        background-color: none;
+        margin: none;
+      }
+
+      .link {
+        @include smallish;
+      }
+    }
+  }
 
   div.summary {
     margin-bottom: 2em;
@@ -39,19 +63,6 @@ article.post {
           font-size: 100%;
         }
       }
-    }
-  }
-
-  div.title {
-    @include floaty-title($color-text, lighten($color-text, 50%));
-    h1 {
-      padding: 0;
-      background-color: none;
-      margin: none;
-    }
-
-    .link {
-      @include smallish;
     }
   }
 
