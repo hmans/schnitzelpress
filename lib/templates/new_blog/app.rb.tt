@@ -7,7 +7,7 @@ Schreihals.mongo_uri =
     ENV['MONGOLAB_URI'] ||
     ENV['MONGOHQ_URL'] ||
     ENV['MONGO_URL'] ||
-    'mongodb://localhost/your_new_blog'  # used for local development
+    'mongodb://localhost/<%= @name %>'  # used for local development
 
 class App < Schreihals::App
   configure do
