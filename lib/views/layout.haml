@@ -2,6 +2,7 @@
 %html
   %head
     %title= [@page_title, settings.blog_title].compact.join(" | ")
+    %meta{ :"http-equiv" => "content-type", content: "text/html; charset=UTF-8" }
     %meta{ name: "viewport", content: "width=device-width, initial-scale=1.0" }
     %link{ href: '/blog.css', media: "screen", rel: "stylesheet", type: "text/css" }
     %link{ href: '/atom.xml', title: "Subscribe via Atom Feed", rel: 'alternate', type: 'application/atom+xml' }
