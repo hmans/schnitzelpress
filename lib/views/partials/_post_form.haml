@@ -9,7 +9,7 @@
     .four.columns
       = form_field @post, :slug, label: 'URL Slug', placeholder: "Your post's URL slug.", hint: @post.previous_slugs.any? ? "Previous slugs: #{@post.previous_slugs.join ', '}" : nil
     .four.columns
-      = form_field @post, :published_at, placeholder: 'You can use natural language. Try "now", "tomorrow", "next Monday".'
+      = form_field @post, :published_at, placeholder: 'Try "now", "in 3 days", ...'
     .four.columns
       = form_field @post, :status, type: :dropdown, options: [[:draft, "Draft"], [:published, "Published"]]
 
