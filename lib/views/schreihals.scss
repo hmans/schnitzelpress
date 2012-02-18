@@ -1,6 +1,18 @@
 // load stuff!
 @import 'schnitzelstyle/complete';
 
+/*
+  ease ALL the animations
+  http://css-tricks.com/things-it-might-be-funuseful-to-try-the-universal-selector-on/
+*/
+* {
+  -webkit-transition: all 0.2s ease;
+  -moz-transition:    all 0.2s ease;
+  -ms-transition:     all 0.2s ease;
+  -o-transition:      all 0.2s ease;
+}
+
+
 /* misc crap */
 .social_media_buttons {
   margin: 1em 0;
