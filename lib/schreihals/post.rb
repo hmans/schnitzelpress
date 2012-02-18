@@ -48,8 +48,8 @@ module Schreihals
     scope :latest, -> { published.posts.desc(:published_at) }
 
     before_validation :nil_if_blank
-    before_validation :set_default_slug
-    before_validation :set_published_at
+    before_validation :set_defaults
+    validate :validate_slug
     before_save :update_body_html
 
     def disqus_identifier
@@ -71,15 +71,24 @@ module Schreihals
       end
     end
 
-    def set_default_slug
+    def set_defaults
       if slug.blank?
         self.slug = title.parameterize
       end
+
+      if published_at.nil? && status_changed? && status == :published
+        self.published_at ||= Time.now
+      end
     end
 
-    def set_published_at
-      if published_at.nil? && status_changed? && status == :published
-        self.published_at = Time.now
+    def validate_slug
+      conflicting_posts = Post.where(slugs: slug)
+      if published_at.present?
+        conflicting_posts = conflicting_posts.for_day(published_at.year, published_at.month, published_at.day)
+      end
+
+      if conflicting_posts.any? && conflicting_posts.first != self
+        errors[:slug] = "This slug is already in use by another post."
       end
     end
 

@@ -13,6 +13,7 @@ require 'awesome_print'
 require 'rack/test'
 require 'rspec-html-matchers'
 require 'database_cleaner'
+require 'ffaker'
 require 'factory_girl'
 require File.expand_path("../factories.rb", __FILE__)
 require 'timecop'

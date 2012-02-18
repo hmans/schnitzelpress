@@ -17,9 +17,13 @@ describe Schreihals::Post do
 
   context 'saving' do
     context "when no slug is set" do
-      before { subject.slug = nil }
+      before do
+        subject.title = "Team Schnitzel is AWESOME!"
+        subject.slug = nil
+      end
+
       it "should set its slug to a sluggified version of its title" do
-        expect { subject.save }.to change(subject, :slug).from(nil).to('it-s-a-post')
+        expect { subject.save }.to change(subject, :slug).from(nil).to('team-schnitzel-is-awesome')
       end
     end
 
@@ -28,6 +32,27 @@ describe Schreihals::Post do
       it "should set its published_at to the current time" do
         expect { subject.save }.to change(subject, :published_at).from(nil).to(Time.now)
       end
+    end
+
+    context "when another post on the same day is already using the same slug" do
+      before do
+        @other_post = Factory(:published_post, slugs: ["amazing-slug"])
+        subject.published_at = @other_post.published_at
+        subject.slug = "amazing-slug"
+      end
+
+      it { should_not be_valid }
+    end
+
+    context "when another page is using the same slug" do
+      subject { Factory.build(:draft_page) }
+
+      before do
+        @other_page = Factory(:published_page, slugs: ["amazing-slug"])
+        subject.slug = "amazing-slug"
+      end
+
+      it { should_not be_valid }
     end
 
     it "should store blank attributes as nil" do
