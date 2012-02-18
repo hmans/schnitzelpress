@@ -15,7 +15,7 @@ class App < SchnitzelPress::App
     set :blog_description, "A new blog powered by SchnitzelPress."
     set :author_name, "Your Name"
     set :footer, "powered by [SchnitzelPress](http://schnitzelpress.org)"
-    set :administrator, "browser_id:hendrik@mans.de"
+    set :administrator, "browser_id:your@email.com"
 
     # The following are optional:
     #
