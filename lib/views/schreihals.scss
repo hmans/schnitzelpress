@@ -21,29 +21,18 @@
 
 /* posts */
 article.post {
-  &.draft header .title { background-color: #ccc; }
-  &.link header .link {
+  &.draft header h1 { background-color: #ccc; }
+  &.link header {
     font: $font-header;
     font-weight: bold;
+    padding: 2px 10px;
+    background-color: darken($color-page-background, 5%);
+    display: inline-block;
+    line-height: 150%;
+    border-bottom: 2px solid $color-link-underline;
+    color: darken($color-page-background, 30%);
     a {
-      background-color: darken($color-page-background, 5%);
-      padding: 3px 8px;
-    }
-  }
-
-  &.article {
-    div.title {
-      @include floaty-title($color-text, lighten($color-text, 50%));
-
-      h1 {
-        padding: 0;
-        background-color: none;
-        margin: none;
-      }
-
-      .link {
-        @include smallish;
-      }
+      border: none;
     }
   }
 

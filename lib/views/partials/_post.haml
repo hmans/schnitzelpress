@@ -10,15 +10,11 @@
 %article.post{class: [post.status, post.link_post? ? 'link' : 'article']}
   %header
     - if show_title
-      .title
-        %h1
-          %a{href: post.to_url}= post.title
+      %h1
+        %a{href: post.to_url}= post.title
     - if show_link
-      .link
-        %a{href: post.link}= post.title
-        ➝
-
-
+      %a{href: post.link}= post.title
+      ➝
 
   - if show_summary
     .summary
