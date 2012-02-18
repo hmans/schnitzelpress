@@ -29,6 +29,18 @@ describe Schreihals::Post do
         expect { subject.save }.to change(subject, :published_at).from(nil).to(Time.now)
       end
     end
+
+    it "should store blank attributes as nil" do
+      subject.link = ""
+      expect { subject.save }.to change(subject, :link).from("").to(nil)
+    end
+
+    it "should remove leading and trailing spaces from string attributes" do
+      subject.link = " moo "
+      subject.link.should == " moo "
+      subject.save
+      subject.link.should == "moo"
+    end
   end
 
   describe '.latest' do

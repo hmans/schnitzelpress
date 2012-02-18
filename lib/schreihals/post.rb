@@ -38,6 +38,7 @@ module Schreihals
     scope :pages,     where(:published_at.exists => false)
     scope :posts,     where(:published_at.exists => true)
 
+    before_validation :nil_if_blank
     before_validation :set_default_slug
     before_validation :set_published_at
 
@@ -73,6 +74,13 @@ module Schreihals
     def set_published_at
       if published_at.nil? && status_changed? && status == :published
         self.published_at = Time.now
+      end
+    end
+
+    def nil_if_blank
+      attributes.keys.each do |attr|
+        self[attr].strip! if self[attr].is_a?(String)
+        self[attr] = nil  if self[attr] == ""
       end
     end
 
