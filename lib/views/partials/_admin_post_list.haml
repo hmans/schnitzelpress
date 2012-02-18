@@ -8,4 +8,4 @@
         %li
           %a.button{href: url_for(post)} view
         %li
-          = post.title
+          = post.title || ("%s..." % html_escape(post.body.first(50)))
