@@ -59,6 +59,7 @@ module Schreihals
       options[:id] ||= object.new_record? ?
         "new_#{options[:class_name]}_#{attribute}" :
         "#{options[:class_name]}_#{object.id}_#{attribute}"
+      options[:class] ||= "#{options[:class_name]}_#{attribute}"
 
       options[:type] ||= case options[:value]
         when DateTime, Time, Date then :datetime

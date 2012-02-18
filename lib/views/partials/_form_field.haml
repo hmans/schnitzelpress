@@ -1,27 +1,29 @@
-.input{ class: options[:type] }
+- field_options = options.slice(:id, :name, :placeholder)
+
+.input{ class: [options[:type], options[:class]] }
   %label{ for: options[:id] } #{options[:label]}:
   - case options[:type].to_sym
     - when :textarea
-      %textarea{ id: options[:id], name: options[:name], rows: 20 }= html_escape(options[:value])
+      %textarea{ id: options[:id], name: options[:name], rows: 20, placeholder: options[:placeholder] }= html_escape(options[:value])
 
     - when :radio
       - options[:options].each do |o|
         .option
-          %input{ type: 'radio', id: options[:id], name: options[:name], value: o, checked: options[:value] == o }= o
+          %input{ field_options.merge(type: 'radio', value: o, checked: options[:value] == o) }= o
 
     - when :dropdown
-      %select{ id: options[:id], name: options[:name]}
+      %select{ field_options }
         - options[:options].each do |val, text|
           %option{value: val, selected: options[:value] == val}= text
 
     - when :datetime
-      %input{ id: options[:id], name: options[:name], value: options[:value].to_formatted_s(:db) }
+      %input{ field_options.merge(value: options[:value].to_formatted_s(:db)) }
 
     - else # normal inputs
-      %input{ id: options[:id], name: options[:name], value: options[:value] }
+      %input{ field_options.merge(value: options[:value]) }
 
   - if options[:errors]
-    %span.error= options[:errors].join(", ")
+    .error= options[:errors].join(", ")
 
-  - if options[:extra]
-    %span.extra= options[:extra]
+  - if options[:hint]
+    .hint= options[:hint]

@@ -1,12 +1,18 @@
 %form.post{ action: @post.new_record? ? '/admin/new' : "/admin/edit/#{@post.id}", method: 'post' }
-  = form_field @post, :title
-  = form_field @post, :link
-  = form_field @post, :body, type: :textarea
-  = form_field @post, :slug, label: 'URL Slug', extra: @post.previous_slugs.any? ? "Previous slugs: #{@post.previous_slugs.join ', '}" : nil
-  = form_field @post, :published_at
-  = form_field @post, :status, type: :dropdown, options: [[:draft, "Draft"], [:published, "Published"]]
-  = form_field @post, :summary
-  = form_field @post, :read_more, label: "'Read More' Link Text"
+  = form_field @post, :title, placeholder: "Title of your post."
+  = form_field @post, :link, placeholder: "Optional link to external URL."
+  = form_field @post, :body, type: :textarea, placeholder: "Your post's body of text. Markdown formatting available."
+  = form_field @post, :summary, placeholder: "An optional summary of your post. Markdown formatting available."
+  = form_field @post, :read_more, label: "'Read More' Link Text", placeholder: "When supplying a summary text, this will be the link to the full post."
 
-  .buttons
-    %input{ type: 'submit', value: @post.new_record? ? 'Create Post' : 'Update Post' }
+  .row
+    .four.columns
+      = form_field @post, :slug, label: 'URL Slug', placeholder: "Your post's URL slug.", hint: @post.previous_slugs.any? ? "Previous slugs: #{@post.previous_slugs.join ', '}" : nil
+    .four.columns
+      = form_field @post, :published_at, placeholder: 'You can use natural language. Try "now", "tomorrow", "next Monday".'
+    .four.columns
+      = form_field @post, :status, type: :dropdown, options: [[:draft, "Draft"], [:published, "Published"]]
+
+  .row
+    .buttons.twelve.columns
+      %input{ type: 'submit', value: @post.new_record? ? 'Create Post' : 'Update Post' }

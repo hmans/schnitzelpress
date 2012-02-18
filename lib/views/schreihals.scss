@@ -82,6 +82,10 @@ ul.admin {
   }
 }
 
+/* forms */
+.input.post_published_at input { width: 180px; }
+.input.post_slug input { width: 180px }
+
 /* disqus */
 #dsq-content {
   a {
