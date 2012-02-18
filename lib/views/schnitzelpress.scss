@@ -23,9 +23,14 @@
 article.post {
   &.draft header h1 { background-color: #ccc; }
   &.link header {
+    h1 {
+      font-size: 100%;
+      background: none;
+      text-transform: none;
+      padding: none;
+    }
     font: $font-header;
     font-weight: bold;
-    padding: 2px 10px;
     background-color: darken($color-page-background, 5%);
     display: inline-block;
     line-height: 150%;

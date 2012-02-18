@@ -13,8 +13,9 @@
       %h1
         %a{href: post.to_url}= post.title
     - if show_link
-      %a{href: post.link}= post.title
-      ➝
+      %h1
+        %a{href: post.link}= post.title
+        ➝
 
   - if show_summary
     .summary
