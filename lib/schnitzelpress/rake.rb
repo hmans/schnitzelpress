@@ -16,6 +16,8 @@ namespace :db do
     system "MONGO_URL=\"#{SchnitzelPress.mongo_uri}\" heroku mongo:pull"
   end
 
+  desc 'Push local database to Heroku'
   task :push do
+    system "MONGO_URL=\"#{SchnitzelPress.mongo_uri}\" heroku mongo:push"
   end
 end
