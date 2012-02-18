@@ -5,10 +5,14 @@ module Schreihals
 
       included do
         get '/' do
-          # cache_for 5.minutes
-          @posts = Post.latest
+          @posts = Post.latest.limit(5)
           @show_description = true
           haml :index
+        end
+
+        get '/more_posts' do
+          @posts = Post.latest.skip(params[:seq].to_i * 5).limit(5)
+          haml :more_posts, layout: false
         end
 
         get '/blog.css' do
