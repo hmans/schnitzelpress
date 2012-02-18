@@ -43,7 +43,8 @@ module Schreihals
     scope :article_posts, -> { posts.where(:link => nil) }
     scope :link_posts, -> { posts.where(:link.ne => nil) }
     scope :for_year,  ->(year) { d = Date.new(year) ; where(published_at: (d.beginning_of_year)..(d.end_of_year)) }
-    scope :for_month, ->(year, month) { d = Date.new(year,month) ; where(published_at: (d.beginning_of_month)..(d.end_of_month)) }
+    scope :for_month, ->(year, month) { d = Date.new(year, month) ; where(published_at: (d.beginning_of_month)..(d.end_of_month)) }
+    scope :for_day,   ->(year, month, day) { d = Date.new(year, month, day) ; where(published_at: (d.beginning_of_day)..(d.end_of_day)) }
     scope :latest, -> { published.posts.desc(:published_at) }
 
     before_validation :nil_if_blank

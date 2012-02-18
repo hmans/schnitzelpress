@@ -40,18 +40,20 @@ module Schreihals
         end
 
         get '/:year/:month/:day/:slug/?' do |year, month, day, slug|
-          # cache_for 1.hour
-          render_post(slug)
+          @post = Post.
+            for_day(year.to_i, month.to_i, day.to_i).
+            where(slugs: slug).first
+
+          render_post
         end
 
         get '/:slug/?' do |slug|
-          # cache_for 1.hour
-          render_post(slug)
+          @post = Post.where(slugs: slug).first
+          render_post
         end
 
-        def render_post(slug)
-
-          if @post = Post.where(slugs: slug).first
+        def render_post
+          if @post
             # enforce canonical URL
             if request.path != url_for(@post)
               redirect url_for(@post)
