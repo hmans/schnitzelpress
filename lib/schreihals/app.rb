@@ -31,7 +31,7 @@ module Schreihals
       set :twitter_id, nil
       set :footer, ""
       set :administrator, nil
-      set :feed_url, '/index.atom'
+      set :feed_url, '/posts.atom'
     end
 
     def cache_for(time)

@@ -16,7 +16,7 @@ module Schreihals
           scss :blog
         end
 
-        get '/index.atom' do
+        get '/posts.atom' do
           cache_for 3.minutes
           @posts = Post.latest.limit(10)
           content_type 'application/atom+xml; charset=utf-8'
