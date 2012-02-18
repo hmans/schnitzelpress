@@ -44,15 +44,12 @@ module Schreihals
     scope :link_posts, -> { posts.where(:link.ne => nil) }
     scope :for_year,  ->(year) { d = Date.new(year) ; where(published_at: (d.beginning_of_year)..(d.end_of_year)) }
     scope :for_month, ->(year, month) { d = Date.new(year,month) ; where(published_at: (d.beginning_of_month)..(d.end_of_month)) }
+    scope :latest, -> { published.posts.desc(:published_at) }
 
     before_validation :nil_if_blank
     before_validation :set_default_slug
     before_validation :set_published_at
     before_save :update_body_html
-
-    def self.latest
-      published.posts.desc(:published_at)
-    end
 
     def disqus_identifier
       slug
