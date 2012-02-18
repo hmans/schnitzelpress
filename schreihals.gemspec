@@ -34,7 +34,7 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'sass'
   gem.add_dependency 'redcarpet'
   gem.add_dependency 'coderay'
-  gem.add_dependency 'schnitzelstyle', '~> 0.0.2'
+  gem.add_dependency 'schnitzelstyle', '~> 0.0.4'
   gem.add_dependency 'i18n'
   gem.add_dependency 'tilt', '~> 1.3.0'
 
