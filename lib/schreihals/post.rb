@@ -77,7 +77,7 @@ module Schreihals
     end
 
     def set_defaults
-      if slug.blank?
+      if slug.blank? && title.present?
         self.slug = title.parameterize
       end
     end
