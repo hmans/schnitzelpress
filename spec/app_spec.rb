@@ -43,7 +43,7 @@ describe SchnitzelPress::App do
   describe 'viewing a single post' do
     context 'when the post has multiple slugs' do
       before do
-        @post = Factory(:post, slugs: ['ancient-slug', 'old-slug', 'current-slug'])
+        @post = Factory(:published_post, slugs: ['ancient-slug', 'old-slug', 'current-slug'])
       end
 
       it 'should enforce the canonical URL' do
