@@ -30,6 +30,9 @@ module Schreihals
     # flags
     field :disqus, type: Boolean, default: false
 
+    # extra
+    field :body_html, type: String
+
     validates_presence_of :title, :body, :status, :slug
     validates_inclusion_of :status, in: [:draft, :published]
 
@@ -43,6 +46,7 @@ module Schreihals
     before_validation :nil_if_blank
     before_validation :set_default_slug
     before_validation :set_published_at
+    before_save :update_body_html
 
     def self.latest
       published.posts.desc(:published_at)
@@ -86,7 +90,20 @@ module Schreihals
       end
     end
 
+    def update_body_html
+      self.body_html = render
+    end
+
     def to_html
+      if body_html.nil?
+        update_body_html
+        save
+      end
+
+      body_html
+    end
+
+    def render
       @@markdown ||= Redcarpet::Markdown.new(MarkdownRenderer,
         autolink: true, space_after_headers: true, fenced_code_blocks: true)
 
