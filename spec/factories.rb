@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :post, class: Schreihals::Post do
+  factory :post, class: SchnitzelPress::Post do
     title { Faker::Lorem.sentence }
     body  { Faker::Lorem.paragraphs }
     published_at { rand(1.year).minutes.ago }

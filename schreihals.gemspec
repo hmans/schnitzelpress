@@ -1,19 +1,19 @@
 # -*- encoding: utf-8 -*-
-require File.expand_path('../lib/schreihals/version', __FILE__)
+require File.expand_path('../lib/schnitzelpress/version', __FILE__)
 
 Gem::Specification.new do |gem|
   gem.authors       = ["Hendrik Mans"]
   gem.email         = ["hendrik@mans.de"]
-  gem.description   = %q{A simple blog engine for hackers.}
-  gem.summary       = %q{A simple blog engine for hackers.}
-  gem.homepage      = "http://hmans.net"
+  gem.description   = %q{A simple blog engine for sane hackers.}
+  gem.summary       = %q{A simple blog engine for sane hackers.}
+  gem.homepage      = "http://www.schnitzelpress.org"
 
   gem.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   gem.files         = `git ls-files`.split("\n")
   gem.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
-  gem.name          = "schreihals"
+  gem.name          = "schnitzelpress"
   gem.require_paths = ["lib"]
-  gem.version       = Schreihals::VERSION
+  gem.version       = SchnitzelPress::VERSION
 
   # base dependencies
   gem.add_dependency 'rack', '~> 1.4.0'

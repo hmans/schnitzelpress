@@ -1,7 +1,7 @@
 require 'omniauth'
 require 'omniauth-browserid'
 
-module Schreihals
+module SchnitzelPress
   module Actions
     module Auth
       extend ActiveSupport::Concern

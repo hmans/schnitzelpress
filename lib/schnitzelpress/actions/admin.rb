@@ -1,4 +1,4 @@
-module Schreihals
+module SchnitzelPress
   module Actions
     module Admin
       extend ActiveSupport::Concern

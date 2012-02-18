@@ -1,4 +1,4 @@
-require 'schreihals/version'
+require 'schnitzelpress/version'
 
 require 'sinatra'
 require 'haml'
@@ -13,14 +13,14 @@ require 'active_support/inflector'
 require 'active_support/core_ext/class'
 require 'active_support/concern'
 
-require 'schreihals/app'
+require 'schnitzelpress/app'
 
 Sass::Engine::DEFAULT_OPTIONS[:load_paths].unshift(File.expand_path("../views", __FILE__))
 Sass::Engine::DEFAULT_OPTIONS[:load_paths].unshift(File.expand_path("./views"))
 
 Mongoid.logger.level = 3
 
-module Schreihals
+module SchnitzelPress
   mattr_reader :mongo_uri
 
   def self.mongo_uri=(uri)

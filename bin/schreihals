@@ -1,5 +1,0 @@
-#!/usr/bin/env ruby
-require "rubygems"
-require "schreihals/cli"
-
-Schreihals::Cli.start

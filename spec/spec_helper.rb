@@ -5,9 +5,9 @@ $LOAD_PATH.unshift lib_path unless $LOAD_PATH.include?(lib_path)
 require 'rubygems'
 require 'bundler/setup'
 
-require 'schreihals'
+require 'schnitzelpress'
 
-Schreihals.mongo_uri = 'mongodb://localhost/_schreihals_test'
+SchnitzelPress.mongo_uri = 'mongodb://localhost/_schreihals_test'
 
 require 'awesome_print'
 require 'rack/test'

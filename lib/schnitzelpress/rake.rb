@@ -1,6 +1,6 @@
-require 'schreihals'
+require 'schnitzelpress'
 
-desc 'Run the Schreihals console'
+desc 'Run the SchnitzelPress console'
 task :console do
   require 'irb'
   require 'wirble'
@@ -13,7 +13,7 @@ end
 namespace :db do
   desc 'Import Heroku database to local database'
   task :pull do
-    system "MONGO_URL=\"#{Schreihals.mongo_uri}\" heroku mongo:pull"
+    system "MONGO_URL=\"#{SchnitzelPress.mongo_uri}\" heroku mongo:pull"
   end
 
   task :push do

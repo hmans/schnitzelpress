@@ -1,7 +1,7 @@
 require 'tilt'
 require 'coderay'
 
-module Schreihals
+module SchnitzelPress
   class MarkdownRenderer < Redcarpet::Render::HTML
     include Redcarpet::Render::SmartyPants
 

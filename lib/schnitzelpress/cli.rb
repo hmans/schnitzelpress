@@ -1,12 +1,12 @@
 require "thor"
 
-module Schreihals
+module SchnitzelPress
   class Cli < Thor
     include Thor::Actions
 
     source_root(File.expand_path('../../templates', __FILE__))
 
-    desc "create NAME", "Creates a new Schreihals blog."
+    desc "create NAME", "Creates a new SchnitzelPress blog."
 
     method_option :git, :aliases => "-g", :default => false,
       :desc => "Initialize a git repository in your blog's directory."

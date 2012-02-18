@@ -1,27 +1,27 @@
-require 'schreihals/static'
-require 'schreihals/helpers'
-require 'schreihals/post'
-require 'schreihals/actions/blog'
-require 'schreihals/actions/auth'
-require 'schreihals/actions/admin'
+require 'schnitzelpress/static'
+require 'schnitzelpress/helpers'
+require 'schnitzelpress/post'
+require 'schnitzelpress/actions/blog'
+require 'schnitzelpress/actions/auth'
+require 'schnitzelpress/actions/admin'
 
-module Schreihals
+module SchnitzelPress
   class App < Sinatra::Base
     set :views, ['./views/', File.expand_path('../../views/', __FILE__)]
     set :public_folder, File.expand_path('../../public/', __FILE__)
 
-    use Schreihals::Static
+    use SchnitzelPress::Static
     use Rack::ShowExceptions
     use Rack::Cache
     use Rack::Session::Cookie
 
-    helpers Schreihals::Helpers
-    include Schreihals::Actions::Auth
-    include Schreihals::Actions::Admin
-    include Schreihals::Actions::Blog
+    helpers SchnitzelPress::Helpers
+    include SchnitzelPress::Actions::Auth
+    include SchnitzelPress::Actions::Admin
+    include SchnitzelPress::Actions::Blog
 
     configure do
-      set :blog_title, "My Schreihals Blog"
+      set :blog_title, "My SchnitzelPress Blog"
       set :blog_description, ""
       set :author_name, "Author"
       set :disqus_name, nil

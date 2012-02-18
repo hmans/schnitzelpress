@@ -1,12 +1,12 @@
 require 'spec_helper'
 
-class TestApp < Schreihals::App
+class TestApp < SchnitzelPress::App
   configure do
     set :blog_title, "A Test Blog"
   end
 end
 
-describe Schreihals::App do
+describe SchnitzelPress::App do
   include Rack::Test::Methods
 
   def app
