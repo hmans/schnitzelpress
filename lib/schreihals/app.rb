@@ -38,14 +38,6 @@ module Schreihals
       cache_control :public, :must_revalidate, :max_age => time.to_i
     end
 
-    def render_page(slug)
-      if @post = Post.where(slugs: slug).first
-        haml :post
-      else
-        halt 404
-      end
-    end
-
     not_found do
       haml :"404"
     end

@@ -39,4 +39,18 @@ describe Schreihals::App do
     its(:status) { should == 302 }
     specify { subject["Location"].should == 'http://feeds.feedburner.com/example_org' }
   end
+
+  describe 'viewing a single post' do
+    context 'when the post has multiple slugs' do
+      before do
+        @post = Factory(:post, slugs: ['ancient-slug', 'old-slug', 'current-slug'])
+      end
+
+      it 'should enforce the canonical URL' do
+        get "/#{@post.year}/#{@post.month}/#{@post.day}/ancient-slug/"
+        last_response.should be_redirect
+        last_response["Location"].should == "http://example.org/#{@post.year}/#{@post.month}/#{@post.day}/current-slug/"
+      end
+    end
+  end
 end

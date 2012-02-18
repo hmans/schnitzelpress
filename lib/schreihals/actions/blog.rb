@@ -29,12 +29,26 @@ module Schreihals
 
         get '/:year/:month/:day/:slug/?' do |year, month, day, slug|
           # cache_for 1.hour
-          render_page(slug)
+          render_post(slug)
         end
 
         get '/:slug/?' do |slug|
           # cache_for 1.hour
-          render_page(slug)
+          render_post(slug)
+        end
+
+        def render_post(slug)
+
+          if @post = Post.where(slugs: slug).first
+            # enforce canonical URL
+            if request.path != url_for(@post)
+              redirect url_for(@post)
+            else
+              haml :post
+            end
+          else
+            halt 404
+          end
         end
       end
     end
