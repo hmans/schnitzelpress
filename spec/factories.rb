@@ -2,7 +2,7 @@ FactoryGirl.define do
   factory :post, class: SchnitzelPress::Post do
     title { Faker::Lorem.sentence }
     body  { Faker::Lorem.paragraphs }
-    published_at { rand(1.year.to_i).minutes.ago.to_datetime }
+    published_at { Time.now }
   end
 
   factory :published_post, parent: :post do
