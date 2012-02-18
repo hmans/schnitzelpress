@@ -1,0 +1,28 @@
+# encoding: UTF-8
+require 'rubygems'
+require 'bundler'
+Bundler.require
+
+Schreihals.mongo_uri =
+    ENV['MONGOLAB_URI'] ||
+    ENV['MONGOHQ_URL'] ||
+    ENV['MONGO_URL'] ||
+    'mongodb://localhost/your_new_blog'  # used for local development
+
+class App < Schreihals::App
+  configure do
+    set :blog_title, "<%= @name %>"
+    set :blog_description, "A new blog powered by Schreihals."
+    set :author_name, "Your Name"
+    set :footer, "powered by [Schreihals](http://schreihals.info)"
+    set :administrator, "browser_id:hendrik@mans.de"
+
+    # The following are optional:
+    #
+    # set :disqus_name, "..."
+    # set :google_analytics_id, "..."
+    # set :gauges_id, "..."
+    # set :twitter_id, '...'
+    # set :read_more, "Read ALL the things"
+  end
+end

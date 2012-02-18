@@ -1,3 +1,19 @@
 source 'https://rubygems.org'
 
-gem 'schreihals', '~> 0.0.2'
+group :development do
+  gem 'shotgun'
+  gem 'heroku'
+end
+
+# For now, we're going to be using the development versions of
+# schnitzelstyle and schreihals. I told you you were about
+# to live dangerously!
+#
+gem 'schnitzelstyle',  git: 'git://github.com/hmans/schnitzelstyle.git'
+gem 'schreihals',      git: 'git://github.com/hmans/schreihals.git'
+
+# If you'd prefer to use the officially released versions,
+# use these instead:
+#
+# gem 'schnitzelstyle', :path => '../schnitzelstyle'
+# gem 'schreihals',     :path => '../schreihals'
