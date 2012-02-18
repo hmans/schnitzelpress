@@ -42,6 +42,8 @@ module Schreihals
     scope :posts,     where(:published_at.exists => true)
     scope :article_posts, -> { posts.where(:link => nil) }
     scope :link_posts, -> { posts.where(:link.ne => nil) }
+    scope :for_year,  ->(year) { d = Date.new(year) ; where(published_at: (d.beginning_of_year)..(d.end_of_year)) }
+    scope :for_month, ->(year, month) { d = Date.new(year,month) ; where(published_at: (d.beginning_of_month)..(d.end_of_month)) }
 
     before_validation :nil_if_blank
     before_validation :set_default_slug
