@@ -27,13 +27,6 @@ describe Schreihals::Post do
       end
     end
 
-    context "when post is being pubslihed and no published_at is set" do
-      before { subject.published_at = nil ; subject.status = :published }
-      it "should set its published_at to the current time" do
-        expect { subject.save }.to change(subject, :published_at).from(nil).to(Time.now)
-      end
-    end
-
     context "when another post on the same day is already using the same slug" do
       before do
         @other_post = Factory(:published_post, slugs: ["amazing-slug"])

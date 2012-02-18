@@ -64,6 +64,11 @@ module Schreihals
       slugs[0..-2]
     end
 
+    def published_at=(v)
+      v = Chronic.parse(v) if v.is_a?(String)
+      super(v)
+    end
+
     def slug=(v)
       unless v.blank?
         slugs.delete(v)
@@ -74,10 +79,6 @@ module Schreihals
     def set_defaults
       if slug.blank?
         self.slug = title.parameterize
-      end
-
-      if published_at.nil? && status_changed? && status == :published
-        self.published_at ||= Time.now
       end
     end
 

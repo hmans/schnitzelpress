@@ -43,6 +43,9 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'rake'
   gem.add_dependency 'wirble'
 
+  # misc
+  gem.add_dependency 'chronic'
+
   # development dependencies
   gem.add_development_dependency 'rspec', '>= 2.8.0'
   gem.add_development_dependency 'rspec-html-matchers'

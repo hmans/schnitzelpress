@@ -7,6 +7,7 @@ require 'redcarpet'
 require 'schnitzelstyle'
 require 'rack-cache'
 require 'mongoid'
+require 'chronic'
 
 require 'active_support/inflector'
 require 'active_support/core_ext/class'
