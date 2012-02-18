@@ -12,6 +12,7 @@ module SchnitzelPress
 
   class Post
     include Mongoid::Document
+    store_in :posts
 
     # basic data
     field :title, type: String
