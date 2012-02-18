@@ -34,7 +34,7 @@ module SchnitzelPress
     # extra
     field :body_html, type: String
 
-    validates_presence_of :title, :body, :status, :slug
+    validates_presence_of :status, :slug
     validates_inclusion_of :status, in: [:draft, :published]
 
     scope :published, where(:status => :published)
