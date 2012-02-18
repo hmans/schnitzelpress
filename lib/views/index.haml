@@ -1,3 +1,6 @@
 %section.posts
   - @posts.each do |post|
     = partial post
+  #loading_more
+    %img{src: '/img/ajax.gif'}
+
