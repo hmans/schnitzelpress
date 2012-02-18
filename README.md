@@ -1,5 +1,5 @@
 # SchnitzelPress
 
-## A blogging engine for sane hackers.
+## A lean, mean blogging machine for hackers and fools.
 
-[![Build Status](https://secure.travis-ci.org/hmans/schnitzelpress.png?branch=master)](http://travis-ci.org/hmans/schnitzelpress)
+[![Build Status](https://secure.travis-ci.org/teamschnitzel/schnitzelpress.png?branch=master)](http://travis-ci.org/teamschnitzel/schnitzelpress)
