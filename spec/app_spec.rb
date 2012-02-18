@@ -27,4 +27,16 @@ describe Schreihals::App do
     its(:body) { should have_tag 'section.posts > article.post.published', count: 5 }
     its(:body) { should_not have_tag 'section.posts > article.post.draft' }
   end
+
+  describe 'the public feed url' do
+    before do
+      TestApp.set :feed_url, 'http://feeds.feedburner.com/example_org'
+      get '/feed'
+    end
+
+    subject { last_response }
+    it { should be_redirect }
+    its(:status) { should == 302 }
+    specify { subject["Location"].should == 'http://feeds.feedburner.com/example_org' }
+  end
 end

@@ -1,17 +1,18 @@
 !!! XML
 %feed{xmlns: 'http://www.w3.org/2005/Atom'}
   %title= settings.blog_title
-  %link{href: url_for(',', absolute: true)}
-  %link{href: url_for('/atom.xml', absolute: true), rel: 'self'}
+  %link{href: url_for('/', absolute: true)}
   %id= base_url
   - if @posts.any?
     %updated= @posts.first.published_at
+
   %author
     %name= settings.author_name
+
   - @posts.each do |post|
     %entry
       %title= post.title
-      %link{rel: 'alternate', href: url_for(post, absolute: true)}
+      %link{href: url_for(post, absolute: true)}
       %id= url_for(post, absolute: true)
       %published= post.published_at
       %updated= post.published_at

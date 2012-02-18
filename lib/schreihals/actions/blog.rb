@@ -16,11 +16,15 @@ module Schreihals
           scss :blog
         end
 
-        get '/atom.xml' do
-          cache_for 10.minutes
-          @posts = Post.latest
+        get '/index.atom' do
+          cache_for 3.minutes
+          @posts = Post.latest.limit(10)
           content_type 'application/atom+xml; charset=utf-8'
           haml :atom, :format => :xhtml, :layout => false
+        end
+
+        get '/feed/?' do
+          redirect settings.feed_url
         end
 
         get '/:year/:month/:day/:slug/?' do |year, month, day, slug|
