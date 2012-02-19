@@ -23,7 +23,7 @@ module SchnitzelPress
         post '/admin/new/?' do
           @post = Post.new(params[:post])
           if @post.save
-            redirect url_for(@post)
+            redirect '/admin'
           else
             haml :'admin/new'
           end
@@ -38,7 +38,7 @@ module SchnitzelPress
           @post = Post.find(params[:id])
           @post.attributes = params[:post]
           if @post.save
-            redirect url_for(@post)
+            redirect '/admin'
           else
             haml :'admin/edit'
           end
