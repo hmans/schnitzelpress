@@ -29,13 +29,13 @@ module SchnitzelPress
 
         get %r{^/(\d{4})/(\d{1,2})/?$} do
           year, month = params[:captures]
-          @posts = Post.for_month(year.to_i, month.to_i)
+          @posts = Post.latest.for_month(year.to_i, month.to_i)
           haml :index
         end
 
         get %r{^/(\d{4})/?$} do
           year = params[:captures].first
-          @posts = Post.for_year(year.to_i)
+          @posts = Post.latest.for_year(year.to_i)
           haml :index
         end
 
