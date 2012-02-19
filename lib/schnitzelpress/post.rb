@@ -8,6 +8,15 @@ module SchnitzelPress
     def block_code(code, language)
       CodeRay.highlight(code, language)
     end
+
+    def autolink(link, type)
+      if link =~ %r{youtube.com\/watch\?v=(.+)$}
+        youtube_id = $1
+        %q(<iframe width="600" height="335" src="http://www.youtube.com/embed/%s"></iframe>) % youtube_id
+      else
+        %q(<a href="%s">%s</a>) % [link, link]
+      end
+    end
   end
 
   class Post
