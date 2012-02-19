@@ -25,13 +25,13 @@ Create and initialize a SchnitzelPress project:
   
     schnitzelpress create myblog
 
-Navigate to the blog's root directory
+Navigate to the blog's root directory:
 
     cd myblog
 
-And then run `bundle` to satisfy gem dependencies.
+And run `bundle` to satisfy gem dependencies.
 
-Now take a look at `app.rb` and configure your new blog to your liking:
+Now take a look at `app.rb` and configure your new blog to your heart's content:
 
     $EDITOR app.rb
 
@@ -48,7 +48,7 @@ Create a new Heroku app based on the Caledon Cedar stack:
 
     heroku apps:create myblog -s cedar
 
-Now add one of the two available MongoDB addons; both offer free plans. You can use either MongoLab or MongoHQ. Pick one:
+Now add one of the two available MongoDB addons - MongoLab or MongoHQ. Both offer free plans, so you can pick either one:
 
     heroku addons:add mongolab:starter
 
@@ -58,13 +58,17 @@ OR
 
 ## Map your domain (optional)
 
+You can assign custom and wildcard domains to your Heroku app for free:
+
     heroku addons:add custom_domains
     heroku domains:add www.myblog.com
     heroku domains:add myblog.com
 
-Now follow the steps detailed [here](http://devcenter.heroku.com/articles/custom-domains#dns_setup) to ensure that your DNS points to Heroku.
+If you haven't done it already, follow the steps detailed [here](http://devcenter.heroku.com/articles/custom-domains#dns_setup) to ensure that your DNS points to Heroku.
 
 ## Push your project to Heroku
+
+It's now time to push your shiny new blog to Heroku:
 
     git push heroku master
 
