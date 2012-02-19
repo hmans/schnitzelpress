@@ -1,4 +1,5 @@
 %form.post{ action: @post.new_record? ? '/admin/new' : "/admin/edit/#{@post.id}", method: 'post' }
+  %input{ type: 'hidden', name: '_method', value: @post.new_record? ? 'post' : 'put'}
   = form_field @post, :title, placeholder: "Title of your post."
   = form_field @post, :link, placeholder: "Optional link to external URL."
   = form_field @post, :body, type: :textarea, placeholder: "Your post's body of text. Markdown formatting available."

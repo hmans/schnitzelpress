@@ -13,6 +13,7 @@ module SchnitzelPress
     use SchnitzelPress::Static
     use Rack::ShowExceptions
     use Rack::Cache
+    use Rack::MethodOverride
     use Rack::Session::Cookie
 
     helpers SchnitzelPress::Helpers
