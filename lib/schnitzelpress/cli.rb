@@ -16,8 +16,7 @@ module SchnitzelPress
 
     def create(name)
       @name = name
-      self.destination_root = name
-      directory 'new_blog', '.'
+      directory 'new_blog', '_blog'
 
       in_root do
         run "bundle"   if options[:bundle]
