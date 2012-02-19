@@ -4,9 +4,9 @@ require File.expand_path('../lib/schnitzelpress/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.authors       = ["Hendrik Mans"]
   gem.email         = ["hendrik@mans.de"]
-  gem.description   = %q{A simple blog engine for sane hackers.}
-  gem.summary       = %q{A simple blog engine for sane hackers.}
-  gem.homepage      = "http://www.schnitzelpress.org"
+  gem.description   = %q{A lean, mean blogging machine for hackers and fools.}
+  gem.summary       = %q{A lean, mean blogging machine for hackers and fools.}
+  gem.homepage      = "http://schnitzelpress.org"
 
   gem.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   gem.files         = `git ls-files`.split("\n")
