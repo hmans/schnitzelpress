@@ -27,6 +27,12 @@ module SchnitzelPress
           redirect settings.feed_url
         end
 
+        get %r{^/(\d{4})/(\d{1,2})/(\d{1,2})/?$} do
+          year, month, day = params[:captures]
+          @posts = Post.latest.for_day(year.to_i, month.to_i, day.to_i)
+          haml :index
+        end
+
         get %r{^/(\d{4})/(\d{1,2})/?$} do
           year, month = params[:captures]
           @posts = Post.latest.for_month(year.to_i, month.to_i)
