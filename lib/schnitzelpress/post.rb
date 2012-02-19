@@ -48,8 +48,8 @@ module SchnitzelPress
 
     scope :published, where(:status => :published)
     scope :drafts,    where(:status => :draft)
-    scope :pages,     where(:published_at.exists => false)
-    scope :posts,     where(:published_at.exists => true)
+    scope :pages,     where(:published_at => nil)
+    scope :posts,     where(:published_at.ne => nil)
     scope :article_posts, -> { posts.where(:link => nil) }
     scope :link_posts, -> { posts.where(:link.ne => nil) }
     scope :for_year,  ->(year) { d = Date.new(year) ; where(published_at: (d.beginning_of_year)..(d.end_of_year)) }
