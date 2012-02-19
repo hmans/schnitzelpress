@@ -33,6 +33,8 @@ module SchnitzelPress
       set :footer, ""
       set :administrator, nil
       set :feed_url, '/posts.atom'
+
+      disable :protection
     end
 
     def cache_for(time)
