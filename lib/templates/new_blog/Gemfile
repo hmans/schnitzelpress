@@ -15,5 +15,5 @@ gem 'schnitzelpress',      git: 'git://github.com/teamschnitzel/schnitzelpress.g
 # If you'd prefer to use the officially released versions,
 # use these instead:
 #
-# gem 'schnitzelstyle', :path => '../schnitzelstyle'
-# gem 'schnitzelpress',     :path => '../schnitzelpress'
+# gem 'schnitzelstyle'
+# gem 'schnitzelpress'
