@@ -1,6 +1,5 @@
 - complete       ||= false
-- show_title     ||= post.article_post? && post.title.present?
-- show_link      ||= post.link_post?
+- show_title     ||= post.title.present?
 - show_summary   ||= post.summary.present?
 - show_body      ||= complete || !show_summary
 - show_read_more ||= !complete && post.summary.present?
@@ -11,11 +10,8 @@
   %header
     - if show_title
       %h1
-        %a{href: post.to_url}= post.title
-    - if show_link
-      %h1
-        %a{href: post.link}= post.title
-        ➝
+        %a{href: post.link || post.to_url}= post.title
+        = "➝" if post.link_post?
 
   - if show_summary
     .summary

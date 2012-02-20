@@ -27,12 +27,13 @@ body {
 /* posts */
 article.post {
   &.draft header h1 { background-color: #ccc; }
-  &.link header {
+  header {
     h1 {
       font-size: 100%;
       background: none;
       text-transform: none;
       padding: none;
+      color: lighten($color-link, 30%);
     }
     font: $font-header;
     font-weight: bold;
@@ -40,7 +41,6 @@ article.post {
     display: inline-block;
     line-height: 150%;
     border-bottom: 2px solid $color-link-underline;
-    color: darken($color-page-background, 30%);
     a {
       border: none;
     }
