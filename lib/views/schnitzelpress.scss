@@ -1,6 +1,11 @@
 // load stuff!
 @import 'schnitzelstyle/complete';
 
+/* background image */
+body {
+  background: url(/img/background.png);
+}
+
 /* misc crap */
 .social_media_buttons {
   margin: 1em 0;
