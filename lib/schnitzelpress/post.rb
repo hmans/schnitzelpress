@@ -3,9 +3,9 @@ require 'coderay'
 require 'oembed'
 
 OEmbed::Providers.register_all
-SoundCloundProvider = OEmbed::Provider.new("http://soundcloud.com/oembed")
-SoundCloundProvider << "http://*.soundcloud.com/*"
-OEmbed::Providers.register(SoundCloundProvider)
+SoundCloudProvider = OEmbed::Provider.new("http://soundcloud.com/oembed", :json)
+SoundCloudProvider << "http://*.soundcloud.com/*"
+OEmbed::Providers.register(SoundCloudProvider)
 
 module SchnitzelPress
   class MarkdownRenderer < Redcarpet::Render::HTML
