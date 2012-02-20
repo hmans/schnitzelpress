@@ -17,13 +17,29 @@ describe SchnitzelPress::Post do
 
   context 'saving' do
     context "when no slug is set" do
-      before do
-        subject.title = "Team Schnitzel is AWESOME!"
-        subject.slug = nil
+      before { subject.slug = nil }
+
+      context "when a title is available" do
+        before { subject.title = "Team Schnitzel is AWESOME!" }
+
+        it "should set its slug to a sluggified version of its title" do
+          expect { subject.save }.to change(subject, :slug).
+            from(nil).
+            to('team-schnitzel-is-awesome')
+        end
       end
 
-      it "should set its slug to a sluggified version of its title" do
-        expect { subject.save }.to change(subject, :slug).from(nil).to('team-schnitzel-is-awesome')
+      context "when no title is available" do
+        before do
+          subject.title = nil
+          subject.body = "Team Schnitzel is AWESOME! Lorem ipsum and so on."
+        end
+
+        it "should set its slug to a sluggified version of the truncated body" do
+          expect { subject.save }.to change(subject, :slug).
+            from(nil).
+            to('team-schnitzel-is-awesome-lorem')
+        end
       end
     end
 

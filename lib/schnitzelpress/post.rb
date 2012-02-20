@@ -87,8 +87,8 @@ module SchnitzelPress
     end
 
     def set_defaults
-      if slug.blank? && title.present?
-        self.slug = title.parameterize
+      if slug.blank?
+        self.slug = (title || body.truncate(40, separator: ' ')).parameterize
       end
     end
 
