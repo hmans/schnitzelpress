@@ -43,3 +43,14 @@ module SchnitzelPress
     @@mongo_uri = uri
   end
 end
+
+# teach HAML to use RedCarpet for markdown
+module Haml::Filters::Redcarpet
+  include Haml::Filters::Base
+
+  def render(text)
+    Redcarpet::Markdown.new(SchnitzelPress::MarkdownRenderer,
+      autolink: true, space_after_headers: true, fenced_code_blocks: true).
+      render(text)
+  end
+end
