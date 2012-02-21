@@ -4,8 +4,7 @@ module SchnitzelPress
       extend ActiveSupport::Concern
 
       included do
-        get '/' do
-          # cache_for 5.minutes
+        get %r{^\/(blog)?$} do
           @posts = Post.latest.skip(params[:page].to_i * 10).limit(10)
           @show_description = true
           haml :index
