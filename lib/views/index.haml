@@ -1,6 +1,18 @@
 %section.posts
-  - @posts.each do |post|
-    = partial post
+  - if @posts.any?
+    - @posts.each do |post|
+      = partial post
+  - else
+    #welcome
+      :redcarpet
+        **Congratulations on setting up your new SchnitzelPress blog!**
+        A world of hackery and adventure awaits.
+        <span class="heart">♥</span>
+
+        To get started, please log into your blog's
+        [Administration Section](/admin).
+
+        Visit www.schnitzelpress.org for the latest news and gossip!
 
   %footer
     %a.button{ href: "/?page=#{params[:page].to_i + 1}"} View Older Posts
