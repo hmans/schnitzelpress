@@ -15,4 +15,5 @@
         Visit www.schnitzelpress.org for the latest news and gossip!
 
   %footer
-    %a.button{ href: "/?page=#{params[:page].to_i + 1}"} View Older Posts
+    - if @show_previous_posts_button
+      %a.button{ href: "/?page=#{params[:page].to_i + 1}"} View Older Posts

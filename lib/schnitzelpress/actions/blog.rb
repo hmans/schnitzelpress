@@ -5,7 +5,12 @@ module SchnitzelPress
 
       included do
         get %r{^\/(blog)?$} do
-          @posts = Post.latest.skip(params[:page].to_i * 10).limit(10)
+          total_count   = Post.latest.count
+          skipped_count = params[:page].to_i * 10
+          @posts = Post.latest.skip(skipped_count).limit(10)
+          displayed_count = @posts.count(true)
+
+          @show_previous_posts_button = total_count > skipped_count + displayed_count
           @show_description = true
           haml :index
         end
