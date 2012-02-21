@@ -25,6 +25,7 @@ module SchnitzelPress
 
   def self.mongo_uri=(uri)
     Mongoid::Config.from_hash("uri" => uri)
+    SchnitzelPress::Post.create_indexes
     @@mongo_uri = uri
   end
 end

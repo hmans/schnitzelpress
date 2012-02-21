@@ -46,6 +46,12 @@ module SchnitzelPress
     # extra
     field :body_html, type: String
 
+    # indices
+    index :slugs
+    index :published_at
+    index :status
+
+    # validations
     validates_presence_of :status, :slug
     validates_inclusion_of :status, in: [:draft, :published]
 
