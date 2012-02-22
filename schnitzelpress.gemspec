@@ -19,33 +19,34 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'rack', '~> 1.4.0'
   gem.add_dependency 'sinatra', '~> 1.3.2'
   gem.add_dependency 'activesupport', '~> 3.2.0'
-  gem.add_dependency 'rack-cache'
+  gem.add_dependency 'rack-cache', '~> 1.1'
 
   # database related
+  gem.add_dependency 'mongo', '~> 1.5.2'
   gem.add_dependency 'mongoid', '~> 2.4'
   gem.add_dependency 'bson_ext', '~> 1.5'
 
   # authentication
-  gem.add_dependency 'omniauth'
-  gem.add_dependency 'omniauth-browserid'
+  gem.add_dependency 'omniauth', '~> 1.0.2'
+  gem.add_dependency 'omniauth-browserid', '~> 0.0.1'
 
   # frontend/views/assets related
-  gem.add_dependency 'haml'
-  gem.add_dependency 'sass'
-  gem.add_dependency 'redcarpet'
-  gem.add_dependency 'coderay'
+  gem.add_dependency 'haml', '~> 3.1.4'
+  gem.add_dependency 'sass', '~> 3.1.15'
+  gem.add_dependency 'redcarpet', '~> 2.1.0'
+  gem.add_dependency 'coderay', '~> 1.0.5'
   gem.add_dependency 'schnitzelstyle', '~> 0.0.7'
-  gem.add_dependency 'i18n'
+  gem.add_dependency 'i18n', '~> 0.6.0'
   gem.add_dependency 'tilt', '~> 1.3.0'
-  gem.add_dependency 'ruby-oembed'
+  gem.add_dependency 'ruby-oembed', '~> 0.8.5'
 
   # CLI related
-  gem.add_dependency 'thor'
-  gem.add_dependency 'rake'
-  gem.add_dependency 'wirble'
+  gem.add_dependency 'thor', '~> 0.14.6'
+  gem.add_dependency 'rake', '~> 0.9.2.2'
+  gem.add_dependency 'wirble', '~> 0.1.3'
 
   # misc
-  gem.add_dependency 'chronic'
+  gem.add_dependency 'chronic', '~> 0.6.7'
 
   # development dependencies
   gem.add_development_dependency 'rspec', '>= 2.8.0'
