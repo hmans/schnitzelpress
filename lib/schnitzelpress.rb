@@ -15,6 +15,7 @@ require 'active_support/concern'
 
 require 'schnitzelpress/static'
 require 'schnitzelpress/helpers'
+require 'schnitzelpress/markdown_renderer'
 require 'schnitzelpress/post'
 require 'schnitzelpress/actions/blog'
 require 'schnitzelpress/actions/auth'
