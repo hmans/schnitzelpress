@@ -1,10 +1,3 @@
-require 'schnitzelpress/static'
-require 'schnitzelpress/helpers'
-require 'schnitzelpress/post'
-require 'schnitzelpress/actions/blog'
-require 'schnitzelpress/actions/auth'
-require 'schnitzelpress/actions/admin'
-
 module SchnitzelPress
   class App < Sinatra::Base
     set :views, ['./views/', File.expand_path('../../views/', __FILE__)]
