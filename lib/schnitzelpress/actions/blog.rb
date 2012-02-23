@@ -4,14 +4,27 @@ module SchnitzelPress
       extend ActiveSupport::Concern
 
       included do
-        get %r{^\/(blog)?$} do
+        get '/' do
+          @show_description = true
+          if @post = Post.published.pages.where(slugs: 'home').first
+            render_post(false)
+          else
+            render_blog
+          end
+        end
+
+        get '/blog/?' do
+          @show_description = true
+          render_blog
+        end
+
+        def render_blog
           total_count   = Post.latest.count
           skipped_count = params[:page].to_i * 10
           @posts = Post.latest.skip(skipped_count).limit(10)
           displayed_count = @posts.count(true)
 
           @show_previous_posts_button = total_count > skipped_count + displayed_count
-          @show_description = true
           haml :index
         end
 
@@ -63,10 +76,10 @@ module SchnitzelPress
           render_post
         end
 
-        def render_post
+        def render_post(enforce_canonical_url = true)
           if @post
             # enforce canonical URL
-            if request.path != url_for(@post)
+            if enforce_canonical_url && request.path != url_for(@post)
               redirect url_for(@post)
             else
               haml :post
