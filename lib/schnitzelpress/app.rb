@@ -10,6 +10,7 @@ module SchnitzelPress
     use Rack::Session::Cookie
 
     helpers SchnitzelPress::Helpers
+    include Rack::Utils
     include SchnitzelPress::Actions::Auth
     include SchnitzelPress::Actions::Admin
     include SchnitzelPress::Actions::Blog
