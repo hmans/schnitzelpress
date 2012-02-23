@@ -6,96 +6,62 @@ body {
   background: url(/img/background.png);
 }
 
-/* misc crap */
-.social_media_buttons {
-  margin: 1em 0;
-}
-
-@mixin smallish {
-  font: $font-footer;
-  font-size: 80%;
-  color: lighten($color-text, 30%);
-  a {
-    color: lighten($color-text, 30%);
-    border: none;
-  }
-  a:hover {
-    text-decoration: underline;
-  }
-}
-
 /* posts */
 article.post {
   header {
     h1 {
-      font-size: 100%;
-      background: none;
-      text-transform: none;
-      padding: none;
-      color: lighten($color-link, 30%);
-    }
-    font: $font-header;
-    font-weight: bold;
-    background-color: darken($color-page-background, 5%);
-    display: inline-block;
-    line-height: 150%;
-    border-bottom: 2px solid $color-link-underline;
-    a {
-      border: none;
+      span.link-arrow {
+        color: lighten($color-link, 30%);
+      }
     }
   }
 
   div.summary {
-    margin-bottom: 2em;
-
-    p {
-      font: $font-header;
-      font-size: 125%;
-      line-height: 150%;
-      color: #000;
-
-      @media only screen and (max-width: 640px) {
-        line-height: 130%;
-
-        section.posts & {
-          font-size: 100%;
-        }
-      }
+    p:last-child a {
+      font-weight: bold;
     }
   }
 
   footer {
     margin-top: 0.5em;
 
-    p.permalink {
-      @include smallish;
+    .social_media_buttons {
+      @include animated;
+
+      margin: 2em 0;
+      opacity: 0.3;
+      &:hover { opacity: 1 }
     }
   }
 }
 
-/* admin post lists */
-ul.admin-post-list {
-  max-height: 300px;
-  padding-bottom: 5px;
-  overflow: auto;
-}
-
-/* admin links */
+// admin
 ul.admin {
-  @include smallish;
   list-style: none;
 
   li {
     display: inline;
-    margin-right: 0.5em;
+    margin-left: 0 !important;
+    margin-right: 5px;
+
+    a {
+      @include small-type;
+    }
   }
 }
 
-/* forms */
-.input.post_published_at input { width: 180px; }
-.input.post_slug input { width: 180px }
+ul.admin-post-list {
+  padding: 5px 0;
+  max-height: 300px;
+  overflow: auto;
+  border-bottom: 1px dotted #ddd; // FIXME
+  border-top: 1px dotted #ddd; // FIXME
+}
 
-/* welcome message */
+// forms
+.input.post_title input { @include large-type; }
+
+// welcome message
 section.posts #welcome {
   font: $font-header;
   font-size: 2em;
@@ -106,7 +72,7 @@ section.posts #welcome {
   span.heart { color: #c66; }
 }
 
-/* disqus */
+// disqus
 #dsq-content {
   a {
     border: 0;
