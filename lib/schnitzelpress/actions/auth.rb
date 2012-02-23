@@ -16,12 +16,12 @@ module SchnitzelPress
         end
 
         get '/login' do
-          redirect '/auth/browser_id'
+          haml :'login'
         end
 
         get '/logout' do
           session[:user] = nil
-          redirect '/'
+          redirect '/login'
         end
       end
     end

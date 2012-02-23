@@ -1,0 +1,11 @@
+- @page_title = "Login"
+
+%section
+  %p
+    Please use one of the following services to log in:
+
+  %p
+    %a.button#browser_id{href: '#'} Log in with BrowserID
+
+  %form{method: 'post', action: '/auth/browser_id/callback', noValidate: 'noValidate'}
+    %input{type: 'hidden', name: 'assertion'}
