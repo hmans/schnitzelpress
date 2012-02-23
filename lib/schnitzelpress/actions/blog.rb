@@ -57,7 +57,8 @@ module SchnitzelPress
           render_post
         end
 
-        get '/:slug/?' do |slug|
+        get '/*/?' do
+          slug = params[:splat].first
           @post = Post.where(slugs: slug).first
           render_post
         end
