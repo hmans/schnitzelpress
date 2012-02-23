@@ -6,10 +6,15 @@ module SchnitzelPress
       CodeRay.highlight(code, language)
     end
 
-    def autolink(link, type)
-      OEmbed::Providers.get(link).html
+    def image(link, title, alt_text)
+      oembed = OEmbed::Providers.get(link)
+      %q(<div class="embedded %s">%s</div>) % [oembed.type, oembed.html]
     rescue OEmbed::NotFound
-      %q(<a href="%s">%s</a>) % [link, link]
+      %q(<img src="%s" title="%s" alt="%s"/>) % [link, escape_html(title), escape_html(alt_text)]
+    end
+
+    def escape_html(html)
+      Rack::Utils.escape_html(html)
     end
   end
 end
