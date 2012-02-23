@@ -7,7 +7,7 @@ module SchnitzelPress
         get '/' do
           @show_description = true
           if @post = Post.published.pages.where(slugs: 'home').first
-            render_post(false)
+            render_post
           else
             render_blog
           end
