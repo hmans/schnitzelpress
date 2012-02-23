@@ -29,6 +29,7 @@ module SchnitzelPress
       set :feed_url, '/posts.atom'
 
       disable :protection
+      set :logging, true
     end
 
     def cache_for(time)
