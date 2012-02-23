@@ -4,7 +4,7 @@
   %label{ for: options[:id] } #{options[:label]}:
   - case options[:type].to_sym
     - when :textarea
-      %textarea{ id: options[:id], name: options[:name], rows: 20, placeholder: options[:placeholder] }= html_escape(options[:value])
+      %textarea{ id: options[:id], name: options[:name], rows: options[:rows] || 20, placeholder: options[:placeholder] }= html_escape(options[:value])
 
     - when :radio
       - options[:options].each do |o|
