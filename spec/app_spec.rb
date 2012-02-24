@@ -23,8 +23,8 @@ describe SchnitzelPress::App do
     subject { last_response }
 
     it { should be_ok }
-    its(:body) { should have_tag 'title', :text => "A Test Blog" }
-    its(:body) { should have_tag 'section.posts > article.post.published', :count => 5 }
+    its(:body) { should have_tag 'title', text: "A Test Blog" }
+    its(:body) { should have_tag 'section.posts > article.post.published', count: 5 }
     its(:body) { should_not have_tag 'section.posts > article.post.draft' }
   end
 
@@ -49,7 +49,7 @@ describe SchnitzelPress::App do
   describe 'viewing a single post' do
     context 'when the post has multiple slugs' do
       before do
-        @post = Factory(:published_post, :published_at => "2011-12-10 12:00", :slugs => ['ancient-slug', 'old-slug', 'current-slug'])
+        @post = Factory(:published_post, published_at: "2011-12-10 12:00", slugs: ['ancient-slug', 'old-slug', 'current-slug'])
       end
 
       it 'should enforce the canonical URL' do

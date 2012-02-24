@@ -43,7 +43,7 @@ module Haml::Filters::Redcarpet
 
   def render(text)
     Redcarpet::Markdown.new(SchnitzelPress::MarkdownRenderer,
-      :autolink => true, :space_after_headers => true, :fenced_code_blocks => true).
+      autolink: true, space_after_headers: true, fenced_code_blocks: true).
       render(text)
   end
 end

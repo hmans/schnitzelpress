@@ -2,18 +2,18 @@
 %html
   %head
     %title= [@page_title, settings.blog_title].compact.join(" | ")
-    %meta{ :"http-equiv" => "content-type", :content => "text/html; charset=UTF-8" }
-    %meta{ :name => "viewport", :content => "width=device-width, initial-scale=1.0" }
-    %link{ :href => '/blog.css', :media => "screen", :rel => "stylesheet", :type => "text/css" }
-    %link{ :href => settings.feed_url, :title => "Subscribe via Atom Feed", :rel => 'alternate', :type => 'application/atom+xml' }
-    %script{ :type => 'text/javascript', :src => '//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js' }
-    %script{ :type => 'text/javascript', :src => '//browserid.org/include.js' }
-    %script{ :type => 'text/javascript', :src => '/js/schnitzelpress.js' }
+    %meta{ :"http-equiv" => "content-type", content: "text/html; charset=UTF-8" }
+    %meta{ name: "viewport", content: "width=device-width, initial-scale=1.0" }
+    %link{ href: '/blog.css', media: "screen", rel: "stylesheet", type: "text/css" }
+    %link{ href: settings.feed_url, title: "Subscribe via Atom Feed", rel: 'alternate', type: 'application/atom+xml' }
+    %script{ type: 'text/javascript', src: '//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js' }
+    %script{ type: 'text/javascript', src: '//browserid.org/include.js' }
+    %script{ type: 'text/javascript', src: '/js/schnitzelpress.js' }
   %body
     .container
       %header
         .site-title
-          %a{:href => '/'}= settings.blog_title
+          %a{href: '/'}= settings.blog_title
         - if @show_description
           ~ markdown settings.blog_description
 

@@ -14,7 +14,7 @@ module SchnitzelPress
         else thing.class.to_s.demodulize.underscore
       end
 
-      haml :"partials/_#{name}", :locals => { name.to_sym => thing }.merge(locals)
+      haml :"partials/_#{name}", locals: { name.to_sym => thing }.merge(locals)
     end
 
     def set_page_title(title)
@@ -49,10 +49,10 @@ module SchnitzelPress
 
     def form_field(object, attribute, options = {})
       options = {
-        :label => attribute.to_s.humanize,
-        :value => object.send(attribute),
-        :errors => object.errors[attribute.to_sym],
-        :class_name => object.class.to_s.demodulize.underscore
+        label: attribute.to_s.humanize,
+        value: object.send(attribute),
+        errors: object.errors[attribute.to_sym],
+        class_name: object.class.to_s.demodulize.underscore
       }.merge(options)
 
       options[:name] ||= "#{options[:class_name]}[#{attribute}]"
@@ -66,7 +66,7 @@ module SchnitzelPress
         else :text
       end
 
-      partial 'form_field', :object => object, :attribute => attribute, :options => options
+      partial 'form_field', object: object, attribute: attribute, options: options
     end
   end
 end

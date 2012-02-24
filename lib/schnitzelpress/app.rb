@@ -33,7 +33,7 @@ module SchnitzelPress
     end
 
     def cache_for(time)
-      cache_control :public, :must_revalidate, :max_age => time.to_i
+      cache_control :public, :must_revalidate, max_age: time.to_i
     end
 
     not_found do
