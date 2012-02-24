@@ -6,7 +6,7 @@ module SchnitzelPress
       included do
         get '/' do
           @show_description = true
-          if @post = Post.published.pages.where(slugs: 'home').first
+          if @post = Post.published.pages.where(:slugs => 'home').first
             render_post
           else
             render_blog
@@ -65,14 +65,14 @@ module SchnitzelPress
         get '/:year/:month/:day/:slug/?' do |year, month, day, slug|
           @post = Post.
             for_day(year.to_i, month.to_i, day.to_i).
-            where(slugs: slug).first
+            where(:slugs => slug).first
 
           render_post
         end
 
         get '/*/?' do
           slug = params[:splat].first
-          @post = Post.where(slugs: slug).first
+          @post = Post.where(:slugs => slug).first
           render_post
         end
 

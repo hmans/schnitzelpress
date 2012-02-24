@@ -6,11 +6,11 @@
 - show_permalink ||= admin_logged_in? || (post.post? && !show_read_more)
 - show_twitter   ||= complete && post.post? && settings.twitter_id.present?
 
-%article.post{class: [post.status, post.link_post? ? 'link' : 'article']}
+%article.post{:class => [post.status, post.link_post? ? 'link' : 'article']}
   %header
     - if show_title
       %h1
-        %a{href: post.link || post.to_url}= post.title
+        %a{:href => post.link || post.to_url}= post.title
         - if post.link_post?
           %span.link-arrow ➝
 
@@ -19,7 +19,7 @@
       ~ markdown post.summary
       - if show_read_more
         %p
-          %a{href: url_for(post)}= post.read_more.presence || settings.read_more
+          %a{:href => url_for(post)}= post.read_more.presence || settings.read_more
           →
 
   - if show_body
@@ -28,14 +28,14 @@
   %footer
     - if show_permalink
       %p.permalink
-        %a{href: url_for(post)}= post.published_at.try(:to_date) || "∞"
+        %a{:href => url_for(post)}= post.published_at.try(:to_date) || "∞"
         - if admin_logged_in?
           &middot;
-          %a{href: "/admin/edit/#{post.id}"} edit
+          %a{:href => "/admin/edit/#{post.id}"} edit
 
     - if show_twitter
       .social_media_buttons
         - if show_twitter
-          %a{ href: "https://twitter.com/share", class: "twitter-share-button", data: { via: settings.twitter_id } }
+          %a{:href => "https://twitter.com/share", :class => "twitter-share-button", :data => {:via => settings.twitter_id}}
           :javascript
             !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
