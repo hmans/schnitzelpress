@@ -6,7 +6,9 @@ module SchnitzelPress
     # use SchnitzelPress::Static
     use Rack::ShowExceptions
     use Rack::Cache
-    use Rack::StaticCache, :urls => ["/moo.txt"], :root => 'public'
+    use Rack::StaticCache,
+      :urls => ["/favicon.ico", "/img", "/js"],
+      :root => File.expand_path('../../public/', __FILE__)
     use Rack::MethodOverride
     use Rack::Session::Cookie
 
