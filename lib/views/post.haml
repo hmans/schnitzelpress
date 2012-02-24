@@ -1,7 +1,7 @@
 - set_page_title @post.title.presence
 
-= partial @post, :complete => true
+= partial @post, complete: true
 
 - if show_disqus? && @post.disqus?
   %section.disqus
-    = partial 'disqus', :disqus_identifier => @post.disqus_identifier
+    = partial 'disqus', disqus_identifier: @post.disqus_identifier

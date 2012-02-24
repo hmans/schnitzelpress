@@ -4,8 +4,8 @@
     - posts.each do |post|
       %ul.admin
         %li
-          %a.button{:href => "/admin/edit/#{post.id}"} edit
+          %a.button{href: "/admin/edit/#{post.id}"} edit
         %li
-          %a.button{:href => url_for(post)} view
+          %a.button{href: url_for(post)} view
         %li
           = post.title || ("%s..." % html_escape(post.body.first(50)))

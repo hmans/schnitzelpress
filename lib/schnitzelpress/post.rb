@@ -13,24 +13,24 @@ module SchnitzelPress
     store_in :posts
 
     # basic data
-    field :title, :type => String
-    field :body,  :type => String
-    field :slugs, :type => Array, :default => []
+    field :title, type: String
+    field :body,  type: String
+    field :slugs, type: Array, default: []
 
     # optional fields
-    field :summary,   :type => String
-    field :link,      :type => String
-    field :read_more, :type => String
+    field :summary,   type: String
+    field :link,      type: String
+    field :read_more, type: String
 
     # times & status
-    field :published_at, :type => DateTime
-    field :status,       :type => Symbol, :default => :draft
+    field :published_at, type: DateTime
+    field :status,       type: Symbol, default: :draft
 
     # flags
-    field :disqus, :type => Boolean, :default => false
+    field :disqus, type: Boolean, default: false
 
     # extra
-    field :body_html, :type => String
+    field :body_html, type: String
 
     # indices
     index :slugs
@@ -39,17 +39,17 @@ module SchnitzelPress
 
     # validations
     validates_presence_of :status, :slug
-    validates_inclusion_of :status, :in => [:draft, :published]
+    validates_inclusion_of :status, in: [:draft, :published]
 
-    scope :published, where(:status => :published)
-    scope :drafts,    where(:status => :draft)
-    scope :pages,     where(:published_at => nil)
+    scope :published, where(status: :published)
+    scope :drafts,    where(status: :draft)
+    scope :pages,     where(published_at: nil)
     scope :posts,     where(:published_at.ne => nil)
-    scope :article_posts, lambda { posts.where(:link => nil) }
+    scope :article_posts, lambda { posts.where(link: nil) }
     scope :link_posts,    lambda { posts.where(:link.ne => nil) }
-    scope :for_year,      lambda { |year| d = Date.new(year) ; where(:published_at => (d.beginning_of_year)..(d.end_of_year)) }
-    scope :for_month,     lambda { |year, month| d = Date.new(year, month) ; where(:published_at => (d.beginning_of_month)..(d.end_of_month)) }
-    scope :for_day,       lambda { |year, month, day| d = Date.new(year, month, day) ; where(:published_at => (d.beginning_of_day)..(d.end_of_day)) }
+    scope :for_year,      lambda { |year| d = Date.new(year) ; where(published_at: (d.beginning_of_year)..(d.end_of_year)) }
+    scope :for_month,     lambda { |year, month| d = Date.new(year, month) ; where(published_at: (d.beginning_of_month)..(d.end_of_month)) }
+    scope :for_day,       lambda { |year, month, day| d = Date.new(year, month, day) ; where(published_at: (d.beginning_of_day)..(d.end_of_day)) }
     scope :latest,        lambda { published.posts.desc(:published_at) }
 
     before_validation :nil_if_blank
@@ -83,12 +83,12 @@ module SchnitzelPress
 
     def set_defaults
       if slug.blank?
-        self.slug = (title || body.truncate(40, :separator => ' ')).parameterize
+        self.slug = (title || body.truncate(40, separator: ' ')).parameterize
       end
     end
 
     def validate_slug
-      conflicting_posts = Post.where(:slugs => slug)
+      conflicting_posts = Post.where(slugs: slug)
       if published_at.present?
         conflicting_posts = conflicting_posts.for_day(published_at.year, published_at.month, published_at.day)
       end
@@ -120,7 +120,7 @@ module SchnitzelPress
 
     def render
       @@markdown ||= Redcarpet::Markdown.new(MarkdownRenderer,
-        :autolink => true, :space_after_headers => true, :fenced_code_blocks => true)
+        autolink: true, space_after_headers: true, fenced_code_blocks: true)
 
       @@markdown.render(body)
     end

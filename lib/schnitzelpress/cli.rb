@@ -8,11 +8,11 @@ module SchnitzelPress
 
     desc "create NAME", "Creates a new SchnitzelPress blog."
 
-    method_option :git, :aliases => "-g", :default => false,
-      :desc => "Initialize a git repository in your blog's directory."
+    method_option :git, aliases: "-g", default: false,
+      desc: "Initialize a git repository in your blog's directory."
 
-    method_option :bundle, :aliases => "-b", :default => false,
-      :desc => "Run 'bundle install' after generating your new blog."
+    method_option :bundle, aliases: "-b", default: false,
+      desc: "Run 'bundle install' after generating your new blog."
 
     def create(name)
       @name = name

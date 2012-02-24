@@ -45,7 +45,7 @@ describe SchnitzelPress::Post do
 
     context "when another post on the same day is already using the same slug" do
       before do
-        @other_post = Factory(:published_post, :slugs => ["amazing-slug"])
+        @other_post = Factory(:published_post, slugs: ["amazing-slug"])
         subject.published_at = @other_post.published_at
         subject.slug = "amazing-slug"
       end
@@ -57,7 +57,7 @@ describe SchnitzelPress::Post do
       subject { Factory.build(:draft_page) }
 
       before do
-        @other_page = Factory(:published_page, :slugs => ["amazing-slug"])
+        @other_page = Factory(:published_page, slugs: ["amazing-slug"])
         subject.slug = "amazing-slug"
       end
 
