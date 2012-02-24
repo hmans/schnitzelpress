@@ -9,8 +9,8 @@ end
 # schnitzelstyle and schnitzelpress. I told you you were about
 # to live dangerously!
 #
-gem 'schnitzelstyle', :git => 'git://github.com/teamschnitzel/schnitzelstyle.git'
-gem 'schnitzelpress', :git => 'git://github.com/teamschnitzel/schnitzelpress.git'
+gem 'schnitzelstyle', :git => 'git://github.com/hmans/schnitzelstyle.git'
+gem 'schnitzelpress', :git => 'git://github.com/hmans/schnitzelpress.git'
 
 # If you'd prefer to use the officially released versions,
 # use these instead:
