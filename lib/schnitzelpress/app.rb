@@ -1,6 +1,6 @@
 module SchnitzelPress
   class App < Sinatra::Base
-    STATIC_PATHS = ["/favicon.ico", "/img", "/js", '/moo.txt']
+    STATIC_PATHS = ["/favicon.ico", "/img", "/js"]
 
     set :views, ['./views/', File.expand_path('../../views/', __FILE__)]
     set :public_folder, File.expand_path('../../public/', __FILE__)
