@@ -3,7 +3,7 @@ module SchnitzelPress
     set :views, ['./views/', File.expand_path('../../views/', __FILE__)]
     set :public_folder, File.expand_path('../../public/', __FILE__)
 
-    use SchnitzelPress::Static
+    # use SchnitzelPress::Static
     use Rack::ShowExceptions
     use Rack::Cache
     use Rack::MethodOverride
