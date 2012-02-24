@@ -6,6 +6,7 @@ module SchnitzelPress
     # use SchnitzelPress::Static
     use Rack::ShowExceptions
     use Rack::Cache
+    use Rack::StaticCache, :urls => ["/moo.txt"], :root => 'public'
     use Rack::MethodOverride
     use Rack::Session::Cookie
 
