@@ -1,13 +1,13 @@
 module SchnitzelPress
   class App < Sinatra::Base
+    STATIC_PATHS = ["/favicon.ico", "/img", "/js", '/moo.txt']
+
     set :views, ['./views/', File.expand_path('../../views/', __FILE__)]
     set :public_folder, File.expand_path('../../public/', __FILE__)
 
-    # use SchnitzelPress::Static
     use Rack::ShowExceptions
-    use Rack::Cache
     use Rack::StaticCache,
-      :urls => ["/favicon.ico", "/img", "/js"],
+      :urls => STATIC_PATHS,
       :root => File.expand_path('../../public/', __FILE__)
     use Rack::MethodOverride
     use Rack::Session::Cookie
@@ -41,6 +41,13 @@ module SchnitzelPress
 
     not_found do
       haml :"404"
+    end
+
+    def self.with_local_files
+      Rack::Cascade.new([
+        Rack::StaticCache.new(self, :urls => STATIC_PATHS, :root => './public'),
+        self
+      ])
     end
   end
 end
