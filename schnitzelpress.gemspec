@@ -19,12 +19,12 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'rack', '~> 1.4.0'
   gem.add_dependency 'sinatra', '~> 1.3.2'
   gem.add_dependency 'activesupport', '~> 3.2.0'
-  gem.add_dependency 'rack-cache', '~> 1.1'
+  gem.add_dependency 'rack-cache', '~> 1.1.0'
 
   # database related
   gem.add_dependency 'mongo', '~> 1.5.2'
-  gem.add_dependency 'mongoid', '~> 2.4'
-  gem.add_dependency 'bson_ext', '~> 1.5'
+  gem.add_dependency 'mongoid', '~> 2.4.0'
+  gem.add_dependency 'bson_ext', '~> 1.5.0'
 
   # authentication
   gem.add_dependency 'omniauth', '~> 1.0.2'
