@@ -58,7 +58,7 @@ module SchnitzelPress
     before_save :update_body_html
 
     def disqus_identifier
-      slug
+      "post-#{id}"
     end
 
     def slug
