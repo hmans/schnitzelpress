@@ -20,7 +20,6 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'rack-contrib', '~> 1.1.0'
   gem.add_dependency 'sinatra', '~> 1.3.2'
   gem.add_dependency 'activesupport', '~> 3.2.0'
-  gem.add_dependency 'rack-cache', '~> 1.1.0'
 
   # database related
   gem.add_dependency 'mongo', '~> 1.5.2'

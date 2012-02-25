@@ -3,11 +3,10 @@ require 'rubygems'
 require 'bundler'
 Bundler.require
 
-SchnitzelPress.mongo_uri =
-    ENV['MONGOLAB_URI'] ||
-    ENV['MONGOHQ_URL'] ||
-    ENV['MONGO_URL'] ||
-    'mongodb://localhost/<%= @name %>'  # used for local development
+SchnitzelPress.mongo_uri = case SchnitzelPress.env
+  when "development" then 'mongodb://localhost/<%= @name %>'
+  when "production"  then ENV['MONGOLAB_URI'] || ENV['MONGOHQ_URL'] || ENV['MONGO_URL']
+end
 
 class App < SchnitzelPress::App
   configure do
