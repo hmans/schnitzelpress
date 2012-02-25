@@ -1,7 +1,7 @@
 %section
   %h1 Administration
   %p
-    You're logged in as #{session[:user]}.
+    You're logged in as #{session[:auth][:uid]}.
   %ul.admin
     %li
       %a.green.button{:href => '/admin/new'} Create new Post
