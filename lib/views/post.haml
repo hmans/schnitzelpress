@@ -2,6 +2,14 @@
 
 = partial @post, :complete => true
 
+- if @extra_posts
+  %section.extra_posts
+    %h1= @extra_posts.first
+    %ul
+      - for post in @extra_posts.second
+        %li
+          %a{:href => post.to_url}= h post.title
+
 - if show_disqus? && @post.disqus?
   %section.disqus
     = partial 'disqus', :disqus_identifier => @post.disqus_identifier

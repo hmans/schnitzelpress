@@ -7,6 +7,8 @@ module SchnitzelPress
         get '/' do
           @show_description = true
           if @post = Post.published.pages.where(:slugs => 'home').first
+            extra_posts = Post.latest.limit(5)
+            @extra_posts = ['From the Blog:', extra_posts] if extra_posts.any?
             render_post
           else
             render_blog
