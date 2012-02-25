@@ -41,7 +41,7 @@ module SchnitzelPress
         end
 
         get '/feed/?' do
-          redirect settings.feed_url
+          redirect settings.feed_url, 307
         end
 
         get %r{^/(\d{4})/(\d{1,2})/(\d{1,2})/?$} do
