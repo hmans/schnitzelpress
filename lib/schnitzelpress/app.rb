@@ -29,7 +29,7 @@ module SchnitzelPress
       set :twitter_id, nil
       set :footer, ""
       set :administrator, nil
-      set :feed_url, '/posts.atom'
+      set :feed_url, '/blog.atom'
 
       disable :protection
       set :logging, true

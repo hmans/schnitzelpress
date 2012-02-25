@@ -33,7 +33,12 @@ module SchnitzelPress
           scss :blog
         end
 
+        # /posts.atom is now deprecated.
         get '/posts.atom' do
+          redirect '/blog.atom', 301
+        end
+
+        get '/blog.atom' do
           cache_for 3.minutes
           @posts = Post.latest.limit(10)
           content_type 'application/atom+xml; charset=utf-8'
