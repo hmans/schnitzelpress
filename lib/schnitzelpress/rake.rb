@@ -2,12 +2,9 @@ require 'schnitzelpress'
 
 desc 'Run the SchnitzelPress console'
 task :console do
-  require 'irb'
-  require 'wirble'
+  require 'pry'
   ARGV.clear
-  Wirble.init
-  Wirble.colorize
-  IRB.start
+  pry
 end
 
 namespace :db do

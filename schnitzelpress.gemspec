@@ -43,7 +43,7 @@ Gem::Specification.new do |gem|
   # CLI related
   gem.add_dependency 'thor', '~> 0.14.6'
   gem.add_dependency 'rake', '~> 0.9.2.2'
-  gem.add_dependency 'wirble', '~> 0.1.3'
+  gem.add_dependency 'pry', '~> 0.9.8'
 
   # misc
   gem.add_dependency 'chronic', '~> 0.6.7'
