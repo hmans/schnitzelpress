@@ -31,10 +31,16 @@ Mongoid.logger.level = 3
 module SchnitzelPress
   mattr_reader :mongo_uri
 
-  def self.mongo_uri=(uri)
-    Mongoid::Config.from_hash("uri" => uri)
-    SchnitzelPress::Post.create_indexes
-    @@mongo_uri = uri
+  class << self
+    def mongo_uri=(uri)
+      Mongoid::Config.from_hash("uri" => uri)
+      SchnitzelPress::Post.create_indexes
+      @@mongo_uri = uri
+    end
+
+    def env
+      (ENV['RACK_ENV'] || 'development').inquiry
+    end
   end
 end
 
