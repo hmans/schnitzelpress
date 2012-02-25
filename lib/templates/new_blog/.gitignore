@@ -3,3 +3,4 @@
 .powenv
 .sass-cache
 tmp
+.DS_Store

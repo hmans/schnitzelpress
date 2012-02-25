@@ -1,2 +1,16 @@
+$stdout.sync = true
 require File.expand_path("../app.rb", __FILE__)
-run App
+
+# Add some caching. This is designed to work out of the box
+# on Heroku, but feel free to change this if eg. you'd prefer
+# to use Memcache.
+#
+use Rack::Cache, {
+  :verbose     => true,
+  :metastore   => URI.encode("file:/tmp/cache/meta"),
+  :entitystore => URI.encode("file:/tmp/cache/body")
+}
+
+# Run the app
+#
+run App.with_local_files
