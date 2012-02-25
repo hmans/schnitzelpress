@@ -42,7 +42,7 @@ describe SchnitzelPress::App do
 
     subject { last_response }
     it { should be_redirect }
-    its(:status) { should == 302 }
+    its(:status) { should == 307 }
     specify { subject["Location"].should == 'http://feeds.feedburner.com/example_org' }
   end
 
