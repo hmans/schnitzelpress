@@ -19,6 +19,11 @@
     - when :datetime
       %input{field_options.merge(:value => options[:value].to_formatted_s(:db))}
 
+    - when :boolean
+      %input{field_options.merge(:type => 'hidden', :value => "0")}
+      %input{field_options.merge(:type => 'checkbox', :value => "1", :checked => options[:value])}
+      %span.value Enable
+
     - else # normal inputs
       %input{field_options.merge(:value => options[:value])}
 
