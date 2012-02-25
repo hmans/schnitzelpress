@@ -161,8 +161,16 @@ module SchnitzelPress
       published_at.day
     end
 
+    def home_page?
+      slug == 'home'
+    end
+
     def to_url
-      published_at.present? ? "/#{year}/#{month}/#{day}/#{slug}/" : "/#{slug}/"
+      if home_page?
+        '/'
+      else
+        published_at.present? ? "/#{year}/#{month}/#{day}/#{slug}/" : "/#{slug}/"
+      end
     end
 
     def disqus?

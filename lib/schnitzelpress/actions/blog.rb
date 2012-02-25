@@ -87,7 +87,7 @@ module SchnitzelPress
             if enforce_canonical_url && request.path != url_for(@post)
               redirect url_for(@post)
             else
-              @show_description = (@post.slug == 'home')
+              @show_description = @post.home_page?
               haml :post
             end
           else
