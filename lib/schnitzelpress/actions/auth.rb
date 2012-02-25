@@ -11,7 +11,7 @@ module SchnitzelPress
 
         post '/auth/:provider/callback' do
           auth = request.env['omniauth.auth']
-          session[:user] = "#{auth['provider']}:#{auth['uid']}"
+          session[:auth] = {:provider => auth['provider'], :uid => auth['uid']}
           redirect admin_logged_in? ? '/admin/' : '/'
         end
 
@@ -20,7 +20,7 @@ module SchnitzelPress
         end
 
         get '/logout' do
-          session[:user] = nil
+          session[:auth] = nil
           redirect '/login'
         end
       end

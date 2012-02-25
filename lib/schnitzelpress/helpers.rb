@@ -40,11 +40,11 @@ module SchnitzelPress
     end
 
     def user_logged_in?
-      session[:user].present?
+      session[:auth].present?
     end
 
     def admin_logged_in?
-      user_logged_in? && session[:user] == settings.administrator
+      user_logged_in? && session[:auth] == settings.administrator
     end
 
     def admin_only!
