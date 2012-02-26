@@ -27,13 +27,13 @@ Sass::Engine::DEFAULT_OPTIONS[:load_paths].unshift(File.expand_path("./views"))
 
 Mongoid.logger.level = 3
 
-module SchnitzelPress
+module Schnitzelpress
   mattr_reader :mongo_uri
 
   class << self
     def mongo_uri=(uri)
       Mongoid::Config.from_hash("uri" => uri)
-      SchnitzelPress::Post.create_indexes
+      Schnitzelpress::Post.create_indexes
       @@mongo_uri = uri
     end
 
@@ -48,7 +48,7 @@ module Haml::Filters::Redcarpet
   include Haml::Filters::Base
 
   def render(text)
-    Redcarpet::Markdown.new(SchnitzelPress::MarkdownRenderer,
+    Redcarpet::Markdown.new(Schnitzelpress::MarkdownRenderer,
       :autolink => true, :space_after_headers => true, :fenced_code_blocks => true).
       render(text)
   end

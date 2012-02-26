@@ -1,4 +1,4 @@
-module SchnitzelPress
+module Schnitzelpress
   module Actions
     module Blog
       extend ActiveSupport::Concern

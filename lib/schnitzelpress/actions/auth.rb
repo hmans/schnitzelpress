@@ -1,7 +1,7 @@
 require 'omniauth'
 require 'omniauth-browserid'
 
-module SchnitzelPress
+module Schnitzelpress
   module Actions
     module Auth
       extend ActiveSupport::Concern

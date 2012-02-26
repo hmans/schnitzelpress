@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe SchnitzelPress::Post do
+describe Schnitzelpress::Post do
   subject do
     Factory.build(:post)
   end
@@ -81,7 +81,7 @@ describe SchnitzelPress::Post do
     it 'should return the latest published posts' do
       2.times { Factory :draft_post }
       5.times { Factory :published_post }
-      SchnitzelPress::Post.latest.size.should == 5
+      Schnitzelpress::Post.latest.size.should == 5
     end
   end
 

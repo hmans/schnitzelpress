@@ -13,7 +13,7 @@ Gem::Specification.new do |gem|
   gem.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   gem.name          = "schnitzelpress"
   gem.require_paths = ["lib"]
-  gem.version       = SchnitzelPress::VERSION
+  gem.version       = Schnitzelpress::VERSION
 
   # base dependencies
   gem.add_dependency 'rack', '~> 1.4.1'

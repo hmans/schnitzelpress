@@ -1,4 +1,4 @@
-# SchnitzelPress
+# Schnitzelpress
 
 ## A lean, mean blogging machine for hackers and fools.
 

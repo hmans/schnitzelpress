@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :post, :class => SchnitzelPress::Post do
+  factory :post, :class => Schnitzelpress::Post do
     title { Faker::Lorem.sentence }
     body  { Faker::Lorem.paragraphs }
     published_at { Time.now }

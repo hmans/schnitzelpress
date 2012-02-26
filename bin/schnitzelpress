@@ -2,4 +2,4 @@
 require "rubygems"
 require "schnitzelpress/cli"
 
-SchnitzelPress::Cli.start
+Schnitzelpress::Cli.start

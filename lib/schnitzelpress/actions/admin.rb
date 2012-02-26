@@ -1,4 +1,4 @@
-module SchnitzelPress
+module Schnitzelpress
   module Actions
     module Admin
       extend ActiveSupport::Concern

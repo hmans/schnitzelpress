@@ -1,4 +1,4 @@
-module SchnitzelPress
+module Schnitzelpress
   class Static
     def initialize(app, public_dir = './public')
       @file = Rack::File.new(public_dir)

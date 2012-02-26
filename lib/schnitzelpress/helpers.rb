@@ -1,4 +1,4 @@
-module SchnitzelPress
+module Schnitzelpress
   module Helpers
     def h(*args)
       escape_html(*args)

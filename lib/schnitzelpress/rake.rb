@@ -1,6 +1,6 @@
 require 'schnitzelpress'
 
-desc 'Run the SchnitzelPress console'
+desc 'Run the Schnitzelpress console'
 task :console do
   require 'pry'
   ARGV.clear
@@ -10,11 +10,11 @@ end
 namespace :db do
   desc 'Import Heroku database to local database'
   task :pull do
-    system "MONGO_URL=\"#{SchnitzelPress.mongo_uri}\" heroku mongo:pull"
+    system "MONGO_URL=\"#{Schnitzelpress.mongo_uri}\" heroku mongo:pull"
   end
 
   desc 'Push local database to Heroku'
   task :push do
-    system "MONGO_URL=\"#{SchnitzelPress.mongo_uri}\" heroku mongo:push"
+    system "MONGO_URL=\"#{Schnitzelpress.mongo_uri}\" heroku mongo:push"
   end
 end

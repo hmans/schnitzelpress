@@ -7,7 +7,7 @@ SoundCloudProvider = OEmbed::Provider.new("http://soundcloud.com/oembed", :json)
 SoundCloudProvider << "http://*.soundcloud.com/*"
 OEmbed::Providers.register(SoundCloudProvider)
 
-module SchnitzelPress
+module Schnitzelpress
   class Post
     include Mongoid::Document
     include Mongoid::Timestamps

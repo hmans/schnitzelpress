@@ -1,12 +1,12 @@
 require 'spec_helper'
 
-class TestApp < SchnitzelPress::App
+class TestApp < Schnitzelpress::App
   configure do
     set :blog_title, "A Test Blog"
   end
 end
 
-describe SchnitzelPress::App do
+describe Schnitzelpress::App do
   include Rack::Test::Methods
 
   def app

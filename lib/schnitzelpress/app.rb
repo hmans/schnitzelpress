@@ -1,4 +1,4 @@
-module SchnitzelPress
+module Schnitzelpress
   class App < Sinatra::Base
     STATIC_PATHS = ["/favicon.ico", "/img", "/js"]
 
@@ -12,14 +12,14 @@ module SchnitzelPress
     use Rack::MethodOverride
     use Rack::Session::Cookie
 
-    helpers SchnitzelPress::Helpers
+    helpers Schnitzelpress::Helpers
     include Rack::Utils
-    include SchnitzelPress::Actions::Auth
-    include SchnitzelPress::Actions::Admin
-    include SchnitzelPress::Actions::Blog
+    include Schnitzelpress::Actions::Auth
+    include Schnitzelpress::Actions::Admin
+    include Schnitzelpress::Actions::Blog
 
     configure do
-      set :blog_title, "My SchnitzelPress Blog"
+      set :blog_title, "My Schnitzelpress Blog"
       set :blog_description, ""
       set :author_name, "Author"
       set :disqus_name, nil

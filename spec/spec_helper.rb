@@ -7,7 +7,7 @@ require 'bundler/setup'
 
 require 'schnitzelpress'
 
-SchnitzelPress.mongo_uri = 'mongodb://localhost/_schreihals_test'
+Schnitzelpress.mongo_uri = 'mongodb://localhost/_schreihals_test'
 
 require 'awesome_print'
 require 'rack/test'
