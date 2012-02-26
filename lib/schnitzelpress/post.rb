@@ -122,7 +122,7 @@ module SchnitzelPress
       @@markdown ||= Redcarpet::Markdown.new(MarkdownRenderer,
         :autolink => true, :space_after_headers => true, :fenced_code_blocks => true)
 
-      @@markdown.render(body)
+      @@markdown.render(body.to_s)
     end
 
     def post?
