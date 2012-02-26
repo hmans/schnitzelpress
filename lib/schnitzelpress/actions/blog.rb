@@ -24,10 +24,11 @@ module SchnitzelPress
           total_count   = Post.latest.count
           skipped_count = params[:page].to_i * 10
           @posts = Post.latest.skip(skipped_count).limit(10)
-          displayed_count = @posts.count(true)
 
+          displayed_count = @posts.count(true)
           @show_previous_posts_button = total_count > skipped_count + displayed_count
-          haml :index
+
+          render_posts
         end
 
         get '/blog.css' do
@@ -54,19 +55,19 @@ module SchnitzelPress
         get %r{^/(\d{4})/(\d{1,2})/(\d{1,2})/?$} do
           year, month, day = params[:captures]
           @posts = Post.latest.for_day(year.to_i, month.to_i, day.to_i)
-          haml :index
+          render_posts
         end
 
         get %r{^/(\d{4})/(\d{1,2})/?$} do
           year, month = params[:captures]
           @posts = Post.latest.for_month(year.to_i, month.to_i)
-          haml :index
+          render_posts
         end
 
         get %r{^/(\d{4})/?$} do
           year = params[:captures].first
           @posts = Post.latest.for_year(year.to_i)
-          haml :index
+          render_posts
         end
 
         get '/:year/:month/:day/:slug/?' do |year, month, day, slug|
@@ -89,12 +90,25 @@ module SchnitzelPress
             if enforce_canonical_url && request.path != url_for(@post)
               redirect url_for(@post)
             else
+              fresh_when :last_modified => @post.updated_at, :etag => @post.to_etag
+              cache_for 60
+
               @show_description = @post.home_page?
               haml :post
             end
           else
             halt 404
           end
+        end
+
+        def render_posts
+          if freshest_post = @posts.where(:updated_at.ne => nil).desc(:updated_at).first
+            fresh_when :last_modified => freshest_post.updated_at,
+              :etag => freshest_post.to_etag
+            cache_for 60
+          end
+
+          haml :index
         end
       end
     end
