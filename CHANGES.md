@@ -1,5 +1,6 @@
 == 0.2.0 (unreleased)
 
+* Rebranded from SchnitzelPress to Schnitzelpress. (You'll probably need to change your blog app's code for this.)
 
 == 0.1.1 (2012-02-26)
 
