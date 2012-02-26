@@ -170,7 +170,7 @@ module Schnitzelpress
       if home_page?
         '/'
       else
-        published_at.present? ? "/#{year}/#{month}/#{day}/#{slug}/" : "/#{slug}/"
+        published_at.present? ? "/#{sprintf '%04d', year}/#{sprintf '%02d', month}/#{sprintf '%02d', day}/#{slug}/" : "/#{slug}/"
       end
     end
 

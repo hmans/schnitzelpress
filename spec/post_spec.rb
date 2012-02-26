@@ -91,4 +91,11 @@ describe Schnitzelpress::Post do
     its(:month) { should == 01 }
     its(:day)   { should == 02 }
   end
+
+  context 'to_url' do
+    it 'should produce double-digit months and days' do
+      @post = Factory.build(:post, :published_at => '2012-1-1 12:00:00', :slug => 'test')
+      @post.to_url.should == '/2012/01/01/test/'
+    end
+  end
 end
