@@ -10,6 +10,7 @@ OEmbed::Providers.register(SoundCloudProvider)
 module SchnitzelPress
   class Post
     include Mongoid::Document
+    include Mongoid::Timestamps
     store_in :posts
 
     # basic data
@@ -171,6 +172,10 @@ module SchnitzelPress
       else
         published_at.present? ? "/#{year}/#{month}/#{day}/#{slug}/" : "/#{slug}/"
       end
+    end
+
+    def to_etag
+      Digest::MD5.hexdigest("-#{id}-#{updated_at}-")
     end
 
     def disqus?

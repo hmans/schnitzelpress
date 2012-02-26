@@ -36,7 +36,12 @@ module SchnitzelPress
     end
 
     def cache_for(time)
-      cache_control :public, :must_revalidate, :max_age => time.to_i
+      cache_control :public, :must_revalidate, :s_maxage => 2, :max_age => time.to_i
+    end
+
+    def fresh_when(options)
+      last_modified options[:last_modified]
+      etag options[:etag]
     end
 
     not_found do
