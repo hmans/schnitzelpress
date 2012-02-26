@@ -5,7 +5,7 @@
 - if @extra_posts
   %section.extra_posts
     %h1
-      %a{href: '/blog'}= @extra_posts.first
+      %a{:href => '/blog'}= @extra_posts.first
     %ul
       - for post in @extra_posts.second
         %li
