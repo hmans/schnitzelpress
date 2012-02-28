@@ -4,6 +4,7 @@
   = form_field @post, :link, :placeholder => "Optional link to external URL."
   = form_field @post, :summary, :type => :textarea, :rows => 5, :placeholder => "An optional summary of your post. Markdown formatting available."
   = form_field @post, :body, :type => :textarea, :rows => 20, :placeholder => "Your post's body of text. Markdown formatting available."
+  #editor
   = form_field @post, :read_more, :label => "'Read More' Link Text", :placeholder => "When supplying a summary text, this will be the link to the full post."
 
   .row
@@ -18,3 +19,21 @@
 
   .buttons
     %input{:type => 'submit', :value => @post.new_record? ? 'Create Post' : 'Update Post' }
+
+  :javascript
+    window.onload = function() {
+      var editor = ace.edit("editor");
+      editor.setTheme("ace/theme/clouds");
+
+      var MarkdownMode = require("ace/mode/markdown").Mode;
+      editor.getSession().setMode(new MarkdownMode());
+
+      editor.setHighlightActiveLine(false);
+      editor.getSession().setUseWrapMode(true);
+      editor.renderer.setShowGutter(false);
+
+
+      var textarea = $('textarea[name="post[body]"]')
+      textarea.hide();
+      editor.getSession().setValue(textarea.val());
+    };

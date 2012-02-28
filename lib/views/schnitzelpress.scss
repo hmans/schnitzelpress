@@ -62,6 +62,14 @@ ul.admin-post-list {
 
 // forms
 .input.post_title input { @include large-type; }
+#editor {
+  position: relative;
+  width: 600px;
+  height: 400px;
+  background-color: #ddd;
+  padding: 5px;
+  border-radius: 3px;
+}
 
 // welcome message
 section.posts #welcome {
