@@ -39,6 +39,7 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'i18n', '~> 0.6.0'
   gem.add_dependency 'tilt', '~> 1.3.0'
   gem.add_dependency 'ruby-oembed', '~> 0.8.5'
+  gem.add_dependency 'packr', '~> 3.1.1'
 
   # CLI related
   gem.add_dependency 'thor', '~> 0.14.6'

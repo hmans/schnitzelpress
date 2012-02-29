@@ -1,11 +1,5 @@
 require 'spec_helper'
 
-class TestApp < Schnitzelpress::App
-  configure do
-    set :blog_title, "A Test Blog"
-  end
-end
-
 describe Schnitzelpress::App do
   include Rack::Test::Methods
 

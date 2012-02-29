@@ -15,6 +15,7 @@ module Schnitzelpress
     helpers Schnitzelpress::Helpers
     include Rack::Utils
     include Schnitzelpress::Actions::Auth
+    include Schnitzelpress::Actions::Assets
     include Schnitzelpress::Actions::Admin
     include Schnitzelpress::Actions::Blog
 
@@ -33,10 +34,6 @@ module Schnitzelpress
 
       disable :protection
       set :logging, true
-    end
-
-    def cache_for(time)
-      cache_control :public, :must_revalidate, :s_maxage => 2, :max_age => time.to_i
     end
 
     def fresh_when(options)

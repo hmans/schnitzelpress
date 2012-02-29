@@ -31,18 +31,14 @@ module Schnitzelpress
           render_posts
         end
 
-        get '/blog.css' do
-          cache_for 1.hour
-          scss :blog
-        end
-
         # /posts.atom is now deprecated.
         get '/posts.atom' do
           redirect '/blog.atom', 301
         end
 
         get '/blog.atom' do
-          cache_for 3.minutes
+          cache_control :public, :must_revalidate, :s_maxage => 2, :max_age => 3.minutes.to_i
+
           @posts = Post.latest.limit(10)
           content_type 'application/atom+xml; charset=utf-8'
           haml :atom, :format => :xhtml, :layout => false
@@ -91,9 +87,9 @@ module Schnitzelpress
               redirect url_for(@post)
             else
               fresh_when :last_modified => @post.updated_at, :etag => @post.to_etag
-              cache_for 60
-
               @show_description = @post.home_page?
+
+              cache_control :public, :must_revalidate, :s_maxage => 2, :max_age => 60
               haml :post
             end
           else
@@ -103,11 +99,10 @@ module Schnitzelpress
 
         def render_posts
           if freshest_post = @posts.where(:updated_at.ne => nil).desc(:updated_at).first
-            fresh_when :last_modified => freshest_post.updated_at,
-              :etag => freshest_post.to_etag
-            cache_for 60
+            fresh_when :last_modified => freshest_post.updated_at, :etag => freshest_post.to_etag
           end
 
+          cache_control :public, :must_revalidate, :s_maxage => 2, :max_age => 60
           haml :index
         end
       end
