@@ -21,20 +21,16 @@ module Schnitzelpress
     include Schnitzelpress::Actions::Blog
 
     configure do
-      set :blog_title, "My Schnitzelpress Blog"
-      set :blog_description, ""
-      set :author_name, "Author"
-      set :disqus_name, nil
-      set :google_analytics_id, nil
-      set :gauges_id, nil
-      set :read_more, "Read Complete Article"
-      set :twitter_id, nil
-      set :footer, ""
-      set :administrator, nil
-      set :feed_url, '/blog.atom'
-
       disable :protection
       set :logging, true
+    end
+
+    before do
+      # Reload configuration before every request. I know this isn't ideal,
+      # but right now it's the easiest way to get the configuration in synch
+      # across multiple instances of the app.
+      #
+      Config.instance.reload unless Config.instance.new_record?
     end
 
     def fresh_when(options)

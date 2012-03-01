@@ -4,7 +4,7 @@ describe Schnitzelpress::App do
   include Rack::Test::Methods
 
   def app
-    TestApp
+    Schnitzelpress::App
   end
 
   describe 'the home page' do
@@ -17,7 +17,7 @@ describe Schnitzelpress::App do
     subject { last_response }
 
     it { should be_ok }
-    its(:body) { should have_tag 'title', :text => "A Test Blog" }
+    its(:body) { should have_tag 'title', :text => Schnitzelpress::Config.instance.blog_title }
     its(:body) { should have_tag 'section.posts > article.post.published', :count => 5 }
     its(:body) { should_not have_tag 'section.posts > article.post.draft' }
   end
@@ -30,7 +30,7 @@ describe Schnitzelpress::App do
 
   describe 'the public feed url' do
     before do
-      TestApp.set :feed_url, 'http://feeds.feedburner.com/example_org'
+      Schnitzelpress::Config.instance.blog_feed_url = 'http://feeds.feedburner.com/example_org'
       get '/feed'
     end
 

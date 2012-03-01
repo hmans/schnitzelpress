@@ -21,6 +21,10 @@ module Schnitzelpress
       haml :"partials/_#{name}", :locals => { name.to_sym => thing }.merge(locals)
     end
 
+    def config
+      Schnitzelpress::Config.instance
+    end
+
     def set_page_title(title)
       @page_title = title
     end
@@ -32,7 +36,7 @@ module Schnitzelpress
     end
 
     def show_disqus?
-      settings.disqus_name.present?
+      config.disqus_id.present?
     end
 
     def production?
@@ -44,7 +48,10 @@ module Schnitzelpress
     end
 
     def admin_logged_in?
-      user_logged_in? && session[:auth] == settings.administrator
+      user_logged_in? && session[:auth] == {
+        :provider => "browser_id",
+        :uid => config.author_email
+      }
     end
 
     def admin_only!
@@ -53,7 +60,7 @@ module Schnitzelpress
 
     def form_field(object, attribute, options = {})
       options = {
-        :label => attribute.to_s.humanize,
+        :label => attribute.to_s.humanize.titleize,
         :value => object.send(attribute),
         :errors => object.errors[attribute.to_sym],
         :class_name => object.class.to_s.demodulize.underscore

@@ -1,13 +1,13 @@
 !!! XML
 %feed{:xmlns => 'http://www.w3.org/2005/Atom'}
-  %title= settings.blog_title
+  %title= config.blog_title
   %link{:href => url_for('/', :absolute => true)}
   %id= base_url
   - if @posts.any?
     %updated= @posts.first.published_at
 
   %author
-    %name= settings.author_name
+    %name= config.author_name
 
   - @posts.each do |post|
     %entry
@@ -17,7 +17,7 @@
       %published= post.published_at
       %updated= post.published_at
       %author
-        %name= settings.author_name
+        %name= config.author_name
       %content{:type => 'html'}
         :cdata
           #{post.to_html}

@@ -4,7 +4,8 @@
     You're logged in as #{session[:auth][:uid]}.
   %ul.admin
     %li
-      %a.green.button{:href => '/admin/new'} Create new Post
+      %a.green.button{:href => '/admin/new'} Create new Post or Page
+      %a.blue.button{:href => '/admin/config'} Configuration
       %a.red.button{:href => '/logout'} Logout
 
   = partial "admin_post_list", :posts => @drafts, :title => "Drafts"

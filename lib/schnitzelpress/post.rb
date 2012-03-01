@@ -174,10 +174,6 @@ module Schnitzelpress
       end
     end
 
-    def to_etag
-      Digest::MD5.hexdigest("-#{id}-#{updated_at}-")
-    end
-
     def disqus?
       disqus && published?
     end

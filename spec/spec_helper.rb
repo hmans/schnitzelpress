@@ -34,9 +34,3 @@ RSpec.configure do |config|
     DatabaseCleaner[:mongoid].clean
   end
 end
-
-class TestApp < Schnitzelpress::App
-  configure do
-    set :blog_title, "A Test Blog"
-  end
-end

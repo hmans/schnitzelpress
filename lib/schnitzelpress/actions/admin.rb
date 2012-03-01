@@ -15,6 +15,20 @@ module Schnitzelpress
           haml :'admin/admin'
         end
 
+        get '/admin/config/?' do
+          haml :'admin/config'
+        end
+
+        post '/admin/config' do
+          config.attributes = params[:config]
+          if config.save
+            CacheControl.bust!
+            redirect '/admin'
+          else
+            haml :'admin/config'
+          end
+        end
+
         get '/admin/new/?' do
           @post = Post.new
           haml :'admin/new'

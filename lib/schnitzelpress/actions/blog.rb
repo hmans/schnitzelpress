@@ -45,7 +45,7 @@ module Schnitzelpress
         end
 
         get '/feed/?' do
-          redirect settings.feed_url, 307
+          redirect config.blog_feed_url, 307
         end
 
         get %r{^/(\d{4})/(\d{1,2})/(\d{1,2})/?$} do
@@ -86,7 +86,9 @@ module Schnitzelpress
             if enforce_canonical_url && request.path != url_for(@post)
               redirect url_for(@post)
             else
-              fresh_when :last_modified => @post.updated_at, :etag => @post.to_etag
+              fresh_when :last_modified => @post.updated_at,
+                :etag => CacheControl.etag(@post.updated_at)
+
               @show_description = @post.home_page?
 
               cache_control :public, :must_revalidate, :s_maxage => 2, :max_age => 60
@@ -99,7 +101,8 @@ module Schnitzelpress
 
         def render_posts
           if freshest_post = @posts.where(:updated_at.ne => nil).desc(:updated_at).first
-            fresh_when :last_modified => freshest_post.updated_at, :etag => freshest_post.to_etag
+            fresh_when :last_modified => freshest_post.updated_at,
+              :etag => CacheControl.etag(freshest_post.updated_at)
           end
 
           cache_control :public, :must_revalidate, :s_maxage => 2, :max_age => 60

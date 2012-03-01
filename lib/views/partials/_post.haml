@@ -4,7 +4,7 @@
 - show_body      ||= complete || !show_summary
 - show_read_more ||= !complete && post.summary.present?
 - show_permalink ||= true
-- show_twitter   ||= complete && post.post? && settings.twitter_id.present?
+- show_twitter   ||= complete && post.post? && config.twitter_id.present?
 
 %article.post{:class => [post.status, post.link_post? ? 'link' : 'article']}
   %header
@@ -19,7 +19,7 @@
       ~ markdown post.summary
       - if show_read_more
         %p
-          %a{:href => url_for(post)}= post.read_more.presence || settings.read_more
+          %a{:href => url_for(post)}= post.read_more.presence || "Read Complete Article"
           →
 
   - if show_body
@@ -33,6 +33,6 @@
     - if show_twitter
       .social_media_buttons
         - if show_twitter
-          %a{:href => "https://twitter.com/share", :class => "twitter-share-button", :data => {:via => settings.twitter_id}}
+          %a{:href => "https://twitter.com/share", :class => "twitter-share-button", :data => {:via => config.twitter_id}}
           :javascript
             !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");

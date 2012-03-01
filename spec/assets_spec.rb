@@ -4,7 +4,7 @@ describe 'Schnitzelpress::Actions::Assets' do
   include Rack::Test::Methods
 
   def app
-    TestApp
+    Schnitzelpress::App
   end
 
   describe '/assets/schnitzelpress.*.js' do

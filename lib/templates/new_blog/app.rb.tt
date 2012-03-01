@@ -7,28 +7,3 @@ Schnitzelpress.mongo_uri = case Schnitzelpress.env
   when "development" then 'mongodb://localhost/<%= @name %>'
   when "production"  then ENV['MONGOLAB_URI'] || ENV['MONGOHQ_URL'] || ENV['MONGO_URL']
 end
-
-class App < Schnitzelpress::App
-  configure do
-    set :blog_title, "<%= @name %>"
-    set :blog_description, "A new blog powered by Schnitzelpress."
-    set :author_name, "Your Name"
-    set :footer, "powered by [Schnitzelpress #{Schnitzelpress::VERSION}](http://schnitzelpress.org)"
-
-    # Set :uid to your email address. Only the user with this email address
-    # will be able to log into the administration section of your blog.
-    #
-    set :administrator, {
-      :provider => "browser_id",  # don't change this. (for now.)
-      :uid      => "your@email.com"
-    }
-
-    # The following are optional:
-    #
-    # set :disqus_name, "..."
-    # set :google_analytics_id, "..."
-    # set :gauges_id, "..."
-    # set :twitter_id, '...'
-    # set :read_more, "Read ALL the things"
-  end
-end

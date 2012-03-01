@@ -1,0 +1,28 @@
+- set_page_title "Configuration"
+
+%section
+  %form.post{:action => '/admin/config', :method => 'post'}
+    %h2 Blog
+    = form_field config, :blog_title
+    = form_field config, :blog_description
+    = form_field config, :blog_footer
+
+    %h2 Author
+    = form_field config, :author_name
+    = form_field config, :author_email, :hint => "This is used for authentication - make sure you don't lock yourself out!"
+
+    %h2 External Services
+    = form_field config, :blog_feed_url, :label => "ATOM Feed URL", :hint => "This is what the /feed URL will redirect to. You can change this to eg. your FeedBurner URL."
+    .row
+      .six.columns
+        = form_field config, :disqus_id, :label => "Disqus shortname"
+      .six.columns
+        = form_field config, :twitter_id, :label => "Twitter user name"
+    .row
+      .six.columns
+        = form_field config, :google_analytics_id, :label => "Google Analytics ID"
+      .six.columns
+        = form_field config, :gauges_id, :label => "Gauges ID"
+
+    .buttons
+      %input{:type => 'submit', :value => 'Update Configuration'}
