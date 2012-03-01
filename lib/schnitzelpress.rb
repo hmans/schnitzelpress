@@ -13,6 +13,7 @@ require 'active_support/inflector'
 require 'active_support/core_ext/class'
 require 'active_support/concern'
 
+require 'schnitzelpress/env'
 require 'schnitzelpress/static'
 require 'schnitzelpress/helpers'
 require 'schnitzelpress/markdown_renderer'
@@ -36,10 +37,6 @@ module Schnitzelpress
       Mongoid::Config.from_hash("uri" => uri)
       Schnitzelpress::Post.create_indexes
       @@mongo_uri = uri
-    end
-
-    def env
-      (ENV['RACK_ENV'] || 'development').inquiry
     end
   end
 end
