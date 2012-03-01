@@ -6,6 +6,7 @@ require 'sass'
 require 'redcarpet'
 require 'schnitzelstyle'
 require 'rack/contrib'
+require 'rack/cache'
 require 'mongoid'
 require 'chronic'
 

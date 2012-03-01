@@ -1,5 +1,11 @@
 == 0.2.0 (unreleased)
 
+Upgrade Notes:
+
+* Schnitzelpress now adds Rack::Cache in production by itself; you no longer need to do it in your blog app's config.ru file. It is recommended that you remove the Rack::Cache invocation from your app.
+
+Changes:
+
 * Schnitzelpress now has a light-weight, custom-built asset pipeline that serves all Javascripts and Stylesheets as one single file each, compressed and ready for hardcore caching.
 * Post with dates now use double-digit days and months in their canonical URLs. (Your existing posts will forward to the new canonical URLs automatically.)
 * Rebranded from SchnitzelPress to Schnitzelpress. (You'll probably need to change your blog app's code for this.)

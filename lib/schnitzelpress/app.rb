@@ -5,6 +5,7 @@ module Schnitzelpress
     set :views, ['./views/', File.expand_path('../../views/', __FILE__)]
     set :public_folder, File.expand_path('../../public/', __FILE__)
 
+    use Rack::Cache if Schnitzelpress.env.production?
     use Rack::ShowExceptions
     use Rack::StaticCache,
       :urls => STATIC_PATHS,

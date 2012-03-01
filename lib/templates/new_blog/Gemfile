@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 
 gem 'unicorn', '~> 4.2.0'
-gem 'rack-cache', '~> 1.1.0', :require => 'rack/cache'
 gem 'schnitzelpress', '~> 0.1.0'
 
 group :development do
