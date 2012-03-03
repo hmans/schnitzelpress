@@ -1,4 +1,4 @@
-== 0.2.0 (unreleased)
+## 0.2.0 (unreleased)
 
 Upgrade Notes:
 
@@ -13,11 +13,11 @@ Changes:
 * Post with dates now use double-digit days and months in their canonical URLs. (Your existing posts will forward to the new canonical URLs automatically.)
 * Various performance improvements.
 
-== 0.1.1 (2012-02-26)
+## 0.1.1 (2012-02-26)
 
 * Add improved caching of post views and post indices.
 * Minor bugfixes.
 
-== 0.1.0 (2012-02-25)
+## 0.1.0 (2012-02-25)
 
 * Initial Release
