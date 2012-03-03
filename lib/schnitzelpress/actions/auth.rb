@@ -18,7 +18,12 @@ module Schnitzelpress
             config.update_attributes!(:author_email => auth['uid'])
           end
 
-          redirect admin_logged_in? ? '/admin/' : '/'
+          if admin_logged_in?
+            response.set_cookie('show_admin', :value => true, :path => '/')
+            redirect '/admin/'
+          else
+            redirect '/'
+          end
         end
 
         get '/login' do
@@ -27,6 +32,8 @@ module Schnitzelpress
 
         get '/logout' do
           session[:auth] = nil
+          response.delete_cookie('show_admin')
+
           redirect '/login'
         end
       end

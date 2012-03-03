@@ -1,3 +1,5 @@
+require "sinatra/content_for"
+
 module Schnitzelpress
   class App < Sinatra::Base
     STATIC_PATHS = ["/favicon.ico", "/img", "/js"]
@@ -13,6 +15,7 @@ module Schnitzelpress
     use Rack::MethodOverride
     use Rack::Session::Cookie
 
+    helpers Sinatra::ContentFor
     helpers Schnitzelpress::Helpers
     include Rack::Utils
     include Schnitzelpress::Actions::Auth

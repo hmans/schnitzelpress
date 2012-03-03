@@ -6,7 +6,7 @@ module Schnitzelpress
     def self.pack_javascripts!(files)
       plain = files.map do |filename|
         File.read(File.expand_path("../lib/assets/js/#{filename}", settings.root))
-      end.join('\n')
+      end.join("\n")
 
       Packr.pack(plain)
     end
@@ -17,7 +17,7 @@ module Schnitzelpress
       extend ActiveSupport::Concern
 
       ASSET_TIMESTAMP = Time.now.to_i
-      JAVASCRIPT_ASSETS = ['schnitzelpress.js']
+      JAVASCRIPT_ASSETS = ['jquery.cookie.js', 'schnitzelpress.js']
 
       included do
         get '/assets/schnitzelpress.:timestamp.css' do

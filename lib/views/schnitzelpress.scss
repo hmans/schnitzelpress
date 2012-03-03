@@ -8,6 +8,34 @@ body, .container {
   background-image: url(/img/background.png);
 }
 
+.admin_only {
+  display: none;
+  body.show_admin & { display: block; }
+}
+
+/* action panel */
+#actions {
+  @include small-type;
+  margin: 5px;
+
+  a {
+    display: inline-block;
+    padding: 3px 6px;
+    background-color: $color-text;
+    color: $color-background;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 3px;
+    @include appear-on-hover;
+  }
+
+  @media only screen and (min-width: 641px) {
+    position: fixed;
+    top: 0px;
+    right: 0px;
+  }
+}
+
 /* posts */
 article.post {
   header {
@@ -31,8 +59,7 @@ article.post {
       @include animated;
 
       margin: 2em 0;
-      opacity: 0.3;
-      &:hover { opacity: 1 }
+      @include appear-on-hover;
     }
   }
 }
