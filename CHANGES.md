@@ -8,6 +8,7 @@ Upgrade Notes:
 
 Changes:
 
+* The various available rake tasks have been moved to the `schnitzelpress` command line tool.
 * Most of your blog's configuration is now stored in MongoDB and can be modified from the new "Configuration" page in your the admin panel.
 * Schnitzelpress now has a light-weight, custom-built asset pipeline that serves all Javascripts and Stylesheets as one single file each, compressed and ready for hardcore caching.
 * Post with dates now use double-digit days and months in their canonical URLs. (Your existing posts will forward to the new canonical URLs automatically.)
