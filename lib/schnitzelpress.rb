@@ -41,6 +41,11 @@ module Schnitzelpress
       Schnitzelpress::Post.create_indexes
       @@mongo_uri = uri
     end
+
+    def init!
+      Mongoid.load!("./config/mongo.yml")
+      Schnitzelpress::Post.create_indexes
+    end
   end
 end
 
