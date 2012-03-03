@@ -46,6 +46,11 @@ module Schnitzelpress
       Mongoid.load!("./config/mongo.yml")
       Schnitzelpress::Post.create_indexes
     end
+
+    def omnomnom!
+      init!
+      App.with_local_files
+    end
   end
 end
 
