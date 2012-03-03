@@ -2,7 +2,7 @@ module Schnitzelpress
   class Config
     include Mongoid::Document
     include Mongoid::Timestamps
-    identity type: String
+    identity :type => String
     store_in :config
 
     field :blog_title, :type => String, :default => "A New Schnitzelpress Blog"
