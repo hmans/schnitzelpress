@@ -10,7 +10,7 @@
   %header
     - if show_title
       %h1
-        %a{:href => post.link || post.to_url}= h post.title
+        %a.instapaper_title{:href => post.link || post.to_url}= h post.title
         - if post.link_post?
           %span.link-arrow ➝
 
@@ -23,7 +23,8 @@
           →
 
   - if show_body
-    ~ post.to_html
+    .instapaper_body
+      ~ post.to_html
 
   %footer
     - if show_permalink
