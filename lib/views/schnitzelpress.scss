@@ -79,12 +79,33 @@ ul.admin {
   }
 }
 
-ul.admin-post-list {
+div.admin-post-list {
   padding: 5px 0;
   max-height: 300px;
   overflow: auto;
   border-bottom: 1px dotted rgba($color-text, 0.5);
   border-top: 1px dotted rgba($color-text, 0.5);
+  .icons {
+    display: none;
+    text-align: right;
+    a {
+      color: $color-footer;
+      &:hover { color: $color-text };
+    }
+  }
+  .row {
+    padding: 3px;
+    margin-bottom: 0;
+    &:hover {
+      background-color: rgba($color-text, 0.05);
+      .icons {
+        display: block;
+      }
+    }
+  }
+  a {
+    border: none;
+  }
 }
 
 // forms
@@ -113,4 +134,18 @@ section.posts #welcome {
     margin-top: 1em !important;
     @include clearfix;
   }
+}
+
+// font-awesome
+@font-face {
+  font-family: 'FontAwesome';
+  src: url('/font/fontawesome-webfont.eot');
+  src: url('/font/fontawesome-webfont.eot?#iefix') format('embedded-opentype'), url('/font/fontawesome-webfont.woff') format('woff'), url('/font/fontawesome-webfont.ttf') format('truetype'), url('/font/fontawesome-webfont.svgz#FontAwesomeRegular') format('svg'), url('/font/fontawesome-webfont.svg#FontAwesomeRegular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+.font-awesome {
+    font-family: FontAwesome;
+    font-weight: normal;
+    font-style: normal;
 }

@@ -1,11 +1,11 @@
 - if posts.any?
   %h2= title
-  %ul.admin-post-list
+  .admin-post-list
     - posts.each do |post|
-      %ul.admin
-        %li
-          %a.button{:href => "/admin/edit/#{post.id}"} edit
-        %li
-          %a.button{:href => url_for(post)} view
-        %li
-          = h (post.title || ("%s..." % post.body.first(50)))
+      .row
+        .ten.columns
+          %a{:href => post.to_url}= h (post.title || ("%s..." % post.body.first(50)))
+        .two.columns.icons
+          %a{:href => url_for(post)}= icon 'eye-open'
+          %a{:href => "/admin/edit/#{post.id}"}= icon 'edit'
+          %a{:href => url_for(post)}= icon 'trash'

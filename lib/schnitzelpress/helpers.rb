@@ -77,5 +77,17 @@ module Schnitzelpress
 
       partial 'form_field', :object => object, :attribute => attribute, :options => options
     end
+
+    def icon(name)
+      map = {
+        'eye-open' => 'f06e',
+        'edit' => 'f044',
+        'trash' => 'f014'
+      }
+
+      char = map[name.to_s] || 'f06a'
+
+      "<span class=\"font-awesome\">&#x#{char};</span>"
+    end
   end
 end
