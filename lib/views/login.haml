@@ -6,14 +6,10 @@
 
   %p
     %a.button#browser_id{:href => '/auth/browser_id'} Log in with BrowserID
+    - if Schnitzelpress.env.development?
+      %a.green.button{:href => '/auth/developer'} Developer Login
 
   %form{:method => 'post', :action => '/auth/browser_id/callback', :noValidate => 'noValidate'}
     %input{:type => 'hidden', :name => 'assertion'}
-
-  - if Schnitzelpress.env.development?
-    %hr
-    %p
-      Since you're running Schnitzelpress in development mode, you can also use
-      the <a href="/auth/developer">development login provider</a>.
 
 %script{ :type => 'text/javascript', :src => '//browserid.org/include.js' }
