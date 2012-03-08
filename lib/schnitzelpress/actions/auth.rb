@@ -7,8 +7,12 @@ module Schnitzelpress
       extend ActiveSupport::Concern
 
       included do
-        use OmniAuth::Strategies::BrowserID
-        use OmniAuth::Strategies::Developer if Schnitzelpress.env.development?
+        use OmniAuth::Builder do
+          provider :browser_id
+          if Schnitzelpress.env.development?
+            provider :developer , :fields => [:email], :uid_field => :email
+          end
+        end
 
         post '/auth/:provider/callback' do
           auth = request.env['omniauth.auth']
