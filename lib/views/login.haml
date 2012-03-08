@@ -9,3 +9,9 @@
 
   %form{:method => 'post', :action => '/auth/browser_id/callback', :noValidate => 'noValidate'}
     %input{:type => 'hidden', :name => 'assertion'}
+
+  - if Schnitzelpress.env.development?
+    %hr
+    %p
+      Since you're running Schnitzelpress in development mode, you can also use
+      the <a href="/auth/developer">development login provider</a>.

@@ -48,10 +48,7 @@ module Schnitzelpress
     end
 
     def admin_logged_in?
-      user_logged_in? && session[:auth] == {
-        :provider => "browser_id",
-        :uid => config.author_email
-      }
+      user_logged_in? && (session[:auth][:uid] == config.author_email)
     end
 
     def admin_only!

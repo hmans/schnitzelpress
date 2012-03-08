@@ -8,6 +8,7 @@ module Schnitzelpress
 
       included do
         use OmniAuth::Strategies::BrowserID
+        use OmniAuth::Strategies::Developer if Schnitzelpress.env.development?
 
         post '/auth/:provider/callback' do
           auth = request.env['omniauth.auth']
