@@ -29,6 +29,5 @@
       - if production? && config.gauges_id.present?
         = partial 'gauges'
 
-    %script{ :type => 'text/javascript', :src => '//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js' }
     %script{ :type => 'text/javascript', :src => '//browserid.org/include.js' }
     %script{ :type => 'text/javascript', :src => "/assets/schnitzelpress.#{ASSET_TIMESTAMP}.js" }
