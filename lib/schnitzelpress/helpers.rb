@@ -226,5 +226,12 @@ module Schnitzelpress
 
       "<span class=\"font-awesome\">&#x#{char};</span>"
     end
+
+    def link_to(title, target = "", options = {})
+      options[:href] = target.respond_to?(:to_url) ? target.to_url : target
+      options[:data] ||= {}
+      [:method, :confirm].each { |a| options[:data][a] = options.delete(a) }
+      haml "%a#{options} #{title}"
+    end
   end
 end
