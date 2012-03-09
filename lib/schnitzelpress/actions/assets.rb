@@ -17,7 +17,7 @@ module Schnitzelpress
       extend ActiveSupport::Concern
 
       ASSET_TIMESTAMP = Time.now.to_i
-      JAVASCRIPT_ASSETS = ['jquery-1.7.1.js', 'jquery.cookie.js', 'schnitzelpress.js']
+      JAVASCRIPT_ASSETS = ['jquery-1.7.1.js', 'jquery.cookie.js', 'schnitzelpress.js', 'jquery-ujs.js']
 
       included do
         get '/assets/schnitzelpress.:timestamp.css' do
