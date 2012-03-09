@@ -81,10 +81,12 @@ ul.admin {
 
 div.admin-post-list {
   padding: 5px 0;
+  margin: 1em 0;
   max-height: 300px;
   overflow: auto;
   border-bottom: 1px dotted rgba($color-text, 0.5);
   border-top: 1px dotted rgba($color-text, 0.5);
+
   .icons {
     display: none;
     text-align: right;
