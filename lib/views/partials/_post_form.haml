@@ -17,4 +17,5 @@
       = form_field @post, :disqus
 
   .buttons
-    %input{:type => 'submit', :value => @post.new_record? ? 'Create Post' : 'Update Post' }
+    %button.green #{icon 'ok'} #{@post.new_record? ? 'Create Post' : 'Update Post'}
+    %button.red #{icon 'trash'} Delete Post
