@@ -16,4 +16,4 @@
     = partial 'disqus', :disqus_identifier => @post.disqus_identifier
 
 - content_for :actions do
-  %a{:href => "/admin/edit/%s" % @post.id} Edit
+  %a{:href => "/admin/edit/%s" % @post.id} #{icon 'edit'} Edit

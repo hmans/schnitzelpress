@@ -16,8 +16,8 @@
 
       #actions.admin_only
         = yield_content :actions
-        %a{:href => '/admin/'} Go To Admin
-        %a{:href => '/logout'} Logout
+        %a{:href => '/admin/'} #{icon 'cogs'} Go To Admin
+        %a{:href => '/logout'} #{icon 'signout'} Logout
 
       = yield
 

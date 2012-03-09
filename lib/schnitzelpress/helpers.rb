@@ -80,8 +80,10 @@ module Schnitzelpress
 
     def icon(name)
       map = {
+        'cogs' => 'f085',
         'eye-open' => 'f06e',
         'edit' => 'f044',
+        'signout' => 'f08b',
         'trash' => 'f014'
       }
 
