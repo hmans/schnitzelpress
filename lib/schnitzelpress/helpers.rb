@@ -233,5 +233,9 @@ module Schnitzelpress
       [:method, :confirm].each { |a| options[:data][a] = options.delete(a) }
       haml "%a#{options} #{title}"
     end
+
+    def link_to_delete_post(title, post)
+      link_to title, "/admin/edit/#{post.id}", :method => :delete, :confirm => "Are you sure? This can not be undone."
+    end
   end
 end

@@ -4,8 +4,8 @@
     - posts.each do |post|
       .row
         .ten.columns
-          %a{:href => post.to_url}= h (post.title || ("%s..." % post.body.first(50)))
+          %a{:href => "/admin/edit/#{post.id}"}= h (post.title || ("%s..." % post.body.first(50)))
         .two.columns.icons
           %a{:href => url_for(post)}= icon 'eye-open'
           %a{:href => "/admin/edit/#{post.id}"}= icon 'edit'
-          %a{:href => url_for(post)}= icon 'trash'
+          = link_to_delete_post icon('trash'), post

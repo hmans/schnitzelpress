@@ -8,6 +8,7 @@ Upgrade Notes:
 
 Changes:
 
+* You can now delete posts you no longer need.
 * The various available rake tasks have been moved to the `schnitzelpress` command line tool.
 * Most of your blog's configuration is now stored in MongoDB and can be modified from the new "Configuration" page in your the admin panel.
 * When logged in as an admin, you will be shown a small admin actions panel in the upper right corner of your browser, allowing you to quickly edit posts, jump to the admin section, or log out.

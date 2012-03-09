@@ -17,5 +17,6 @@
       = form_field @post, :disqus
 
   .buttons
-    %button.green #{icon 'ok'} #{@post.new_record? ? 'Create Post' : 'Update Post'}
-    %button.red #{icon 'trash'} Delete Post
+    %button.green{:type => 'submit'} #{icon 'ok'} #{@post.new_record? ? 'Create Post' : 'Update Post'}
+    or
+    = link_to_delete_post "delete this post", @post

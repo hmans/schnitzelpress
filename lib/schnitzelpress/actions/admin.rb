@@ -57,6 +57,12 @@ module Schnitzelpress
             haml :'admin/edit'
           end
         end
+
+        delete '/admin/edit/:id/?' do
+          @post = Post.find(params[:id])
+          @post.destroy
+          redirect '/admin'
+        end
       end
     end
   end
