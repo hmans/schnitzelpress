@@ -177,5 +177,12 @@ module Schnitzelpress
     def disqus?
       disqus && published?
     end
+
+    def to_liquid
+      {
+        'title' => title,
+        'body' => to_html
+      }
+    end
   end
 end

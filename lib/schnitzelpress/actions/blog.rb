@@ -92,7 +92,9 @@ module Schnitzelpress
               @show_description = @post.home_page?
 
               cache_control :public, :must_revalidate, :s_maxage => 2, :max_age => 60
-              haml :post
+
+              # haml :post
+              liquid :theme, :locals => { :post => @post }
             end
           else
             halt 404
