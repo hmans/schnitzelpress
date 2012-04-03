@@ -48,7 +48,7 @@ module Schnitzelpress
     end
 
     def admin_logged_in?
-      user_logged_in? && (session[:auth][:uid] == config.author_email)
+      user_logged_in? && (session[:auth][:uid] == ENV['SCHNITZELPRESS_OWNER'])
     end
 
     def admin_only!

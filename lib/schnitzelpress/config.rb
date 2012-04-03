@@ -11,7 +11,6 @@ module Schnitzelpress
     field :blog_feed_url, :type => String, :default => "/blog.atom"
 
     field :author_name, :type => String, :default => "Joe Schnitzel"
-    field :author_email, :type => String, :default => ""
 
     field :disqus_id, :type => String
     field :google_analytics_id, :type => String
@@ -21,7 +20,6 @@ module Schnitzelpress
     field :cache_timestamp, :type => DateTime
 
     validates :blog_title, :author_name, :presence => true
-    validates :author_email, :presence => true, :on => :update
 
     class << self
       def instance
