@@ -43,7 +43,12 @@ module Schnitzelpress
     end
 
     def init!
-      Mongoid.load!("./config/mongo.yml")
+      # Mongoid.load!("./config/mongo.yml")
+      if mongo_uri = ENV['MONGOLAB_URI'] || ENV['MONGOHQ_URL'] || ENV['MONGO_URL']
+        self.mongo_uri = mongo_uri
+      else
+        raise "Please set MONGO_URL, MONGOHQ_URL or MONGOLAB_URI to your MongoDB connection string."
+      end
       Schnitzelpress::Post.create_indexes
     end
 
