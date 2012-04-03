@@ -28,6 +28,7 @@ RSpec.configure do |config|
 
   config.before(:each) do
     DatabaseCleaner[:mongoid].start
+    Schnitzelpress::Config.forget_instance
   end
 
   config.after(:each) do

@@ -37,7 +37,7 @@ describe Schnitzelpress::App do
     subject { last_response }
     it { should be_redirect }
     its(:status) { should == 307 }
-    specify { subject["Location"].should == 'http://feeds.feedburner.com/example_org' }
+    specify { subject["Location"].should == 'http://example.org/blog.atom' }
   end
 
   describe 'viewing a single post' do

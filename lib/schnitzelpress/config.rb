@@ -20,11 +20,16 @@ module Schnitzelpress
 
     field :cache_timestamp, :type => DateTime
 
-    validates :blog_title, :author_name, :author_email, :presence => true
+    validates :blog_title, :author_name, :presence => true
+    validates :author_email, :presence => true, :on => :update
 
     class << self
       def instance
         @@instance ||= find_or_create_by(:id => 'schnitzelpress')
+      end
+
+      def forget_instance
+        @@instance = nil
       end
 
       def get(k)

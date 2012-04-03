@@ -33,7 +33,7 @@ module Schnitzelpress
       # but right now it's the easiest way to get the configuration in synch
       # across multiple instances of the app.
       #
-      Config.instance.reload unless Config.instance.new_record?
+      Config.instance.reload
     end
 
     def fresh_when(options)
