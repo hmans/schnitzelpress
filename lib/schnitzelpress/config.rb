@@ -24,7 +24,7 @@ module Schnitzelpress
 
     class << self
       def instance
-        @@instance ||= find_or_initialize_by(:id => 'schnitzelpress')
+        @@instance ||= find_or_create_by(:id => 'schnitzelpress')
       end
 
       def get(k)
