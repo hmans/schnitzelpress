@@ -24,6 +24,11 @@ module Schnitzelpress
       end
     end
 
+    desc "update", "Update your blog's bundled Schnitzelpress version."
+    def update
+      run "bundle update schnitzelpress"
+    end
+
     desc "console", "Run the Schnitzelpress console."
     def console
       require 'schnitzelpress'
