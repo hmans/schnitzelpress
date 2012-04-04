@@ -7,10 +7,8 @@ module Schnitzelpress
     source_root(File.expand_path('../../templates', __FILE__))
 
     desc "create NAME", "Creates a new Schnitzelpress blog."
-    method_option :git, :aliases => "-g", :default => false,
+    method_option :git, :aliases => "-g", :default => false, :type => :boolean,
       :desc => "Initialize a git repository in your blog's directory."
-    method_option :bundle, :aliases => "-b", :default => false,
-      :desc => "Run 'bundle install' after generating your new blog."
 
     def create(name)
       @name = name
@@ -18,8 +16,11 @@ module Schnitzelpress
       directory 'new_blog', '.'
 
       in_root do
-        run "bundle"   if options[:bundle]
-        run "git init" if options[:git]
+        if options[:git]
+          run "git init"
+          run "git add ."
+          run "git commit -m 'Created new Schnitzelpress blog'"
+        end
       end
     end
 
