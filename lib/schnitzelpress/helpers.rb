@@ -237,5 +237,9 @@ module Schnitzelpress
     def link_to_delete_post(title, post)
       link_to title, "/admin/edit/#{post.id}", :method => :delete, :confirm => "Are you sure? This can not be undone."
     end
+
+    def facebook_like
+      content_tag :iframe, nil, :src => "http://www.facebook.com/plugins/like.php?href=#{CGI::escape(request.url)}&layout=standard&show_faces=true&width=450&action=like&font=arial&colorscheme=light&height=80", :scrolling => 'no', :frameborder => '0', :allowtransparency => true, :id => :facebook_like
+    end
   end
 end

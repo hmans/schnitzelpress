@@ -11,6 +11,7 @@
         %li
           %a{:href => post.to_url}= h post.title
 
+= facebook_like
 - if show_disqus? && @post.disqus?
   %section.disqus
     = partial 'disqus', :disqus_identifier => @post.disqus_identifier
