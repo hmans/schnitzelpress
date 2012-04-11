@@ -1,15 +1,4 @@
 module Schnitzelpress
-
-  class BlogDrop < Liquid::Drop
-    def initialize(attrs)
-      @title = attrs[:title]
-    end
-
-    def title
-      @title
-    end
-  end
-
   module Actions
     module Blog
       extend ActiveSupport::Concern
@@ -104,10 +93,12 @@ module Schnitzelpress
 
               cache_control :public, :must_revalidate, :s_maxage => 2, :max_age => 60
 
-              blog_drop = BlogDrop.new(:title => config.blog_title)
-
-              # haml :post
-              liquid :theme, :locals => { :post => @post, :blog => blog_drop }
+              liquid :theme, :locals => {
+                :posts => [@post],
+                :single_post => @post,
+                :blog => blog_drop,
+                :javascripts => haml(:'partials/_javascripts', :layout => false)
+              }
             end
           else
             halt 404

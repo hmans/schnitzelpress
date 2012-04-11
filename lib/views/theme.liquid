@@ -1,66 +1,66 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Es gibt Nudeln | {{ blog.title }}</title>
+    <title>
+      {% if single_post %}{{ single_post.title }} |{% endif %}
+      {{ blog.title }}
+    </title>
     <meta content='text/html; charset=UTF-8' http-equiv='content-type' />
     <meta content='width=device-width, initial-scale=1.0' name='viewport' />
     <link href='/assets/schnitzelpress.1332747656.css' media='screen' rel='stylesheet' type='text/css' />
-    <link href='http://feeds.feedburner.com/hmans_de' rel='alternate' title='Subscribe via Atom Feed' type='application/atom+xml' />
+    <link href='/feed' rel='alternate' title='Subscribe via Atom Feed' type='application/atom+xml' />
   </head>
+
   <body>
     <div class='container'>
       <header>
         <div class='site-title'>
-          <a href='/'>Hendrik Mans</a>
+          <a href='/'>{{ blog.title }}</a>
         </div>
+        {{ blog.description }}
       </header>
+
       <div class='admin_only' id='actions'>
-        <a href='/admin/edit/4f708360e83c45001a000001'>Edit</a>
+        {% if single_post %}
+          <a href='/admin/edit/{{ single_post.id }}'>Edit</a>
+        {% endif %}
         <a href='/admin/'>Go To Admin</a>
         <a href='/logout'>Logout</a>
       </div>
-      <article class='article post published'>
-        <header>
-          <h1><a href='/2012/03/26/es-gibt-nudeln/'>{{ post.title }}</a></h1>
-        </header>
 
-        {{ post.body }}
+      {% for post in posts %}
+        <article class='article {{ post.type }} {{ post.status }}'>
+          <header>
+            <h1><a href='{{ post.url }}'>{{ post.title }}</a></h1>
+          </header>
 
-        <footer>
-          <p class='permalink'>
-            <a href='/2012/03/26/es-gibt-nudeln/'>2012-03-26</a>
-          </p>
-          <div class='social_media_buttons'>
-            <a class='twitter-share-button' data-via='hmans' href='https://twitter.com/share'></a>
-            <script type='text/javascript'>
-              //<![CDATA[
-                !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
-              //]]>
-            </script>
-          </div>
-        </footer>
-      </article>
+          {{ post.body }}
+
+          <footer>
+            <p class='permalink'>
+              <a href='{{ post.url }}'>{{ post.published_at | date: "%Y-%m-%d" }}</a>
+            </p>
+
+            {% if single_post %}
+              <div class='social_media_buttons'>
+                <a class='twitter-share-button' data-via='hmans' href='https://twitter.com/share'></a>
+                <script type='text/javascript'>
+                  //<![CDATA[
+                    !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+                  //]]>
+                </script>
+              </div>
+            {% endif %}
+
+          </footer>
+        </article>
+      {% endfor %}
+
       <footer>
-        footer
+        {{ blog.footer }}
       </footer>
-      <script type='text/javascript'>
-        //<![CDATA[
-          var _gauges = _gauges || [];
-            (function() {
-              var t   = document.createElement('script');
-              t.type  = 'text/javascript';
-              t.async = true;
-              t.id    = 'gauges-tracker';
-              t.setAttribute('data-site-id', '4f0570ea613f5d5351000001');
-              t.src = '//secure.gaug.es/track.js';
-              var s = document.getElementsByTagName('script')[0];
-              s.parentNode.insertBefore(t, s);
-            })();
-        //]]>
-      </script>
     </div>
-    <script src='//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js' type='text/javascript'></script>
-    <script src='//browserid.org/include.js' type='text/javascript'></script>
-    <script src='/assets/schnitzelpress.1332747656.js' type='text/javascript'></script>
+
+    {{ javascripts }}
   </body>
 </html>

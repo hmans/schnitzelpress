@@ -1,0 +1,6 @@
+- if production? && config.google_analytics_id.present?
+  = partial 'google_analytics'
+- if production? && config.gauges_id.present?
+  = partial 'gauges'
+
+%script{ :type => 'text/javascript', :src => "/assets/schnitzelpress.#{ASSET_TIMESTAMP}.js" }

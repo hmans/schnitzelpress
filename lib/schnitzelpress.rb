@@ -17,6 +17,7 @@ require 'active_support/concern'
 
 require 'schnitzelpress/cache_control'
 require 'schnitzelpress/env'
+require 'schnitzelpress/drops'
 require 'schnitzelpress/static'
 require 'schnitzelpress/helpers'
 require 'schnitzelpress/markdown_renderer'

@@ -237,5 +237,13 @@ module Schnitzelpress
     def link_to_delete_post(title, post)
       link_to title, "/admin/edit/#{post.id}", :method => :delete, :confirm => "Are you sure? This can not be undone."
     end
+
+    def blog_drop
+      Schnitzelpress::Drops::BlogDrop.new(
+        :title => config.blog_title,
+        :footer => markdown(config.blog_footer),
+        :description => markdown(config.blog_description)
+      )
+    end
   end
 end

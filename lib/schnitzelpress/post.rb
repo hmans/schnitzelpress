@@ -134,6 +134,10 @@ module Schnitzelpress
       !post?
     end
 
+    def type
+      post? ? "post" : "page"
+    end
+
     def published?
       status == :published
     end
@@ -180,8 +184,13 @@ module Schnitzelpress
 
     def to_liquid
       {
-        'title' => title,
-        'body' => to_html
+        'id'     => id,
+        'title'  => title,
+        'body'   => to_html,
+        'type'   => type,
+        'status' => status,
+        'url'    => to_url,
+        'published_at' => published_at
       }
     end
   end
