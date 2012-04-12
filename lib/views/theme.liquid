@@ -56,6 +56,12 @@
             </footer>
           </article>
         {% endfor %}
+
+        {% if previous_page_url %}
+          <footer>
+            <a class="button" href="{{ previous_page_url }}">View Older Posts</a>
+          </footer>
+        {% endif %}
       </section>
 
       <footer>
