@@ -184,7 +184,7 @@ module Schnitzelpress
 
     def to_liquid
       {
-        'id'     => id,
+        'id'     => id.to_s,
         'title'  => title,
         'body'   => to_html,
         'type'   => type,
