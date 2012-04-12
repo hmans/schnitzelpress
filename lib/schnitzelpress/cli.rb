@@ -40,20 +40,14 @@ module Schnitzelpress
 
     desc "mongo_pull", "Pulls contents of remote MongoDB into your local MongoDB"
     def mongo_pull
-      if uri = YAML.load_file('./config/mongo.yml')['development']['uri']
-        system "MONGO_URL=\"#{uri}\" heroku mongo:pull"
-      else
-        abort "URI is missing :("
-      end
+      abort "Please set MONGO_URL." unless ENV['MONGO_URL']
+      system "heroku mongo:pull"
     end
 
     desc "mongo_push", "Pushes contents of your local MongoDB to remote MongoDB"
     def mongo_push
-      if uri = YAML.load_file('./config/mongo.yml')['development']['uri']
-        system "MONGO_URL=\"#{uri}\" heroku mongo:push"
-      else
-        abort "URI is missing :("
-      end
+      abort "Please set MONGO_URL." unless ENV['MONGO_URL']
+      system "heroku mongo:push"
     end
   end
 end
