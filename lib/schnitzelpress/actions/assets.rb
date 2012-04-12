@@ -25,6 +25,11 @@ module Schnitzelpress
           scss :blog
         end
 
+        get '/assets/theme.:timestamp.css' do
+          cache_control :public, :max_age => 1.year.to_i
+          scss :theme
+        end
+
         get '/assets/schnitzelpress.:timestamp.js' do
           cache_control :public, :max_age => 1.year.to_i
           content_type 'text/javascript; charset=utf-8'

@@ -1,0 +1,78 @@
+// $font-1: 16px "Palatino","Georgia",serif !default;
+// $font-2: 14px "Lucida Grande","Tahoma",sans-serif !default;
+@import 'schnitzelstyle/complete';
+
+/* background image */
+body, .container {
+  background-image: url(/img/background.png);
+}
+
+.admin_only {
+  display: none;
+  body.show_admin & { display: block; }
+}
+
+/* action panel */
+#actions {
+  @include small-type;
+  margin: 5px;
+
+  a {
+    display: inline-block;
+    padding: 3px 6px;
+    background-color: $color-text;
+    color: $color-background;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 3px;
+    @include appear-on-hover;
+  }
+
+  @media only screen and (min-width: 641px) {
+    position: fixed;
+    top: 0px;
+    right: 0px;
+  }
+}
+
+/* posts */
+article.post {
+  header {
+    h1 {
+      span.link-arrow {
+        color: lighten($color-link, 30%);
+      }
+    }
+  }
+
+  div.summary {
+    p:last-child a {
+      font-weight: bold;
+    }
+  }
+
+  footer {
+    margin-top: 0.5em;
+
+    .social_media_buttons {
+      @include animated;
+
+      margin: 2em 0;
+      @include appear-on-hover;
+    }
+  }
+}
+
+// disqus
+#dsq-content {
+  a {
+    border: 0;
+  }
+  #dsq-reply {
+    margin-bottom: 2em;
+  }
+  h3 {
+    margin-top: 1em !important;
+    @include clearfix;
+  }
+}
