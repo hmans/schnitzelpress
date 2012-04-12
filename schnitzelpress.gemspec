@@ -38,7 +38,7 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'redcarpet', '~> 2.1.0'
   gem.add_dependency 'liquid' #, '~> 2.1.0'
   gem.add_dependency 'coderay', '~> 1.0.5'
-  gem.add_dependency 'schnitzelstyle', '~> 0.1.1'
+  gem.add_dependency 'schnitzelstyle', '~> 0.2.0'
   gem.add_dependency 'i18n', '~> 0.6.0'
   gem.add_dependency 'tilt', '~> 1.3.0'
   gem.add_dependency 'ruby-oembed', '~> 0.8.5'
