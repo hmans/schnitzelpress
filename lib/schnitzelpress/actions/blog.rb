@@ -5,7 +5,6 @@ module Schnitzelpress
 
       included do
         get '/' do
-          @show_description = true
           if @post = Post.published.pages.where(:slugs => 'home').first
             extra_posts = Post.latest.limit(5)
             @extra_posts = ['From the Blog:', extra_posts] if extra_posts.any?
@@ -16,7 +15,6 @@ module Schnitzelpress
         end
 
         get '/blog/?' do
-          @show_description = true
           render_blog
         end
 
@@ -88,8 +86,6 @@ module Schnitzelpress
             else
               fresh_when :last_modified => @post.updated_at,
                 :etag => CacheControl.etag(@post.updated_at)
-
-              @show_description = @post.home_page?
 
               cache_control :public, :must_revalidate, :s_maxage => 2, :max_age => 60
 

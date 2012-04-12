@@ -11,8 +11,7 @@
       %header
         .site-title
           %a{:href => '/'}= h config.blog_title
-        - if @show_description
-          ~ markdown config.blog_description
+        ~ markdown config.blog_description
 
       #actions.admin_only
         = yield_content :actions
