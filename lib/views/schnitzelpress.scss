@@ -1,48 +1,134 @@
-// $font-1: 16px "Palatino","Georgia",serif !default;
-// $font-2: 14px "Lucida Grande","Tahoma",sans-serif !default;
+@import 'schnitzelstyle';
+@include buttons;
+@include grid;
 
-@import 'schnitzelstyle/complete';
+/* variables! */
+$font: 15px "Helvetica Neue",Arial,Helvetica,sans-serif;
+$font-title: 15px Verdana,Arial,Helvetica,sans-serif;
+$font-monospaced: 13px Menlo,Monaco,"Lucida Console",monospace;
 
-.admin_only {
-  display: none;
-  body.show_admin & { display: block; }
-}
+$color-background: #fff;
+$color-text: #222;
+$color-extra: #4EA4EC;
+$color-link: complement($color-extra);
+$color-footer: rgba($color-text, 0.4);
 
-/* action panel */
-#actions {
-  @include small-type;
-  margin: 5px;
+/* useful mixins */
+@mixin when-sized-medium { @include when-narrower-than(730px) { @content }}
+@mixin when-sized-small  { @include when-narrower-than(480px) { @content }}
 
-  a {
-    display: inline-block;
-    padding: 3px 6px;
-    background-color: $color-text;
-    color: $color-background;
-    font-weight: bold;
-    text-decoration: none;
-    border-radius: 3px;
-    @include appear-on-hover;
-  }
+/* reset margins */
+*:first-child { margin-top: 0; }
+*:last-child  { margin-bottom: 0; }
 
-  @media only screen and (min-width: 641px) {
-    position: fixed;
-    top: 0px;
-    right: 0px;
-  }
-}
+/* forms */
+form {
+  margin: 0.5em 0;
 
-// admin
-ul.admin {
-  list-style: none;
+  div.input {
+    margin: 0.5em 0;
 
-  li {
-    display: inline;
-    margin-left: 0 !important;
-    margin-right: 5px;
+    label {
+      display: block;
+      @include small-type;
+      font-weight: bold;
+      padding-left: 5px;
+      color: $color-extra;
+    }
 
-    a {
+    input, textarea {
+      margin: 0;
+      width: 100%;
+      padding: 5px;
+      border: none;
+      font: $font-monospaced;
+      background-color: rgba($color-text, 0.15);
+      color: $color-text;
+      @include box-shadow(4px, 4px, 8px, rgba($color-text, 0.05), $inset: true);
+      @include border-radius(3px);
+    }
+
+    textarea {
+      line-height: 1.5;
+    }
+
+    select, option {
+      font: $font;
+      padding: 2px 4px;
+    }
+
+    select {
+      display: block;
+    }
+
+    input[type=checkbox] {
+      width: auto;
+      margin-left: 4px;
+      &+.value {
+        @include small-type;
+      }
+    }
+
+    .error {
+      display: block;
+      color: red;
+      font: $font-title;
+      font-size: 80%;
+    }
+
+    .hint {
+      margin-top: 3px;
+      padding: 0px 5px;
+      display: block;
+      color: $color-footer;
       @include small-type;
     }
+  }
+
+  div.input.radio {
+    input { width: 20px; }
+  }
+
+  div.buttons {
+    margin-top: 2em !important;
+
+    input { @include button; }
+
+    input, button {
+      display: inline-block;
+      font-size: 100%;
+      padding: 4px 10px !important;
+      cursor: pointer;
+    }
+  }
+}
+
+::-webkit-input-placeholder {
+  @include small-type;
+  color: rgba($color-text, 0.4);
+  padding-top: 2px;
+}
+
+/* container */
+.container {
+  width: 650px;
+  margin: 0 auto;
+  padding: 40px 0;
+
+  @include when-sized-medium {
+    width: 100%;
+    padding: 40px;
+  }
+  @include when-sized-small {
+    font-size: 85%;
+    padding: 10px;
+    margin: 0;
+  }
+
+  &>footer {
+    text-align: right;
+    margin-top: 100px;
+    color: #ccc;
   }
 }
 
@@ -51,22 +137,24 @@ div.admin-post-list {
   margin: 1em 0;
   max-height: 300px;
   overflow: auto;
-  border-bottom: 1px dotted rgba($color-text, 0.5);
-  border-top: 1px dotted rgba($color-text, 0.5);
+  border-bottom: 1px dotted #ccc;
+  border-top: 1px dotted #ccc;
 
   .icons {
     display: none;
     text-align: right;
     a {
-      color: $color-footer;
-      &:hover { color: $color-text };
+      color: #999;
+      text-decoration: none;
+      &:hover { color: #222 };
     }
   }
   .row {
     padding: 3px;
     margin-bottom: 0;
+    border-bottom: 1px solid #f8f8f8;
     &:hover {
-      background-color: rgba($color-text, 0.05);
+      background-color: #eee;
       .icons {
         display: block;
       }

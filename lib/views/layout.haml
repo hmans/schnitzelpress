@@ -1,31 +1,18 @@
 !!! 5
 %html
   %head
-    %title= [@page_title, config.blog_title].compact.join(" | ")
+    %title Schnitzelpress
     %meta{ :"http-equiv" => "content-type", :content => "text/html; charset=UTF-8" }
     %meta{ :name => "viewport", :content => "width=device-width, initial-scale=1.0" }
     %link{ :href => "/assets/schnitzelpress.#{ASSET_TIMESTAMP}.css", :media => "screen", :rel => "stylesheet", :type => "text/css" }
-    %link{ :href => config.blog_feed_url, :title => "Subscribe via Atom Feed", :rel => 'alternate', :type => 'application/atom+xml' }
   %body
     .container
       %header
-        .site-title
-          %a{:href => '/'}= h config.blog_title
-        ~ markdown config.blog_description
-
-      #actions.admin_only
-        = yield_content :actions
-        %a{:href => '/admin/'} #{icon 'cog'} Go To Admin
-        %a{:href => '/logout'} #{icon 'signout'} Logout
+        Schnitzelpress
 
       = yield
 
       %footer
-        ~ markdown config.blog_footer
-
-      - if production? && config.google_analytics_id.present?
-        = partial 'google_analytics'
-      - if production? && config.gauges_id.present?
-        = partial 'gauges'
+        Schnitzelpress #{Schnitzelpress::VERSION}
 
     %script{ :type => 'text/javascript', :src => "/assets/schnitzelpress.#{ASSET_TIMESTAMP}.js" }
