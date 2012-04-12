@@ -88,13 +88,7 @@ module Schnitzelpress
                 :etag => CacheControl.etag(@post.updated_at)
 
               cache_control :public, :must_revalidate, :s_maxage => 2, :max_age => 60
-
-              liquid :theme, :locals => {
-                :posts => [@post],
-                :single_post => @post,
-                :blog => blog_drop,
-                :javascripts => haml(:'partials/_javascripts', :layout => false)
-              }
+              render_theme([@post], :single_post => @post)
             end
           else
             halt 404
@@ -108,14 +102,20 @@ module Schnitzelpress
           end
 
           cache_control :public, :must_revalidate, :s_maxage => 2, :max_age => 60
+          render_theme(@posts,
+            :previous_page_url => (@show_previous_posts_button ? "/?page=#{params[:page].to_i + 1}" : nil))
+        end
 
-          liquid :theme, :locals => {
-            :posts => @posts,
+        def render_theme(posts, options = {})
+          options = {
+            :posts => posts,
             :single_post => nil,
-            :previous_page_url => (@show_previous_posts_button ? "/?page=#{params[:page].to_i + 1}" : nil),
+            :previous_page_url => nil,
             :blog => blog_drop,
             :javascripts => haml(:'partials/_javascripts', :layout => false)
-          }
+          }.merge(options)
+
+          liquid(:theme, :locals => options)
         end
       end
     end
