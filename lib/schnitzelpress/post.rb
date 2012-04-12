@@ -19,9 +19,7 @@ module Schnitzelpress
     field :slugs, :type => Array, :default => []
 
     # optional fields
-    field :summary,   :type => String
     field :link,      :type => String
-    field :read_more, :type => String
 
     # times & status
     field :published_at, :type => DateTime
