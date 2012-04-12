@@ -33,9 +33,9 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'omniauth-browserid', '~> 0.0.1'
 
   # frontend/views/assets related
-  gem.add_dependency 'haml', '~> 3.1.4'
-  gem.add_dependency 'sass', '~> 3.1.15'
-  gem.add_dependency 'redcarpet', '~> 2.1.0'
+  gem.add_dependency 'haml', '~> 3.1'
+  gem.add_dependency 'sass', '~> 3.1'
+  gem.add_dependency 'redcarpet', '~> 2.1'
   gem.add_dependency 'liquid' #, '~> 2.1.0'
   gem.add_dependency 'coderay', '~> 1.0.5'
   gem.add_dependency 'schnitzelstyle', '~> 0.2.0'
