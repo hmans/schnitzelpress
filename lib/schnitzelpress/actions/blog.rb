@@ -114,6 +114,7 @@ module Schnitzelpress
             :single_post => nil,
             :previous_page_url => nil,
             :blog => blog_drop,
+            :schnitzelpress => Drops::SchnitzelpressDrop.new,
             :javascripts => haml(:'partials/_javascripts', :layout => false)
           }.merge(options)
 

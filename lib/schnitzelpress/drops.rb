@@ -21,5 +21,11 @@ module Schnitzelpress
         @attrs[:disqus_id]
       end
     end
+
+    class SchnitzelpressDrop < Liquid::Drop
+      def version
+        Schnitzelpress::VERSION
+      end
+    end
   end
 end
