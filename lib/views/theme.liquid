@@ -28,33 +28,35 @@
         <a href='/logout'>Logout</a>
       </div>
 
-      {% for post in posts %}
-        <article class='article {{ post.type }} {{ post.status }}'>
-          <header>
-            <h1><a href='{{ post.url }}'>{{ post.title }}</a></h1>
-          </header>
+      <section class="posts">
+        {% for post in posts %}
+          <article class='article {{ post.type }} {{ post.status }}'>
+            <header>
+              <h1><a href='{{ post.url }}'>{{ post.title }}</a></h1>
+            </header>
 
-          {{ post.body }}
+            {{ post.body }}
 
-          <footer>
-            <p class='permalink'>
-              <a href='{{ post.url }}'>{{ post.published_at | date: "%Y-%m-%d" }}</a>
-            </p>
+            <footer>
+              <p class='permalink'>
+                <a href='{{ post.url }}'>{{ post.published_at | date: "%Y-%m-%d" }}</a>
+              </p>
 
-            {% if single_post %}
-              <div class='social_media_buttons'>
-                <a class='twitter-share-button' data-via='hmans' href='https://twitter.com/share'></a>
-                <script type='text/javascript'>
-                  //<![CDATA[
-                    !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
-                  //]]>
-                </script>
-              </div>
-            {% endif %}
+              {% if single_post %}
+                <div class='social_media_buttons'>
+                  <a class='twitter-share-button' data-via='hmans' href='https://twitter.com/share'></a>
+                  <script type='text/javascript'>
+                    //<![CDATA[
+                      !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+                    //]]>
+                  </script>
+                </div>
+              {% endif %}
 
-          </footer>
-        </article>
-      {% endfor %}
+            </footer>
+          </article>
+        {% endfor %}
+      </section>
 
       <footer>
         {{ blog.footer }}
