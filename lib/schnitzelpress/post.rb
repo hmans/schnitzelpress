@@ -186,7 +186,7 @@ module Schnitzelpress
         'title'  => title,
         'body'   => to_html,
         'type'   => type,
-        'status' => status,
+        'status' => status.to_s,
         'url'    => to_url,
         'link'   => link,
         'published_at' => published_at,
