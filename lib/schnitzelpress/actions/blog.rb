@@ -108,7 +108,14 @@ module Schnitzelpress
           end
 
           cache_control :public, :must_revalidate, :s_maxage => 2, :max_age => 60
-          haml :index
+
+          liquid :theme, :locals => {
+            :posts => @posts,
+            :single_post => nil,
+            :previous_page_url => (@show_previous_posts_button ? "/?page=#{params[:page].to_i + 1}" : nil),
+            :blog => blog_drop,
+            :javascripts => haml(:'partials/_javascripts', :layout => false)
+          }
         end
       end
     end
