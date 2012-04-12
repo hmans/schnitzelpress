@@ -108,6 +108,8 @@ module Schnitzelpress
 
         def render_theme(posts, options = {})
           options = {
+            :production => Schnitzelpress.env.production?,
+            :development => Schnitzelpress.env.development?,
             :posts => posts,
             :single_post => nil,
             :previous_page_url => nil,

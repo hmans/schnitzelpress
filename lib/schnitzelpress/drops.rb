@@ -16,6 +16,10 @@ module Schnitzelpress
       def description
         @attrs[:description]
       end
+
+      def disqus_id
+        @attrs[:disqus_id]
+      end
     end
   end
 end

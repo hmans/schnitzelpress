@@ -242,7 +242,8 @@ module Schnitzelpress
       Schnitzelpress::Drops::BlogDrop.new(
         :title => config.blog_title,
         :footer => markdown(config.blog_footer),
-        :description => markdown(config.blog_description)
+        :description => markdown(config.blog_description),
+        :disqus_id => config.disqus_id
       )
     end
   end
