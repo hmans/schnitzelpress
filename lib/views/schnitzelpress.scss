@@ -3,11 +3,6 @@
 
 @import 'schnitzelstyle/complete';
 
-/* background image */
-body, .container {
-  background-image: url(/img/background.png);
-}
-
 .admin_only {
   display: none;
   body.show_admin & { display: block; }
@@ -33,34 +28,6 @@ body, .container {
     position: fixed;
     top: 0px;
     right: 0px;
-  }
-}
-
-/* posts */
-article.post {
-  header {
-    h1 {
-      span.link-arrow {
-        color: lighten($color-link, 30%);
-      }
-    }
-  }
-
-  div.summary {
-    p:last-child a {
-      font-weight: bold;
-    }
-  }
-
-  footer {
-    margin-top: 0.5em;
-
-    .social_media_buttons {
-      @include animated;
-
-      margin: 2em 0;
-      @include appear-on-hover;
-    }
   }
 }
 
@@ -112,31 +79,6 @@ div.admin-post-list {
 
 // forms
 .input.post_title input { @include large-type; }
-
-// welcome message
-section.posts #welcome {
-  font: $font-header;
-  font-size: 1.8em;
-  color: rgba($color-text, 0.5);
-  p { text-align: left; line-height: 1.3; }
-  strong { color: $color-text; }
-  p:first-child { font-size: 130%; }
-  span.heart { color: #c66; }
-}
-
-// disqus
-#dsq-content {
-  a {
-    border: 0;
-  }
-  #dsq-reply {
-    margin-bottom: 2em;
-  }
-  h3 {
-    margin-top: 1em !important;
-    @include clearfix;
-  }
-}
 
 // font-awesome
 @font-face {
