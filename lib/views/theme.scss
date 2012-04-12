@@ -1,11 +1,157 @@
-// $font-1: 16px "Palatino","Georgia",serif !default;
-// $font-2: 14px "Lucida Grande","Tahoma",sans-serif !default;
-@import 'schnitzelstyle/complete';
+@import 'schnitzelstyle';
+@include grid;
+@include buttons;
 
-/* background image */
-body, .container {
-  background-image: url(/img/background.png);
+/* variables! */
+$font: 15px "Helvetica Neue",Arial,Helvetica,sans-serif;
+$font-title: 15px Verdana,Arial,Helvetica,sans-serif;
+$font-monospaced: 13px Menlo,Monaco,"Lucida Console",monospace;
+
+$color-background: #fff;
+$color-text: #222;
+$color-extra: #4EA4EC;
+$color-link: complement($color-extra);
+$color-footer: rgba($color-text, 0.4);
+
+/* useful mixins */
+@mixin when-sized-medium { @include when-narrower-than(730px) { @content }}
+@mixin when-sized-small  { @include when-narrower-than(480px) { @content }}
+@mixin floaty-title($fg, $bg) {
+  display: inline-block;
+  padding: 5px 10px 4px 10px;
+
+  color: $fg;
+  background-color: $bg;
+  border-bottom: 1px solid mix($color-text, $bg, 10%);
+
+  a {
+    color: $fg;
+    border: none;
+    text-decoration: none;
+    &:hover { color: $fg }
+  }
 }
+
+/* reset margins */
+*:first-child { margin-top: 0; }
+*:last-child  { margin-bottom: 0; }
+
+/* let's do this! */
+body {
+  @include box-model(border-box);
+  background: url(/img/background.png) $color-background;
+  color: $color-text;
+  font: $font;
+}
+
+.container {
+  width: 650px;
+  margin: 0 auto;
+  padding: 40px 0;
+
+  @include when-sized-medium {
+    width: 100%;
+    padding: 40px;
+  }
+  @include when-sized-small {
+    font-size: 85%;
+    padding: 10px;
+    margin: 0;
+  }
+}
+
+.container>header {
+  color: $color-extra;
+  font: $font-title;
+  font-size: 130%;
+
+  .site-title {
+    @include floaty-title($color-background, $color-extra);
+    font-size: 200%;
+    font-weight: bold;
+  }
+
+  p {
+    line-height: 140%;
+    a { color: $color-text; }
+  }
+}
+
+.container>footer {
+  font: $font-title;
+  @include small-type;
+  margin-top: 100px;
+  text-align: right;
+  color: $color-footer;
+}
+
+.container>section, .container>article {
+  margin-top: 2em;
+  text-align: justify;
+  text-justify: newspaper;
+  line-height: 150%;
+
+  header {
+    margin-bottom: 1em;
+  }
+  footer {
+    @include small-type;
+    color: $color-footer;
+    font-weight: bold;
+    a {
+      text-decoration: none;
+      &:hover { text-decoration: underline };
+    }
+  }
+  h1,h2,h3,h4,h5,h6 {
+    font: $font-title;
+    font-weight: bold;
+  }
+  h1,h2 {
+    @include floaty-title(rgba($color-text, 0.8), rgba($color-text, 0.15));
+  }
+  h1 {
+    font-size: 130%;
+    text-transform: uppercase;
+  }
+  blockquote {
+    color: rgba($color-text, 0.6);
+    border-left: 5px solid rgba($color-text, 0.1);
+    margin-left: 0;
+    padding-left: 1em;
+    font-style: italic;
+  }
+  img {
+    max-width: 100%;
+  }
+  .code>pre {
+    font: $font-monospaced;
+    padding: 0.5em;
+    line-height: 120%;
+    overflow: scroll;
+  }
+}
+
+article.post {
+  .body {
+    a {
+      text-decoration: none;
+      border-bottom: 2px solid $color-link;
+    }
+  }
+}
+
+div.pagination {
+  margin: 2em 0;
+  a { @include button($color-link) }
+}
+
+
+
+
+
+
+
 
 .admin_only {
   display: none;
@@ -20,15 +166,15 @@ body, .container {
   a {
     display: inline-block;
     padding: 3px 6px;
-    background-color: $color-text;
-    color: $color-background;
+    background-color: #333;
+    color: #eee;
     font-weight: bold;
     text-decoration: none;
     border-radius: 3px;
     @include appear-on-hover;
   }
 
-  @media only screen and (min-width: 641px) {
+  @media only screen and (min-width: 481px) {
     position: fixed;
     top: 0px;
     right: 0px;
@@ -40,7 +186,7 @@ article.post {
   header {
     h1 {
       span.link-arrow {
-        color: lighten($color-link, 30%);
+        color: #999;
       }
     }
   }
@@ -89,4 +235,37 @@ article.post {
     font-family: FontAwesome;
     font-weight: normal;
     font-style: normal;
+}
+
+
+
+
+// coderay, sigh
+.CodeRay {
+  margin: 0.8em 0;
+
+  pre {
+    background-color: #232323;
+    color: #E6E0DB;
+    overflow: auto;
+
+    .attribute { color:#E7BE69 }                      /* html attribute */
+    .comment  { color:#BC9358; font-style: italic; } /* comment */
+    .ch { color:#509E4F }                      /* escaped character */
+    .class { color:#FFF }                         /* class */
+    .constant, .predefined-constant { color:#FFF }                         /* constant */
+    .float { color:#A4C260 }                      /* float */
+    .function { color:#FFC56D }                      /* function */
+    .global { color:#D0CFFE }                      /* global variable */
+    .integer  { color:#A4C260 }                      /* integer */
+    .inline { background:#151515 }                 /* inline code */
+    .instance-variable { color:#D0CFFE }                      /* instance variable */
+    .preprocessor { color:#E7BE69 }                      /* doctype */
+    .keyword  { color:#CB7832 }                      /* keyword */
+    .regexp { color:#A4C260 }                      /* regex */
+    .string  { color:#A4C260 }                      /* string */
+    .symbol { color:#6C9CBD }                      /* symbol */
+    .tag { color:#E7BE69 }                      /* html tag */
+    .pc { color:#6C9CBD }                      /* boolean */
+  }
 }
