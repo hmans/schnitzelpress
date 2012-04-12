@@ -188,6 +188,7 @@ module Schnitzelpress
         'type'   => type,
         'status' => status,
         'url'    => to_url,
+        'link'   => link,
         'published_at' => published_at,
         'disqus' => disqus,
         'disqus_identifier' => disqus_identifier
