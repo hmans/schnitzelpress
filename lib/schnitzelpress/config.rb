@@ -16,6 +16,14 @@ module Schnitzelpress
     field :google_analytics_id, :type => String
     field :gauges_id, :type => String
     field :twitter_id, :type => String
+    
+    field :twitter_consumer_key, :type => String, :default => ""
+    field :twitter_consumer_secret, :type => String, :default => ""
+    field :twitter_access_token, :type => String, :default => ""
+    field :twitter_access_secret, :type => String, :default => ""
+    field :tweet_post, :type => Boolean, :default => false
+    field :tweet_text, :type => String, :default => "[TITLE]: [URL]"
+    field :tweet_blog_url, :type => String, :default => ""
 
     field :cache_timestamp, :type => DateTime
 

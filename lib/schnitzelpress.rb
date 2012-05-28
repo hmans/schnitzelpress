@@ -9,6 +9,7 @@ require 'rack/contrib'
 require 'rack/cache'
 require 'mongoid'
 require 'chronic'
+require 'twitter_oauth'
 
 require 'active_support/inflector'
 require 'active_support/core_ext/class'
