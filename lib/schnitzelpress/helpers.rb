@@ -237,5 +237,26 @@ module Schnitzelpress
     def link_to_delete_post(title, post)
       link_to title, "/admin/edit/#{post.id}", :method => :delete, :confirm => "Are you sure? This can not be undone."
     end
+    
+    def get_twitter_auth_url
+      client = TwitterOAuth::Client.new(:consumer_key => config.twitter_consumer_key, :consumer_secret => config.twitter_consumer_secret)
+      request_token = client.request_token(:oauth_callback => url_for('/admin/new', :absolute => true))
+      config.set("twitter_access_token", request_token.token)
+      config.set("twitter_access_secret", request_token.secret)
+      request_token.authorize_url
+    end
+    
+    def set_twitter_auth(verifier)
+      client = TwitterOAuth::Client.new(
+                :consumer_key => config.twitter_consumer_key, 
+                :consumer_secret => config.twitter_consumer_secret)
+      access_token = client.authorize(
+                config.twitter_access_token, 
+                config.twitter_access_secret, 
+                :oauth_verifier => verifier)
+      config.set("twitter_access_token", access_token.token)
+      config.set("twitter_access_secret", access_token.secret)
+      config.set("tweet_blog_url", base_url.sub(/[\/]?$/, ''))
+    end
   end
 end

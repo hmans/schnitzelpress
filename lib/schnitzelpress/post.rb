@@ -57,6 +57,7 @@ module Schnitzelpress
     before_validation :set_defaults
     validate :validate_slug
     before_save :update_body_html
+    before_save :send_tweet
 
     def disqus_identifier
       "post-#{id}"
@@ -176,6 +177,22 @@ module Schnitzelpress
 
     def disqus?
       disqus && published?
+    end
+    
+    def send_tweet
+      config = Schnitzelpress::Config.instance
+      if config.tweet_post
+        if published? and post? and self.new_record?
+          tweet = config.tweet_text.gsub("[TITLE]", self.title)\
+                                   .gsub("[URL]", config.tweet_blog_url + to_url)
+          client = TwitterOAuth::Client.new(
+              :consumer_key => config.twitter_consumer_key,
+              :consumer_secret => config.twitter_consumer_secret,
+              :token => config.twitter_access_token, 
+              :secret => config.twitter_access_secret)
+          client.update(tweet)
+        end
+      end
     end
   end
 end

@@ -1,2 +1,13 @@
-%section
-  = partial 'post_form', :post => @post
+- if config.tweet_post == true and config.twitter_access_secret.length < 1 and not params[:oauth_verifier]
+  %section
+    %p
+      You chose to use Twitter to announce your new blog posts. That's awesome, but first we need to authorize #{config.blog_title}. Don't worry, you'll only have to do this once.
+    %p
+      %a.green.button{:href => get_twitter_auth_url, } Authorize with Twitter
+      %a.red.button{:href => '/admin/config', } Change Configuration
+
+- else
+  - if params[:oauth_verifier]
+    - set_twitter_auth(params[:oauth_verifier])
+  %section
+    = partial 'post_form', :post => @post

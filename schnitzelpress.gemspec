@@ -50,6 +50,7 @@ Gem::Specification.new do |gem|
 
   # misc
   gem.add_dependency 'chronic', '~> 0.6.7'
+  gem.add_dependency 'twitter_oauth', '~> 0.4.3'
 
   # development dependencies
   gem.add_development_dependency 'rspec', '>= 2.8.0'
