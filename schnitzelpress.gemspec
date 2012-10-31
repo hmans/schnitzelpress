@@ -34,7 +34,8 @@ Gem::Specification.new do |gem|
 
   # frontend/views/assets related
   gem.add_dependency 'haml', '~> 3.1.4'
-  gem.add_dependency 'sass', '~> 3.1.15'
+  # No need to require Sass here, since we're already requiring Schnitzelstyle.
+  # gem.add_dependency 'sass', '~> 3.1.15'
   gem.add_dependency 'redcarpet', '~> 2.1.0'
   gem.add_dependency 'coderay', '~> 1.0.5'
   gem.add_dependency 'schnitzelstyle', '~> 0.1.1'
