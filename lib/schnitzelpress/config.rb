@@ -15,6 +15,7 @@ module Schnitzelpress
     field :disqus_id, :type => String
     field :google_analytics_id, :type => String
     field :gauges_id, :type => String
+    field :gosquared_id, :type => String
     field :twitter_id, :type => String
 
     field :cache_timestamp, :type => DateTime
