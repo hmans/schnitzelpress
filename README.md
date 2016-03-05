@@ -1,4 +1,4 @@
-# Schnitzelpress
+# Schnitzelpress [![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
 
 ## A lean, mean blogging machine for hackers and fools.
 
