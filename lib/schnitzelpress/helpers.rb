@@ -9,7 +9,7 @@ module Schnitzelpress
     end
 
     def base_url
-      "#{env['rack.url_scheme']}://#{env['HTTP_HOST']}/"
+      "#{env['rack.url_scheme']}://#{env['HTTP_X_FORWARDED_HOST']||env['HTTP_HOST']}/"
     end
 
     def partial(thing, locals = {})
